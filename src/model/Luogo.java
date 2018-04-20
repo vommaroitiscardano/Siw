@@ -6,6 +6,13 @@ public class Luogo {
 	private String citta;
 	private String nazione;
 	
+	public Luogo(long id, String city, String country) {
+
+		this.idLuogo = id;
+		this.citta = city;
+		this.nazione = country;
+	}
+	
 	
 	public long getIdLuogo() {
 		return idLuogo;

@@ -19,7 +19,6 @@ public class LuogoDaoJDBC implements LuogoDao{
 	
 	@Override
 	public void save(Luogo luogo) {
-		// TODO Auto-generated method stub
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into luogo(id_Luogo, citta, nazione) values (?,?,?)";

@@ -2,6 +2,7 @@ package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,15 +20,18 @@ public class UtenteDaoJDBC implements UtenteDao{
 	public void save(Utente utente) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into utente(id_utente, nome, cognome, data_di_nascita, email, password) values (?,?,?,?,?,?)";
+			
+			int id = getNextId(connection);
+			
+			String insert = "insert into utente(id_utente, nome, cognome, email, password) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, utente.getId_Utente());
+			statement.setLong(1, id);
 			statement.setString(2, utente.getNome());
 			statement.setString(3, utente.getCognome());
 			//long secs = utente.getDataNascita()getTime();
-			statement.setDate(4,null);
-			statement.setString(5, utente.getEmail());
-			statement.setString(6, utente.getPassword());
+			//statement.setDate(4,null);
+			statement.setString(4, utente.getEmail());
+			statement.setString(5, utente.getPassword());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -41,6 +45,27 @@ public class UtenteDaoJDBC implements UtenteDao{
 		}
 		
 		
+	}
+	/** 
+	 * 	This method is used to generate next user ID
+	 */
+	private final int getNextId(final Connection connection){
+		try {
+			PreparedStatement statement;
+			final String query = "select id_utente from utente;";
+			statement = connection.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.last()){
+				int tmp = result.getInt("id_utente");
+				return ++tmp;
+			}
+			return 0;
+				
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} 
 	}
 
 	@Override

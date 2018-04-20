@@ -23,8 +23,8 @@ public class VoloDaoJDBC implements VoloDao {
 			String insert = "insert into volo(id_volo, aeroporto_partenza, aeroporto_arrivo, prezzo, durata, orario) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, volo.getIdVolo());
-			statement.setLong(2, volo.getPartenza().getIdAeroporto());
-			statement.setLong(3, volo.getArrivo().getIdAeroporto());
+			statement.setString(2, volo.getPartenza().getIdAeroporto());
+			statement.setString(3, volo.getArrivo().getIdAeroporto());
 			statement.setLong(4, volo.getPrezzo());
 			statement.setFloat(5, volo.getDurataVolo());
 			

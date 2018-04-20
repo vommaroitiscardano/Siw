@@ -8,7 +8,6 @@ public class Utente {
 	private long id_Utente;
 	private String nome;
 	private String cognome;
-	private Date dataNascita;
 	private String email;
 	private String password;
 	//private Integer amministratore; //  1 se è amministratore, altrimenti 0
@@ -17,11 +16,10 @@ public class Utente {
 	
 	//public Utente() {}
 	
-	public Utente(long id, String n, String c, Date ddn, String e, String pass) {
+	public Utente(long id, String n, String c, String e, String pass) {
 		this.id_Utente = id;
 		this.nome = n;
 		this.cognome = c;
-		this.dataNascita = ddn;
 		this.email = e;
 		this.password = pass;
 		//this.amministratore = amm;
@@ -58,12 +56,6 @@ public class Utente {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public Date getDataNascita() {
-		return dataNascita;
-	}
-	public void setDataNascita(Date dataNascita) {
-		this.dataNascita = dataNascita;
 	}
 //	public Integer getAmministratore() {
 //		return amministratore;

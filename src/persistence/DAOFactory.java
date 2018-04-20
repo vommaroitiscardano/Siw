@@ -9,9 +9,6 @@ import persistence.dao.VoloDao;
 
 public abstract class DAOFactory {
 
-	// --- List of supported DAO types ---
-
-	
 	/**
 	 * Numeric constant '1' corresponds to explicit Hsqldb choice
 	 */
@@ -22,8 +19,6 @@ public abstract class DAOFactory {
 	 */
 	public static final int POSTGRESQL = 2;
 	
-	
-	// --- Actual factory method ---
 	
 	/**
 	 * Depending on the input parameter

@@ -2,15 +2,21 @@ package model;
 
 public class Aeroporto {
 
-	private long idAeroporto;
+	private String idAeroporto;
 	private String nome;
 	private Luogo luogo;
+	
+	public Aeroporto(String idAeroporto, String nome, Luogo luogo) {
+		this.idAeroporto = idAeroporto;
+		this.nome = nome;
+		this.luogo = luogo;		
+	}
 
 	//set e get
-	public long getIdAeroporto() {
+	public String getIdAeroporto() {
 		return idAeroporto;
 	}
-	public void setIdAeroporto(long idAeroporto) {
+	public void setIdAeroporto(String idAeroporto) {
 		this.idAeroporto = idAeroporto;
 	}
 	public String getNome() {
