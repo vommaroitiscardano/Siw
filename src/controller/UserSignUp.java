@@ -39,7 +39,7 @@ public class UserSignUp extends HttpServlet{
 
 		Utente user = new Utente(1, name, surname, email, password);
 		userDao.save(user);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("jsp_pages/signup.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("index.html");
 		dispatcher.forward(req, resp);
 		
 	}

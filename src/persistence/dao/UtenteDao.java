@@ -11,6 +11,7 @@ public interface UtenteDao {
 	public List<Utente> findAll();
 	public void delete(Utente utente);
 	public void update(Utente utente);
+	public Utente findByEmail(String email);
 	
 	
 }

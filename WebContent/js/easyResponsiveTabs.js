@@ -1,5 +1,3 @@
-// Easy Responsive Tabs Plugin
-// Author: Samson.Onna <Email : samson3d@gmail.com>
 (function ($) {
     $.fn.extend({
         easyResponsiveTabs: function (options) {
@@ -96,7 +94,16 @@
                             $respTabs.find('.resp-tab-active').removeClass('resp-tab-active');
                             $respTabs.find('.resp-tab-content-active').removeAttr('style').removeClass('resp-tab-content-active').removeClass('resp-accordion-closed');
                             $respTabs.find("[aria-controls=" + $tabAria + "]").addClass('resp-tab-active');
-                            $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + ']').addClass('resp-tab-content-active').attr('style', 'display:block');
+                            $respTabs.find('.resp-tab-content[aria-labelledby = tab_item-0]').addClass('resp-tab-content-active').attr('style', 'display:block');
+                        }
+                        
+                        var element = $("#end-date");
+                        if($tabAria == 'tab_item-1'){
+                        	element.prop("disabled",true);
+                        	element.val(''); //reset della data, se presente
+                        }
+                        else{
+                        	element.prop("disabled",false);
                         }
                     });
                     //Window resize function                   

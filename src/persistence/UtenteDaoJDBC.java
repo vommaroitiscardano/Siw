@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Utente;
+
 import persistence.dao.UtenteDao;
 
 public class UtenteDaoJDBC implements UtenteDao{
@@ -91,5 +92,43 @@ public class UtenteDaoJDBC implements UtenteDao{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Utente findByEmail(String email) {
+		Connection connection = dataSource.getConnection();
+		try {
+			//query che mi trova l'ultente con l'email corrispondente a quella ricercata
+			String query = " select * "
+							+ "from utente as u "
+							+ "where u.email=?";
+			
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, email);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				Utente  u  = new Utente();
+				u.setId_Utente(result.getLong("id_utente"));
+				u.setNome(result.getString("nome"));
+				u.setCognome(result.getString("cognome"));
+				System.out.println("granata");
+				u.setEmail(result.getString("email"));
+				u.setPassword(result.getString("password"));
+				
+				return u;
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				if(connection!=null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	
+		
+		return null;
+	}
+	
 
 }

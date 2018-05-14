@@ -8,7 +8,7 @@ import persistence.dao.UtenteDao;
 import persistence.dao.ViaggioDao;
 import persistence.dao.VoloDao;
 
-class PostgresDAOFactory extends DAOFactory {
+public class PostgresDAOFactory extends DAOFactory {
 
 	private static DataSource dataSource;
 

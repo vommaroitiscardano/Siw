@@ -1,38 +1,49 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Flydown - small price, big savings</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet"
-	media="all">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+<!-- <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" /> -->
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/modernizr.custom.js"></script>
-<!-- //js -->
-
-<script type="text/javascript">
-		$(document).ready(function () {
-			$('#horizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion           
-				width: 'auto', //auto or any width like 600px
-				fit: true   // 100% fit in a container
-			});
-		});
-	</script>
-<!--pop-up-->
 <script src="js/menu_jquery.js"></script>
-<!--//pop-up-->
+<script src="js/jquery.autocomplete.min.js"></script>
+<script src="js/flightAutocomplete.js"></script>
+<!-- //js -->
+<script type="application/x-javascript">
+	
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0); 
+	}, false);
+	function hideURLbar(){
+		window.scrollTo(0,1); 
+	} 
+
+</script>
+<script>
+	$(document).ready(function() {
+		$('#horizontalTab').easyResponsiveTabs({
+			type : 'default', //Types: default, vertical, accordion           
+			width : 'auto', //auto or any width like 600px
+			fit : true
+		// 100% fit in a container
+		});
+	});
+</script>
 </head>
 <body>
 	<!--header-->
@@ -41,8 +52,7 @@
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big
-						savings
+						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
 					</h1>
 				</div>
 			</div>
@@ -51,67 +61,84 @@
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<ul class="nav1">
 						<li class="active">
-						<li><a href="index.html">Flights</a></li>
+						<li><a href="index.jsp">Flights</a></li>
 						<li><a href="blog.html">Blog</a></li>
 						<li><a href="about.html">About</a></li>
 					</ul>
 					<div class="clearfix"></div>
 					<!-- script-for-menu  ANIMAZIONE Img vicino form voli -->
-					<script> 
-							   $( "span.menu" ).click(function() {
-								 $( "ul.nav1" ).slideToggle( 300, function() {
-								 // Animation complete.
-								  });
-								 });
-							
-							</script>
+					<script>
+						$("span.menu").click(function() {
+							$("ul.nav1").slideToggle(300, function() {
+								// Animation complete.
+							});
+						});
+					</script>
 					<!-- /script-for-menu -->
 				</div>
-				<div class="dropdown-grids">
-					<div id="loginContainer">
-						<a href="#" id="loginButton"><span>Login</span></a>
-						<div id="loginBox">
-							<form id="loginForm">
-								<div class="login-grids">
-									<div class="login-grid-left">
-										<fieldset id="body">
-											<fieldset>
-												<label for="email">Email Address</label> <input type="text"
-													name="email" id="email">
+			
+			<div class="dropdown-grids">
+					
+
+				
+					
+				<c:if test="${loggato!= null}">
+				<p>
+					 ${mex} - <form action="LoginServlet" method="get">
+					<input type="submit" value="Logout">
+					</form>
+				</p>
+				</c:if>
+				
+	<!-- se l'utente non si è ancora loggato allora gli mostro la login form -->			
+					<c:if test="${loggato== null}">  
+						<div id="loginContainer">
+							<a href="#" id="loginButton"><span>Login</span></a>
+							<div id="loginBox">
+	
+								<form id="loginForm" action="LoginServlet" method="post">
+									<div class="login-grids">
+
+										<div class="login-grid-left">
+											<fieldset id="body">
+												<fieldset>
+													<label for="userid">Email Address</label> <input
+														type="text" name="userid" id="userid">
+												</fieldset>
+												<fieldset>
+													<label for="password">Password</label> <input
+														type="password" name="password" id="password">
+												</fieldset>
+												<input type="submit" id="login" value="Sign in"> <label
+													for="checkbox"><input type="checkbox" id="checkbox">
+													<i>Remember me</i></label>
 											</fieldset>
-											<fieldset>
-												<label for="password">Password</label> <input
-													type="password" name="password" id="password">
-											</fieldset>
-											<input type="submit" id="login" value="Sign in"> <label
-												for="checkbox"><input type="checkbox" id="checkbox">
-												<i>Remember me</i></label>
-										</fieldset>
-										<span><a href="#">Forgot your password?</a></span>
-										<div class="or-grid">
-											<p>OR</p>
-										</div>
-										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+											<span><a href="#">Forgot your password?</a></span>
+											<div class="or-grid">
+												<p>OR</p>
 											</div>
-											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
-											</div>
-											<div class="button-bottom">
-												<p>
-													New account? <a href="user_signup">Signup</a>
-												</p>
+											<div class="social-sits">
+												<div class="facebook-button">
+													<a href="#">Connect with Facebook</a>
+												</div>
+												<div class="chrome-button">
+													<a href="#">Connect with Google</a>
+												</div>
+												<div class="button-bottom">
+													<p>
+														New account? <a href="user_signup">Signup</a>
+													</p>
+												</div>
 											</div>
 										</div>
+
 									</div>
-								</div>
-							</form>
+								</form>
+								</c:if>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
+					<div class="clearfix"></div>
 		</div>
 	</div>
 	<!--//header-->
@@ -158,264 +185,141 @@
 					<div class="booking-info">
 						<h2>Book Domestic & International Flight Tickets</h2>
 					</div>
-					<div id="horizontalTab"
-						style="display: block; width: 100%; margin: 0px;">
+					<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 						<ul class="resp-tabs-list">
-							<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Return</span></li>
-							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>One
-									way</span></li>
-							<div class="clearfix"></div>
+							<li class="resp-tab-item" aria-controls="tab_item-0" role="tab">
+								<span>Return</span>
+							</li>
+							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab">
+								<span>One way</span>
+							</li>
 						</ul>
 						<!---->
 						<div class="resp-tabs-container">
 							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 								<div class="facts">
 									<div class="booking-form">
-										<!---strat-date-piker---->
-										<script>
-												$(function() {
-													$( "#datepicker,#datepicker1" ).datepicker();
-												});
-											</script>
-										<!---/End-date-piker---->
-										<!-- Set here the key for your domain in order to hide the watermark on the web server -->
-
 										<div class="online_reservation">
 											<div class="b_room">
 												<div class="booking_room">
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_1 desti">
-																<h5>Flying from</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-map-marker"
-																			aria-hidden="true"></span> <input type="text"
-																			placeholder="Type Departure City"
-																			class="typeahead1 input-md form-control tt-input"
-																			required="">
-																	</form>
+												<!-- Flight search container -->
+													<div class="twidget-container reservation" id="twidget">
+														<div class="clearfix"></div>
+														<form action="" method="post" autocomplete="on">
+															<ul class="twidget-form-list clearfix">
+																<!-- Origin Input -->
+																<li class="span1_of_1 twidget-origin">
+																	<div class="twidget-input-box">
+																		<label for="twidget-origin">Flying from</label>
+																		<div class="book_date">
+																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																			<input type="text" id="twidget-origin" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required> 
+																			<input type="hidden" name="origin_iata">
+																			<div class="twidget-pseudo-input">
+																				<span class="twidget-pseudo-name"></span>
+																				<span class="twidget-pseudo-country-name"></span>
+																			</div>
+																			<div class="twidget-origin-iata"></div>
+																			<div class="twidget-auto-fill-wrapper" data-type="avia">
+																				<ul></ul>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+																<!-- Destination Input -->
+																<li class="span1_of_1 twidget-destination">
+																<div class="twidget-input-box">
+																	<label for="twidget-origin">Flying to</label>
+																	<div class="book_date">
+																		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																		<input class="typeahead1 input-md form-control tt-input" type="text" id="twidget-destination" placeholder="Destination" required> 
+																		<input type="hidden" name="destination_iata">
+																		<div class="twidget-pseudo-input">
+																			<span class="twidget-pseudo-name"></span>
+																			<span class="twidget-pseudo-country-name"></span>
+																		</div>
+																		<div class="twidget-destination-iata"></div>
+																		<div class="twidget-auto-fill-wrapper" data-type="avia">
+																			<ul></ul>
+																		</div>
+																	</div>
 																</div>
 															</li>
-															<li class="span1_of_1 left desti">
-																<h5>Flying to</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-map-marker"
-																			aria-hidden="true"></span> <input type="text"
-																			placeholder="Type Destination City"
-																			class="typeahead1 input-md form-control tt-input"
-																			required="">
-																	</form>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
-													</div>
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_1">
-																<h5>Departure</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-calendar"
-																			aria-hidden="true"></span> <input type="date"
-																			value="Select date" onfocus="this.value = '';"
-																			onblur="if (this.value == '') {this.value = 'Select date';}">
-																	</form>
-																</div>
-															</li>
-															<li class="span1_of_1 left">
-																<h5>Return</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-calendar"
-																			aria-hidden="true"></span> <input type="date"
-																			value="Select date" onfocus="this.value = '';"
-																			onblur="if (this.value == '') {this.value = 'Select date';}">
-																	</form>
-																</div>
-															</li>
-															<li class="span1_of_1 left adult">
-																<h5>Adults (18+)</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">1</option>
-																		<option value="null">2</option>
-																		<option value="AX">3</option>
-																		<option value="AX">4</option>
-																		<option value="AX">5</option>
-																		<option value="AX">6</option>
-																	</select>
-																</div>
-															</li>
-															<li class="span1_of_1 left children">
-																<h5>Children (0-17)</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">1</option>
-																		<option value="null">2</option>
-																		<option value="AX">3</option>
-																		<option value="AX">4</option>
-																		<option value="AX">5</option>
-																		<option value="AX">6</option>
-																	</select>
-																</div>
-															</li>
-															<li class="span1_of_1 economy">
-																<h5>Class</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">Economy</option>
-																		<option value="null">Business</option>
-																	</select>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
-													</div>
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_3">
-																<div class="date_btn">
-																	<form>
-																		<input type="submit" value="Search" />
-																	</form>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
-													</div>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-										</div>
-										<!---->
-									</div>
-								</div>
-							</div>
-							<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
-								<div class="facts">
-									<div class="booking-form">
-										<!---strat-date-piker---->
-										<link rel="stylesheet" href="css/jquery-ui.css" />
-										<script src="js/jquery-ui.js"></script>
-										<script>
-															  $(function() {
-																$( "#datepicker,#datepicker1" ).datepicker();
-															  });
-													  </script>
+															</ul>
+															<ul>
+																<li class="span1_of_1">
+																	<h5>Departure</h5>
+																	<div class="book_date">
+																		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+																		<input type="text" id="start-date" name="start-date" placeholder="Departure" required>
 
-										<!---/End-date-piker---->
-										<div class="online_reservation">
-											<div class="b_room">
-												<div class="booking_room">
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_1 desti">
-																<h5>Flying from</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-map-marker"
-																			aria-hidden="true"></span> <input type="text"
-																			placeholder="Type Departure City"
-																			class="typeahead1 input-md form-control tt-input"
-																			required="">
-																	</form>
-																</div>
-															</li>
-															<li class="span1_of_1 left desti">
-																<h5>Flying to</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-map-marker"
-																			aria-hidden="true"></span> <input type="text"
-																			placeholder="Type Destination City"
-																			class="typeahead1 input-md form-control tt-input"
-																			required="">
-																	</form>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
-													</div>
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_1">
-																<h5>Departure</h5>
-																<div class="book_date">
-																	<form>
-																		<span class="glyphicon glyphicon-calendar"
-																			aria-hidden="true"></span> <input type="date"
-																			value="Select date" onfocus="this.value = '';"
-																			onblur="if (this.value == '') {this.value = 'Select date';}">
-																	</form>
-																</div>
-															</li>
-															<li class="span1_of_1 left">
-																<h5>Adults (18+)</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">1</option>
-																		<option value="null">2</option>
-																		<option value="AX">3</option>
-																		<option value="AX">4</option>
-																		<option value="AX">5</option>
-																		<option value="AX">6</option>
-																	</select>
-																</div>
-															</li>
-															<li class="span1_of_1 left tab-children">
-																<h5>Children (0-17)</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">1</option>
-																		<option value="null">2</option>
-																		<option value="AX">3</option>
-																		<option value="AX">4</option>
-																		<option value="AX">5</option>
-																		<option value="AX">6</option>
-																	</select>
-																</div>
-															</li>
-															<li class="span1_of_1 economy">
-																<h5>Class</h5> <!----------start section_room----------->
-																<div class="section_room">
-																	<select id="country"
-																		onchange="change_country(this.value)"
-																		class="frm-field required">
-																		<option value="null">Economy</option>
-																		<option value="null">Business</option>
-																	</select>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
-													</div>
-													<div class="reservation">
-														<ul>
-															<li class="span1_of_3">
-																<div class="date_btn">
-																	<form>
+																	</div>
+																</li>
+																<li class="span1_of_1 left">
+																	<h5>Return</h5>
+																	<div class="book_date">
+																		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
+																			<input type="text" id="end-date" name="end-date" placeholder="Return" required>
+																	</div>
+																</li>
+																<li class="span1_of_1 left adult">
+																	<h5>Adults (18+)</h5>
+																	<div class="section_room">
+																		<select id="country"
+																			onchange="change_country(this.value)"
+																			class="frm-field required">
+																			<option value="null">1</option>
+																			<option value="null">2</option>
+																			<option value="AX">3</option>
+																			<option value="AX">4</option>
+																			<option value="AX">5</option>
+																			<option value="AX">6</option>
+																		</select>
+																	</div>
+																</li>
+																<li class="span1_of_1 left children">
+																	<h5>Children (0-17)</h5>
+																	<div class="section_room">
+																		<select id="country"
+																			onchange="change_country(this.value)"
+																			class="frm-field required">
+																			<option value="null">1</option>
+																			<option value="null">2</option>
+																			<option value="AX">3</option>
+																			<option value="AX">4</option>
+																			<option value="AX">5</option>
+																			<option value="AX">6</option>
+																		</select>
+																	</div>
+																</li>
+																<li class="span1_of_1 economy">
+																	<h5>Class</h5>
+																	<div class="section_room">
+																		<select id="country"
+																			onchange="change_country(this.value)"
+																			class="frm-field required">
+																			<option value="null">Economy</option>
+																			<option value="null">Business</option>
+																		</select>
+																	</div>
+																</li>
+																<li class="span1_of_3">
+																	<div class="date_btn">
 																		<input type="submit" value="Search" />
-																	</form>
-																</div>
-															</li>
-															<div class="clearfix"></div>
-														</ul>
+
+																	</div>
+																</li>
+															</ul>
+														</form>
 													</div>
+														<script>
+															$('#twidget').twidget({
+																locale : 'en',
+																default_origin : 'SUF',
+																default_destination : 'MIL'
+															});
+														</script>
 												</div>
-												<div class="clearfix"></div>
 											</div>
 										</div>
 										<!---->
@@ -438,8 +342,10 @@
 		</div>
 		<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
 		<script>
-		  $('.marquee').marquee({ pauseOnHover: true });
-		  //@ sourceURL=pen.js
+			$('.marquee').marquee({
+				pauseOnHover : true
+			});
+			//@ sourceURL=pen.js
 		</script>
 	</div>
 	<!-- banner-bottom -->
@@ -705,15 +611,16 @@
 									</div>
 								</div>
 								<script>
-									function cycle($item, $cycler){
-										setTimeout(cycle, 2000, $item.next(), $cycler);
-										
-										$item.slideUp(1000,function(){
-											$item.appendTo($cycler).show();        
+									function cycle($item, $cycler) {
+										setTimeout(cycle, 2000, $item.next(),
+												$cycler);
+
+										$item.slideUp(1000, function() {
+											$item.appendTo($cycler).show();
 										});
-						
-										}
-									cycle($('#cycler div:first'),  $('#cycler'));
+
+									}
+									cycle($('#cycler div:first'), $('#cycler'));
 								</script>
 							</div>
 							<!-- //date -->
@@ -747,31 +654,31 @@
 								alt="" /> </a></li>
 					</ul>
 					<script type="text/javascript">
-						 $(window).load(function() {			
-						  $("#flexiselDemo1").flexisel({
-							visibleItems: 4,
-							animationSpeed: 1000,
-							autoPlay: true,
-							autoPlaySpeed: 3000,    		
-							pauseOnHover:true,
-							enableResponsiveBreakpoints: true,
-							responsiveBreakpoints: { 
-								portrait: { 
-									changePoint:480,
-									visibleItems: 1
-								}, 
-								landscape: { 
-									changePoint:640,
-									visibleItems: 2
-								},
-								tablet: { 
-									changePoint:768,
-									visibleItems: 3
+						$(window).load(function() {
+							$("#flexiselDemo1").flexisel({
+								visibleItems : 4,
+								animationSpeed : 1000,
+								autoPlay : true,
+								autoPlaySpeed : 3000,
+								pauseOnHover : true,
+								enableResponsiveBreakpoints : true,
+								responsiveBreakpoints : {
+									portrait : {
+										changePoint : 480,
+										visibleItems : 1
+									},
+									landscape : {
+										changePoint : 640,
+										visibleItems : 2
+									},
+									tablet : {
+										changePoint : 768,
+										visibleItems : 3
+									}
 								}
-							}
+							});
 						});
-						});
-						</script>
+					</script>
 					<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 				</div>
 			</div>
@@ -822,19 +729,20 @@
 	<script defer src="js/jquery.flexslider.js"></script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/jquery-ui.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript">
-		$(function(){
+	<script src="js/script.js"></script>
+	<script>
+		$(function() {
 			SyntaxHighlighter.all();
-			});
-			$(window).load(function(){
+		});
+		$(window).load(function() {
 			$('.flexslider').flexslider({
-			animation: "slide",
-			start: function(slider){
-			$('body').removeClass('loading');
-			}
+				animation : "slide",
+				start : function(slider) {
+					$('body').removeClass('loading');
+				}
 			});
 		});
 	</script>
+
 </body>
 </html>

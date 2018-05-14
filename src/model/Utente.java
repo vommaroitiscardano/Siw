@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 import java.util.Set;
 
 public class Utente {
@@ -14,7 +13,7 @@ public class Utente {
 	private Set<Viaggio> viaggi;
 	
 	
-	//public Utente() {}
+	public Utente() {}
 	
 	public Utente(long id, String n, String c, String e, String pass) {
 		this.id_Utente = id;

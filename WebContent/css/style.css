@@ -575,7 +575,7 @@ li.resp-tab-item.lost {
 	margin: 0;
 }
 
-.reservation ul li {
+.reservation ul li{
 	list-style: none;
 	display: inline-block;
 }
@@ -583,9 +583,10 @@ li.resp-tab-item.lost {
 .reservation ul li.left {
 	margin-left: 2em;
 }
-
+/*	Spazio tra gli elementi della form per la ricerca del volo
+*/
 .reservation ul li.span1_of_1 {
-	margin-bottom: 1.5em;
+	margin-bottom: 2em;
 }
 
 li.span1_of_1.left.h-child {
@@ -613,7 +614,7 @@ li.span1_of_1.left.tab-children {
 	margin-left: 0;
 }
 
-.reservation h5 {
+.reservation label, h5 {
 	font-size: 1em;
 	color: #FFFFFF;
 	margin-bottom: 6px;
@@ -643,10 +644,140 @@ select option {
 	transition: all 0.3s ease-in-out;
 }
 
+/*
+	Larghezza search bar partenza e arrivo
+*/
+#twidget-destination, #twidget-origin {
+	width: 400px;
+}
+
+/*city hotel autofill*/
+/*------------------------------------------*/
+.twidget-auto-fill-wrapper {
+	position: absolute;
+	z-index: 1000;
+	top: 40px;
+	left: 100;
+	width: 400px;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.72);
+	overflow: hidden;
+	overflow-y: scroll;
+	background: #fff;
+	max-height: 250px;
+}
+
+.twidget-auto-fill-wrapper ul li {
+	height: 45px;
+	padding: 0px 25px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	color: #000000;
+	display: block;
+}
+
+.twidget-auto-fill-wrapper ul li {
+	padding: 0px 18px;
+}
+
+
+.twidget-auto-fill-wrapper ul li:hover {
+	background-color: #00b1dd;
+	color: #fff;
+}
+
+.twidget-auto-fill-wrapper ul li>span.twidget-city-name {
+	display: block;
+	line-height: 37px;
+	width: 85%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.twidget-auto-fill-wrapper ul li:before {
+	position: absolute;
+	top: 13px;
+	left: 0;
+	display: block;
+	width: 26px;
+	background-position: center;
+	background-repeat: no-repeat;
+	content: '';
+	height: 20px;
+	background-size: 13px;
+}
+
+.twidget-auto-fill-wrapper[data-type="avia"] ul li>span.twidget-city-name {
+	line-height: 25px;
+}
+
+.twidget-auto-fill-wrapper ul li>span.twidget-city-name span {
+	color: #999;
+	font-size: 13px;
+}
+
+.twidget-auto-fill-wrapper ul li>span.twidget-city-airport-name {
+	color: #999;
+	font-size: 11px;
+	position: absolute;
+	margin-top: -23px;
+	width: 70%;
+	height: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.twidget-auto-fill-wrapper ul li>span.twidget-num-hotel {
+	position: absolute;
+	top: 6px;
+	right: 15px;
+	color: #242424;
+	line-height: 26px;
+	font-size: 11px;
+}
+
+.twidget-auto-fill-wrapper ul li:hover,
+	.twidget-auto-fill-wrapper ul li:hover .twidget-city-airport-name,
+	.twidget-auto-fill-wrapper ul li:hover .twidget-city-name span {
+	color: #fff !important;
+}
+
+.twidget-pseudo-input {
+	position: absolute;
+	top: 7px;
+	left: 22px;
+	font-family: 'Open Sans', arial, sans-serif;
+	width: 77%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	min-height: 16px;
+}
+/* Stato in cui si trova aeroporto */
+.twidget-pseudo-country-name{
+	color:#999;
+}
+
+.twidget-pseudo-input .twidget-pseudo-name {
+	color: transparent;
+	white-space: nowrap;
+}
+
+/*codici aeroporti*/
+.twidget-origin-iata, .twidget-destination-iata {
+	position: absolute;
+	right: 3%; 
+	line-height: 50px; 
+	margin-top: -40px; 
+	font-size: 12px; 
+	font-weight: bold;
+	color: #000;
+}
+
 .book_date input[type="text"] {
-	width: 100% !important;
-	color: #9F9F9F;
-	font-size: 12px;
+	color: #000000;
+	font-size: 14px;
+	font-weight:500;
 	padding: 8px 23px;
 	outline: none;
 	border: none;
@@ -658,39 +789,44 @@ select option {
 	position: relative;
 }
 
-.book_date input[type="date"] {
-	width: 100% !important;
-	color: #9F9F9F;
-	font-size: 12px;
-	padding: 8px 0 8px 23px;
-	outline: none;
-	border: none;
-	-webkit-appearance: none;
-	border-radius: 0px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	-o-border-radius: 0px;
-	position: relative;
-	line-height: 1;
-}
-
 .book_date {
 	position: relative;
 }
 
-.book_date span.glyphicon-calendar, .book_date span.glyphicon-map-marker
-	{
-	color: #192436;
+/*------------------------------------------*/
+#start-date, #end-date{
+	width: 239px;
+	height: 34px;
+	text-align: center;
+}
+
+
+#end-date:disabled {
+    background: #d9bfbf;
+     cursor: not-allowed
+}
+
+/* Stile widget datePicker */
+.ui-datepicker{
+	z-index: 1010 !important;
+}
+.ui-datepicker-title{
+	height: 30px;
+}
+
+.book_date span.glyphicon-calendar, .book_date span.glyphicon-map-marker {
+	color: #1364ea;
 	position: absolute;
 	z-index: 999;
-	top: 25%;
+	top: 33%;
 	left: 3%;
 	font-size: 1em;
 }
 
 .book_date span.glyphicon-map-marker {
-	font-size: 1.2em;
-	left: 1%;
+	font-size: 1.3em;
+	left: 0.3%;
+	top: 20%
 }
 
 .glyphicon-calendare, .glyphicon-map-marker {
@@ -712,7 +848,7 @@ select option {
 	margin: 1em 0 0 0;
 }
 
-.date_btn form input[type="submit"] {
+.date_btn input[type="submit"] {
 	text-transform: capitalize;
 	background: #6fd508;
 	color: #FFFFFF;
@@ -722,7 +858,7 @@ select option {
 	outline: none;
 }
 
-.date_btn form input[type="submit"]:hover {
+.date_btn input[type="submit"]:hover {
 	background: #337AB7;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -2109,17 +2245,18 @@ p.your-para {
 	color: #777;
 	font-size: .9em;
 	display: inline-block;
-    vertical-align: top;
-    margin-bottom: 10px; 
+	vertical-align: top;
+	margin-bottom: 10px;
 }
-.book-left-form .error{
-	display:none;
+
+.book-left-form .error {
+	display: none;
 	float: right;
 	margin-right: 10px;
 }
 
 /* Allineamento span form registrazione a sinistra*/
-.book-left-form .spanLeft{
+.book-left-form .spanLeft {
 	float: left;
 }
 
@@ -2129,7 +2266,7 @@ p.your-para {
 	color: #E33735; /* color: red */
 }
 
-input.none{
+input.none {
 	display: inline-block;
 	background: none;
 	border: 1.5px solid #CBCBCB;
@@ -2154,7 +2291,7 @@ input.invalid {
 	color: #111111;
 	margin-bottom: 1.5em;
 }
-		
+
 input.valid {
 	display: inline-block;
 	background: none;
@@ -3185,7 +3322,7 @@ span.menu {
 		width: 20% !important;
 	}
 	.reservation ul li.span1_of_1 {
-		margin-bottom: .8em;
+		/*margin-bottom: .8em;*/
 		width: 100%;
 	}
 	select {
@@ -3195,7 +3332,7 @@ span.menu {
 	li.span1_of_1.left.tab-children {
 		margin-left: 0;
 	}
-	.date_btn form input[type="submit"] {
+	.date_btn input[type="submit"] {
 		font-size: .9em;
 	}
 	.about-booking-info h2 {
