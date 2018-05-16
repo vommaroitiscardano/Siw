@@ -23,6 +23,7 @@
 <script src="js/menu_jquery.js"></script>
 <script src="js/jquery.autocomplete.min.js"></script>
 <script src="js/flightAutocomplete.js"></script>
+<script src="js/searchFlight.js"></script>
 <!-- //js -->
 <script type="application/x-javascript">
 	
@@ -205,7 +206,7 @@
 												<!-- Flight search container -->
 													<div class="twidget-container reservation" id="twidget">
 														<div class="clearfix"></div>
-														<form action="" method="post" autocomplete="on">
+														<form onsubmit="sendData()" method="post" autocomplete="on">
 															<ul class="twidget-form-list clearfix">
 																<!-- Origin Input -->
 																<li class="span1_of_1 twidget-origin">
@@ -214,7 +215,7 @@
 																		<div class="book_date">
 																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 																			<input type="text" id="twidget-origin" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required> 
-																			<input type="hidden" name="origin_iata">
+																			<input type="hidden" name="origin_iata" id="departure">
 																			<div class="twidget-pseudo-input">
 																				<span class="twidget-pseudo-name"></span>
 																				<span class="twidget-pseudo-country-name"></span>
@@ -233,7 +234,7 @@
 																	<div class="book_date">
 																		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 																		<input class="typeahead1 input-md form-control tt-input" type="text" id="twidget-destination" placeholder="Destination" required> 
-																		<input type="hidden" name="destination_iata">
+																		<input type="hidden" name="destination_iata" id="destination">
 																		<div class="twidget-pseudo-input">
 																			<span class="twidget-pseudo-name"></span>
 																			<span class="twidget-pseudo-country-name"></span>
@@ -721,7 +722,7 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="copyright">
-					<p>Copyrights Â© 2018</p>
+					<p>Copyrights © 2018</p>
 				</div>
 			</div>
 		</div>
