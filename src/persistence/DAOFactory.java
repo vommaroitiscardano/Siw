@@ -1,11 +1,10 @@
 package persistence;
 
-import persistence.dao.AeroportoDao;
-import persistence.dao.BigliettoDao;
-import persistence.dao.LuogoDao;
+import persistence.dao.AirportInfoDao;
+import persistence.dao.CommentoDao;
+import persistence.dao.PostDao;
+import persistence.dao.RouteDao;
 import persistence.dao.UtenteDao;
-import persistence.dao.ViaggioDao;
-import persistence.dao.VoloDao;
 
 public abstract class DAOFactory {
 
@@ -40,23 +39,17 @@ public abstract class DAOFactory {
 	
 	
 	// --- Factory specification: concrete factories implementing this spec must provide this methods! ---
-	
-	/**
-	 * Method to obtain a DATA ACCESS OBJECT
-	 * for the datatype 'Student'
-	 */
-	public abstract AeroportoDao getAeroportoDAO();
-	
-	public abstract BigliettoDao getBigliettoDAO();
-	
-	public abstract LuogoDao getLuogoDAO();
-	
+		
 	public abstract UtenteDao getUtenteDAO();
 	
-	public abstract ViaggioDao getViaggioDAO();
-	
-	public abstract VoloDao getVoloDAO();
-	
 	public abstract UtilDao getUtilDAO();
+	
+	public abstract RouteDao getRouteDao();
+
+	public abstract AirportInfoDao getAirportInfoDao();
+	
+	public abstract PostDao getPostDao();
+
+	public abstract CommentoDao getCommentoDao();
 
 }

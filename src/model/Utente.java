@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Set;
 
 public class Utente {
@@ -10,22 +11,32 @@ public class Utente {
 	private String email;
 	private String password;
 	//private Integer amministratore; //  1 se è amministratore, altrimenti 0
-	private Set<Viaggio> viaggi;
 	
+
+	//private HashMap<Long, Post> post;
 	
 	public Utente() {}
 	
-	public Utente(long id, String n, String c, String e, String pass) {
+	public Utente(long id, String n, String c, String e, String pass ) {
 		this.id_Utente = id;
 		this.nome = n;
 		this.cognome = c;
 		this.email = e;
 		this.password = pass;
+	//	this.post = new HashMap<>();
 		//this.amministratore = amm;
 	}
 	
 	//get e set
 	
+//	public HashMap<Long, Post> getPost() {
+//		return post;
+//	}
+//
+//	public void setPost(HashMap<Long, Post> post) {
+//		this.post = post;
+//	}
+
 	public long getId_Utente() {
 		return id_Utente;
 	}
@@ -56,16 +67,5 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-//	public Integer getAmministratore() {
-//		return amministratore;
-//	}
-//	public void setAmministratore(Integer amministratore) {
-//		this.amministratore = amministratore;
-//	}
-	public Set<Viaggio> getViaggi() {
-		return viaggi;
-	}
-	public void setViaggi(Set<Viaggio> viaggi) {
-		this.viaggi = viaggi;
-	}
+
 }

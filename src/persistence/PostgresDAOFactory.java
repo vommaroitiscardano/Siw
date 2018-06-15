@@ -1,12 +1,11 @@
 package persistence;
 
 
-import persistence.dao.AeroportoDao;
-import persistence.dao.BigliettoDao;
-import persistence.dao.LuogoDao;
+import persistence.dao.AirportInfoDao;
+import persistence.dao.CommentoDao;
+import persistence.dao.PostDao;
+import persistence.dao.RouteDao;
 import persistence.dao.UtenteDao;
-import persistence.dao.ViaggioDao;
-import persistence.dao.VoloDao;
 
 public class PostgresDAOFactory extends DAOFactory {
 
@@ -18,26 +17,13 @@ public class PostgresDAOFactory extends DAOFactory {
 			Class.forName("org.postgresql.Driver").newInstance();
 			// DataSource("jdbc:postgresql://52.39.164.176:5432/xx","xx","p@xx");
 			dataSource = new DataSource("jdbc:postgresql://localhost:5432/FlydownDatabase", "postgres", "postgres");
+//			dataSource = new DataSource("jdbc:postgresql://stampy.db.elephantsql.com:5432/imdyiyek", "imdyiyek", "5v4DWc03gjBVZ2NEV9RdZKM4T7Wwch3w");
 		} catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);
 			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public AeroportoDao getAeroportoDAO() {
-		return new AeroportoDaoJDBC(dataSource);
-	}
-
-	@Override
-	public BigliettoDao getBigliettoDAO() {
-		return new BigliettoDaoJDBC(dataSource);
-	}
-
-	@Override
-	public LuogoDao getLuogoDAO() {
-		return new LuogoDaoJDBC(dataSource);
-	}
 
 	@Override
 	public UtenteDao getUtenteDAO() {
@@ -45,18 +31,29 @@ public class PostgresDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public ViaggioDao getViaggioDAO() {
-		return new ViaggioDaoJDBC(dataSource);
-	}
-
-	@Override
-	public VoloDao getVoloDAO() {
-		return new VoloDaoJDBC(dataSource);
-	}
-
-	@Override
 	public UtilDao getUtilDAO() {
 		return new UtilDao(dataSource);
+	}
+	
+	@Override
+	public RouteDao getRouteDao(){
+		return new RouteDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public AirportInfoDao getAirportInfoDao(){
+		return new AirportInfoDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public PostDao getPostDao() {
+		return new PostDaoJDBC(dataSource);
+		
+	}
+	
+	@Override
+	public CommentoDao getCommentoDao() {
+		return new CommentoDaoJDBC(dataSource);
 	}
 
 }

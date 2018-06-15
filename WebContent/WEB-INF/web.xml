@@ -20,14 +20,92 @@
     <url-pattern>/user_signup</url-pattern>
   </servlet-mapping>
   
-   <servlet>
-    <servlet-name>LoginServlet</servlet-name>
+  <servlet>
+    <servlet-name>HandleSearch</servlet-name>
+    <servlet-class>controller.HandleSearch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HandleSearch</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CheckRoute</servlet-name>
+    <servlet-class>controller.CheckRoute</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckRoute</servlet-name>
+    <url-pattern>/checkRoute</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>HandleSearchStopover</servlet-name>
+    <servlet-class>controller.HandleSearchStopover</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HandleSearchStopover</servlet-name>
+    <url-pattern>/stopover_search</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+   <servlet-name>LoginServlet</servlet-name>
     <servlet-class>controller.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>UploadPost</servlet-name>
+    <servlet-class>controller.UploadPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadPost</servlet-name>
+    <url-pattern>/UploadPost</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ShowPost</servlet-name>
+    <servlet-class>controller.ShowPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPost</servlet-name>
+    <url-pattern>/ShowPost</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>SocialLogin</servlet-name>
+    <servlet-class>controller.SocialLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SocialLogin</servlet-name>
+    <url-pattern>/SocialLogin</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>UploadComment</servlet-name>
+    <servlet-class>controller.UploadComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadComment</servlet-name>
+    <url-pattern>/UploadComment</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowComment</servlet-name>
+    <servlet-class>controller.ShowComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowComment</servlet-name>
+    <url-pattern>/ShowComment</url-pattern>
+  </servlet-mapping>
+  
+  
   
 
 </web-app>

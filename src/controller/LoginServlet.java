@@ -24,23 +24,32 @@ public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userid = request.getParameter("userid");
+		
+		//System.out.println("user key: "+userid);
 		password = request.getParameter("password");
 		HttpSession session =  request.getSession();
+		
 		utente = new PostgresDAOFactory().getUtenteDAO().findByEmail(userid);
-		System.out.println("Ciaooooo");
 		if (utente != null) {
 			if (comparisonPassword(utente)) {
 			String messaggio = "Welcome " + utente.getNome()+"  ";
-			session.setAttribute("username", request.getParameter(userid));
+			//session.setAttribute("userid", arg1);
+			session.setAttribute("username", userid);
+			//System.out.println(session.getAttribute("username"));
 			session.setAttribute("mex", messaggio);
-			session.setAttribute("loggato", utente);
-			System.out.println("sono qui");
+			session.setAttribute("loggato", utente.getEmail());
+			
+			
+			session.setAttribute("email", utente.getEmail());
+			session.setAttribute("nome", utente.getNome());
+			session.setAttribute("cognome", utente.getCognome());
+			
+			session.setAttribute("tipo", "normale");
+			System.out.println("login servet");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); //da cambiare, usato solo per prova
 			dispatcher.forward(request, response);
 			}
 		}
-	
-		
 	}
 
 	//funziona che mi controlla la correttezza della password
@@ -48,10 +57,6 @@ public class LoginServlet extends HttpServlet{
 		if (password.equals(utente.getPassword()))
 			return true;
 		return false;
-		
-		
-		
-		
 
 	}
 
@@ -65,12 +70,11 @@ public class LoginServlet extends HttpServlet{
 		
 		//log-out
 		session.removeAttribute("mex");
-
+		session.removeAttribute("tipo");
 		session.removeAttribute("username");
 		session.removeAttribute("loggato");
 		session.removeAttribute("utente");
-		//String page=(String) session.getAttribute("page");
-		
+			
 		RequestDispatcher disp;
 		disp= req.getRequestDispatcher("index.jsp");
 		disp.forward(req, resp);

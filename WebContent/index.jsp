@@ -1,21 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html >
 <html>
 <head>
 <title>Flydown - small price, big savings</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords"
+	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet"
+	media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+	media="screen" />
 <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
 <!-- <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" /> -->
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	rel="stylesheet">
+<link rel="icon" href="images/favicon.ico">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.js"></script>
@@ -24,8 +30,11 @@
 <script src="js/jquery.autocomplete.min.js"></script>
 <script src="js/flightAutocomplete.js"></script>
 <script src="js/searchFlight.js"></script>
+<script src="js/animations.js"></script>
+
 <!-- //js -->
 <script type="application/x-javascript">
+	
 	
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0); 
@@ -33,6 +42,7 @@
 	function hideURLbar(){
 		window.scrollTo(0,1); 
 	} 
+
 
 </script>
 <script>
@@ -53,9 +63,16 @@
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
+						<a href="index.html"><span>Fly</span>down</a> - small price, big
+						savings
 					</h1>
 				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<div class="emergency-grid"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="nav-top">
 				<div class="top-nav">
@@ -77,26 +94,21 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
-			
-			<div class="dropdown-grids">
-					
+				<div class="dropdown-grids">
 
-				
-					
-				<c:if test="${loggato!= null}">
-				<p>
-					 ${mex} - <form action="LoginServlet" method="get">
-					<input type="submit" value="Logout">
-					</form>
-				</p>
-				</c:if>
-				
-	<!-- se l'utente non si è ancora loggato allora gli mostro la login form -->			
-					<c:if test="${loggato== null}">  
+					<c:if test="${loggato!= null}">
+						<p>${mex}-</p>
+						<form action="LoginServlet" method="get">
+							<input type="submit" value="Logout">
+						</form>
+					</c:if>
+
+					<!-- se l'utente non si Ã¨ ancora loggato allora gli mostro la login form -->
+					<c:if test="${loggato== null}">
 						<div id="loginContainer">
 							<a href="#" id="loginButton"><span>Login</span></a>
 							<div id="loginBox">
-	
+
 								<form id="loginForm" action="LoginServlet" method="post">
 									<div class="login-grids">
 
@@ -135,16 +147,17 @@
 
 									</div>
 								</form>
-								</c:if>
 							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
+						</div> 
+					</c:if>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 		</div>
 	</div>
 	<!--//header-->
 	<!-- banner -->
-	<div class="banner">
+	<div class="banner banner_util">
 		<!-- container -->
 		<div class="container">
 			<div class="col-md-4 banner-left">
@@ -186,7 +199,8 @@
 					<div class="booking-info">
 						<h2>Book Domestic & International Flight Tickets</h2>
 					</div>
-					<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+					<div id="horizontalTab"
+						style="display: block; width: 100%; margin: 0px;">
 						<ul class="resp-tabs-list">
 							<li class="resp-tab-item" aria-controls="tab_item-0" role="tab">
 								<span>Return</span>
@@ -203,10 +217,10 @@
 										<div class="online_reservation">
 											<div class="b_room">
 												<div class="booking_room">
-												<!-- Flight search container -->
+													<!-- Flight search container -->
 													<div class="twidget-container reservation" id="twidget">
 														<div class="clearfix"></div>
-														<form onsubmit="sendData()" method="post" autocomplete="on">
+														<form id="search_form" method="post" action="checkRoute">
 															<ul class="twidget-form-list clearfix">
 																<!-- Origin Input -->
 																<li class="span1_of_1 twidget-origin">
@@ -214,11 +228,12 @@
 																		<label for="twidget-origin">Flying from</label>
 																		<div class="book_date">
 																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-																			<input type="text" id="twidget-origin" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required> 
-																			<input type="hidden" name="origin_iata" id="departure">
+																			 <input type="text" id="twidget-origin" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required>
+																			 <input type="hidden" name="origin_iata" id="departure">
 																			<div class="twidget-pseudo-input">
-																				<span class="twidget-pseudo-name"></span>
-																				<span class="twidget-pseudo-country-name"></span>
+																				<span class="twidget-pseudo-name" id="dep_name"></span>
+																				<input type="hidden" name="dep_name">
+																				 <span class="twidget-pseudo-country-name"></span>
 																			</div>
 																			<div class="twidget-origin-iata"></div>
 																			<div class="twidget-auto-fill-wrapper" data-type="avia">
@@ -229,97 +244,103 @@
 																</li>
 																<!-- Destination Input -->
 																<li class="span1_of_1 twidget-destination">
-																<div class="twidget-input-box">
-																	<label for="twidget-origin">Flying to</label>
-																	<div class="book_date">
-																		<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-																		<input class="typeahead1 input-md form-control tt-input" type="text" id="twidget-destination" placeholder="Destination" required> 
-																		<input type="hidden" name="destination_iata" id="destination">
-																		<div class="twidget-pseudo-input">
-																			<span class="twidget-pseudo-name"></span>
-																			<span class="twidget-pseudo-country-name"></span>
-																		</div>
-																		<div class="twidget-destination-iata"></div>
-																		<div class="twidget-auto-fill-wrapper" data-type="avia">
-																			<ul></ul>
+																	<div class="twidget-input-box">
+																		<label for="twidget-origin">Flying to</label>
+																		<div class="book_date">
+																			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+																			<input class="typeahead1 input-md form-control tt-input" type="text" id="twidget-destination" placeholder="Destination" required>
+																			<input type="hidden" name="destination_iata" id="destination">
+																			<div class="twidget-pseudo-input">
+																				<span class="twidget-pseudo-name" id="arr_name"></span>
+																				<input type="hidden" name="arr_name">
+																				<span class="twidget-pseudo-country-name"></span>
+																			</div>
+																			<div class="twidget-destination-iata"></div>
+																			<div class="twidget-auto-fill-wrapper"
+																				data-type="avia">
+																				<ul></ul>
+																			</div>
 																		</div>
 																	</div>
-																</div>
-															</li>
+																</li>
 															</ul>
 															<ul>
 																<li class="span1_of_1">
 																	<h5>Departure</h5>
 																	<div class="book_date">
-																		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-																		<input type="text" id="start-date" name="start-date" placeholder="Departure" required>
+																		<span class="glyphicon glyphicon-calendar"
+																			aria-hidden="true"></span> <input type="text"
+																			id="start-date" name="start-date"
+																			placeholder="Departure" required>
 
 																	</div>
 																</li>
-																<li class="span1_of_1 left">
+																<li class="span1_of_1 ret_date">
 																	<h5>Return</h5>
 																	<div class="book_date">
-																		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
-																			<input type="text" id="end-date" name="end-date" placeholder="Return" required>
+																		<span class="glyphicon glyphicon-calendar"
+																			aria-hidden="true"></span> <input type="text"
+																			id="end-date" name="end-date" placeholder="Return"
+																			required>
 																	</div>
 																</li>
 																<li class="span1_of_1 left adult">
 																	<h5>Adults (18+)</h5>
 																	<div class="section_room">
-																		<select id="country"
-																			onchange="change_country(this.value)"
-																			class="frm-field required">
-																			<option value="null">1</option>
-																			<option value="null">2</option>
-																			<option value="AX">3</option>
-																			<option value="AX">4</option>
-																			<option value="AX">5</option>
-																			<option value="AX">6</option>
+																		<select onchange="getValue(this,'adults')" class="frm-field required">
+																			<option selected="selected" value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="6">6</option>
 																		</select>
 																	</div>
+																	<input type="hidden" name="adults" value="1">
 																</li>
 																<li class="span1_of_1 left children">
 																	<h5>Children (0-17)</h5>
 																	<div class="section_room">
-																		<select id="country"
-																			onchange="change_country(this.value)"
-																			class="frm-field required">
-																			<option value="null">1</option>
-																			<option value="null">2</option>
-																			<option value="AX">3</option>
-																			<option value="AX">4</option>
-																			<option value="AX">5</option>
-																			<option value="AX">6</option>
+																		<select onchange="getValue(this,'children')" class="frm-field required">
+																			<option selected="selected" value="0">0</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="6">6</option>
 																		</select>
 																	</div>
+																	<input type="hidden" name="children" value="0">
 																</li>
 																<li class="span1_of_1 economy">
 																	<h5>Class</h5>
 																	<div class="section_room">
-																		<select id="country"
-																			onchange="change_country(this.value)"
-																			class="frm-field required">
-																			<option value="null">Economy</option>
-																			<option value="null">Business</option>
+																		<select onchange="getValue(this,'class')" class="frm-field required">
+																			<option selected="selected" value="economy">Economy</option>
+																			<option value="business">Business</option>
 																		</select>
+																		<input type="hidden" name="class" value="economy">
 																	</div>
 																</li>
 																<li class="span1_of_3">
 																	<div class="date_btn">
-																		<input type="submit" value="Search" />
+																		<input type="submit" value="Search" onclick="waitingAnimation()"> <!-- id="submit"  /> -->
 
 																	</div>
 																</li>
 															</ul>
 														</form>
 													</div>
-														<script>
-															$('#twidget').twidget({
-																locale : 'en',
-																default_origin : 'SUF',
-																default_destination : 'MIL'
-															});
-														</script>
+													<script>
+														$('#twidget')
+																.twidget(
+																		{
+																			locale : 'en',
+																			default_origin : 'SUF',
+																			default_destination : 'PSA'
+																		});
+													</script>
 												</div>
 											</div>
 										</div>
@@ -704,12 +725,12 @@
 					<div class="a-cards">
 						<ul>
 							<li><a href="#"><img src="images/c1.png" alt="" /></a></li>
-							<li><a href="#"><img src="images/c2.png" alt="" /></a></a></li>
-							<li><a href="#"><img src="images/c3.png" alt="" /></a></a></li>
+							<li><a href="#"><img src="images/c2.png" alt="" /></a></li>
+							<li><a href="#"><img src="images/c3.png" alt="" /></a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-4 footer-bottom-left">
+				<div class="col-md-4 footer-bottom-left footer_bottom">
 					<h4>Follow Us</h4>
 					<div class="social">
 						<ul>
@@ -722,7 +743,7 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="copyright">
-					<p>Copyrights © 2018</p>
+					<p>Copyrights Â© 2018</p>
 				</div>
 			</div>
 		</div>
