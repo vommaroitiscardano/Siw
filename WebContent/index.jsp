@@ -8,6 +8,9 @@
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="google-signin-client_id"
+	content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
+
 <meta name="keywords"
 	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -29,8 +32,21 @@
 <script src="js/menu_jquery.js"></script>
 <script src="js/jquery.autocomplete.min.js"></script>
 <script src="js/flightAutocomplete.js"></script>
-<script src="js/searchFlight.js"></script>
-<script src="js/animations.js"></script>
+<script src="js/fbLogin.js"></script>
+<script src="js/showPostInOtherPage.js"></script>
+
+<script src="js/googleLogin.js"></script>
+
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async
+	defer></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='http://connect.facebook.net/en_US/all.js'></script>
+
+<script src="js/SharePost.js"></script>
+<script src="js/upload.js"></script>
+
 
 <!-- //js -->
 <script type="application/x-javascript">
@@ -58,7 +74,7 @@
 </head>
 <body>
 	<!--header-->
-	<div class="header">
+	<div class="header" id="header">
 		<div class="container">
 			<div class="header-grids">
 				<div class="logo">
@@ -67,12 +83,6 @@
 						savings
 					</h1>
 				</div>
-				<!--navbar-header-->
-				<div class="header-dropdown">
-					<div class="emergency-grid"></div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
 			</div>
 			<div class="nav-top">
 				<div class="top-nav">
@@ -94,24 +104,38 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
-				<div class="dropdown-grids">
 
-					<c:if test="${loggato!= null}">
-						<p>${mex}-</p>
-						<form action="LoginServlet" method="get">
-							<input type="submit" value="Logout">
-						</form>
-					</c:if>
 
-					<!-- se l'utente non si è ancora loggato allora gli mostro la login form -->
-					<c:if test="${loggato== null}">
+				<!-- se l'utente non si Ã¨ ancora loggato allora gli mostro la login form -->
+				<c:if test="${loggato != null}">
+					<p>benvenuto ${nome} ${email }
+					<p>
+						<c:if test="${tipo=='normale'}">
+							<li class="nav-item mx-0 mx-lg-1"><a href="LoginServlet">
+									<img id="logout" class="img-fluid" src="images/logout2.png"
+									alt="" style="padding-top: 20%">
+							</a></li>
+						</c:if>
+						<c:if test="${tipo=='facebook'}">
+							<li class="nav-item mx-0 mx-lg-1"><a
+								onclick="logoutFacebook()" href=""><img id="logout"
+									class="img-fluid" src="images/logout2.png" alt=""
+									style="padding-top: 20%"></a></li>
+						</c:if>
+						<c:if test="${tipo=='google'}">
+							<li class="nav-item mx-0 mx-lg-1"><a
+								onclick="logoutGoogle()" href=""><img id="logout"
+									class="img-fluid" src="images/logout2.png" alt=""
+									style="padding-top: 20%"></a></li>
+						</c:if>
+				</c:if>
+				<c:if test="${loggato== null}">
+					<div class="dropdown-grids">
 						<div id="loginContainer">
 							<a href="#" id="loginButton"><span>Login</span></a>
 							<div id="loginBox">
-
 								<form id="loginForm" action="LoginServlet" method="post">
 									<div class="login-grids">
-
 										<div class="login-grid-left">
 											<fieldset id="body">
 												<fieldset>
@@ -131,11 +155,20 @@
 												<p>OR</p>
 											</div>
 											<div class="social-sits">
-												<div class="facebook-button">
-													<a href="#">Connect with Facebook</a>
-												</div>
-												<div class="chrome-button">
-													<a href="#">Connect with Google</a>
+												<div class="fb-login-button" add target="_blank"
+													data-max-rows="1" data-size="large"
+													data-button-type="continue_with" data-show-faces="false"
+													data-auto-logout-link="false" data-use-continue-as="false"
+													scope="public_profile,email" onlogin="checkLoginState();"
+													add target="_blank"></div>
+												<div id="status">
+
+													<div class="form-group row justify-content-center">
+														<div class="g-signin2" data-onsuccess="onSignIn"
+															data-theme="dark"></div>
+													</div>
+	
+
 												</div>
 												<div class="button-bottom">
 													<p>
@@ -144,17 +177,17 @@
 												</div>
 											</div>
 										</div>
-
 									</div>
 								</form>
 							</div>
-						</div> 
-					</c:if>
-				</div>
-				<div class="clearfix"></div>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
+
 	<!--//header-->
 	<!-- banner -->
 	<div class="banner banner_util">
