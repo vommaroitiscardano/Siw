@@ -43,8 +43,6 @@ public class SocialLogin extends HttpServlet {
 		session.removeAttribute("utente");
 		session.removeAttribute("tipo");
 
-
-
 		RequestDispatcher disp;
 		disp = request.getRequestDispatcher("index.jsp");
 		disp.forward(request, response);

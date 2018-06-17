@@ -1,13 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.google.gson.JsonObject;
 
 import model.Post;
 import persistence.DatabaseManager;
@@ -27,29 +29,51 @@ public class UploadPost extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		PostDao postDao = DatabaseManager.getInstance().getDaoFactory().getPostDao();
 
-		HttpSession session = request.getSession();
-
+		// prendo i dati dalla js
 		String title = request.getParameter("title");
-		String message = request.getParameter("mess");
+		String message = request.getParameter("content");
 		String userid = (String) request.getSession(false).getAttribute("email");
-		//String userid = (String) session.getAttribute("username"); // per l'utente
-		String pathimg = request.getParameter("link_image");
+		String pathimg = request.getParameter("img");
+
 		System.out.println("this is the author of the post" + userid);
 
-		// upload photo
+		// creo la data del giorno corrente
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
-		postDao.save(new Post(1, title, message, userid, pathimg, date));
 		
-		doGet(request, response);
-	}
+		Post postToSave = new Post(1, title, message, userid, pathimg, date);
+
+		postDao.save(postToSave);
+
+		
+
+		// per ogni commento creo un json e gli addo le proprietà
+
+		JsonObject post = new JsonObject();
+		post.addProperty("msg",postToSave.getMessaggio());
+		post.addProperty("title", postToSave.getTitle());
+		post.addProperty("utente", postToSave.getUtente());
+		post.addProperty("img", postToSave.getImgname());
+		post.addProperty("id_post", postToSave.getIdPost());
+
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String reportDate = df.format(postToSave.getData());
+
+		post.addProperty("data", reportDate);
+
+		
 	
+
+		response.getWriter().write(post.toString());
+
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dis = req.getRequestDispatcher("blog.jsp");
-		dis.forward(req, resp);
+		
 	}
 
 }

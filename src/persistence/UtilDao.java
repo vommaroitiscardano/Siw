@@ -16,13 +16,10 @@ public class UtilDao {
 
 		Connection connection = dataSource.getConnection();
 		try {
-//			String delete = "drop SEQUENCE if EXISTS sequenza_id;"
-//
-//					+ "drop table if exists viaggio;" + "drop table if exists biglietto;" + "drop table if exists volo;"
-//					+ "drop table if exists aeroporto;" + "drop table if exists luogo;" + "drop table if exists utente;"
-//
-//			;
-			String delete = "drop table if exists utente;";
+			String delete = "drop table if exists utente;"
+					+ "drop table if exists post;"
+					+ "drop table if exists commento";
+
 			PreparedStatement statement = connection.prepareStatement(delete);
 
 			statement.executeUpdate();
