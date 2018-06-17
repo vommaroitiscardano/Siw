@@ -30,11 +30,13 @@ public class ShowComment extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+    	
+    	//mi prendo il num del post
         Long idP = Long.parseLong(request.getParameter("npost"));
 
         CommentoDao commentoDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDao();
-
+        
+        //prendo tutti i commenti del post 
         ArrayList < Commento > commenti = commentoDao.retrieve(idP);
 
         if (commenti.isEmpty())
@@ -45,7 +47,8 @@ public class ShowComment extends HttpServlet {
 
 
         JsonObject risultato = new JsonObject();
-
+        
+        //per ogni commento creo un json e gli addo le proprietà
         for (int i = 0; i < commenti.size(); i++) {
             JsonObject commento = new JsonObject();
             commento.addProperty("msg", commenti.get(i).getMessaggio());

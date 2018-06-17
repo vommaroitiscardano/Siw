@@ -34,6 +34,7 @@ public class ShowPost extends HttpServlet {
 			System.out.println("vuota");
 		request.setAttribute("allPosts", post);
 		
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

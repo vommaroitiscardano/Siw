@@ -48,7 +48,7 @@ function update(x) {
 									" <li>"+ item.data +"<li>"+
 								"</ul>" +	
 						"</div>" +
-					"</div>");
+					"</div>");	
 
 			});
 

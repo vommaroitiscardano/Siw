@@ -1,13 +1,16 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.JsonObject;
 
 import model.Commento;
 import persistence.DatabaseManager;
@@ -27,30 +30,43 @@ public class UploadComment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		CommentoDao commentoDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDao();
 		
 		HttpSession session = request.getSession();
 		 
 		String userid = (String) session.getAttribute("email"); // per l'utente
-		String message = request.getParameter("mess");
-		Long postId = Long.parseLong(request.getParameter("idPost")) ;
+		String message = request.getParameter("content");
+		Long postId = Long.parseLong(request.getParameter("id")) ;
 		
 		
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
+		Commento commentToSave = new Commento(1, message, userid, postId, date);
 		
-		commentoDao.save(new Commento(1, message, userid, postId, date));	
 		
-		RequestDispatcher dis = request.getRequestDispatcher("blog.jsp");
-		dis.forward(request, response);
+		commentoDao.save(commentToSave);
+		
+
+		JsonObject comment = new JsonObject();
+		comment.addProperty("msg",commentToSave.getMessaggio());
+		comment.addProperty("id_post", commentToSave.getIdPost());
+		comment.addProperty("utente", commentToSave.getUtente());
+
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String reportDate = df.format(commentToSave.getDate());
+
+		comment.addProperty("data", reportDate);
+
+		response.getWriter().write(comment.toString());
 		
 	}
 

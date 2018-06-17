@@ -3,15 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
-
-<jsp:include page="/ShowPost" />
-
-
-
 <html>
 <head>
 <!-- to call servlet "showPost" e diplay the posts -->
+<jsp:include page="/ShowPost" />
 
 <title>Flydown - small price, big savings</title>
 <!-- Custom Theme files -->
@@ -42,6 +37,7 @@
 <script src="js/flightAutocomplete.js"></script>
 <script src="js/fbLogin.js"></script>
 <script src="js/showPostInOtherPage.js"></script>
+<script src="js/UpComment.js"></script>
 
 <script src="js/googleLogin.js"></script>
 
@@ -54,6 +50,8 @@
 
 <script src="js/SharePost.js"></script>
 <script src="js/upload.js"></script>
+<script src="js/showP.js"></script>
+
 
 <!-- //js -->
 <script type="application/x-javascript">
@@ -228,17 +226,17 @@
 
 
 								<div id="mydiv" class="media response-info">
-									
+									<!-- qua appendo i commenti -->
 
 								<div class="clearfix"></div>
 								</div>
 							</div>
 							<div class="opinion">
 								<h3>Leave your comment</h3>
-								<form action="UploadComment" method="post">
-									<textarea placeholder="Message" name="mess" required=""></textarea>
+								<form  id="commentSend">
+									<textarea class = "textComment" placeholder="Message" name="mess" required=""></textarea>
 								
-										<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
+									<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
 									
 									<input type="submit" value="SEND">
 								</form>
@@ -258,21 +256,21 @@
 			<div class="about-info">
 				<h2>Flydown Blog</h2>
 			</div>
-			<div class="opinion">
+			<div class="opinion" >
 				<h3>Take a post</h3>
-				<form method="post" action="UploadPost">
-					<input type="text" name="title" placeholder="Title" required="">
-					<textarea placeholder="Message" name="mess" required=""></textarea>
+				<form id = "post-send">
+					<input class ="miop" type="text" id = "titolo" name="title1" placeholder="Title" required="">
+					<textarea  class ="mioc" placeholder="Message" id="mess1" name="mess" required=""></textarea>
 					<input type="file" name="file" accept="image/*" required="">
-					<input class="img_link_post" id="img_link" name="link_image" type="text" value="">
-					<input id="form_post_u"  type="submit" value="SEND">
+					<input class ="mioo" style="visibility: hidden;" class="img_link_post" id="img_link" name="link_image" type="text" value="">
+					<input id="form_post_u"  type="submit" value="SEND" >
 				</form>
 			</div>
 
 
 			<div class="faqs-top-grids ">
 				<div class="blog-grids blog_post_view">
-					<div class="col-md-8 blog-left">
+					<div class="col-md-8 blog-left" id = "appendPost">
 
 						<c:forEach items="${allPosts}" var="p">
 							<div class="blog-left-grid" id="post-body${p.idPost}">

@@ -56,8 +56,8 @@ public class RetrieveRoutes {
 	}
 	private void createRouteTable(){
 		UtilDao utilDAO = DatabaseManager.getInstance().getDaoFactory().getUtilDAO();
-		//utilDAO.createRouteTable();
-		utilDAO.createAirportNameTable();
+		utilDAO.createRouteTable();
+		//utilDAO.createAirportNameTable();
 	}
 	
 	private void handleResult(String object) throws JSONException{
@@ -95,11 +95,11 @@ public class RetrieveRoutes {
 	}
 	
 	public void saveRoutes() throws JSONException{
-		//String result = call(ROUTE_URL);
-		String air_result = call(AIRPORT_URL);
-		createRouteTable();
-		//handleResult(result);
-		handleAirportResult(air_result);
+		String result = call(ROUTE_URL);
+		//String air_result = call(AIRPORT_URL);
+		//createRouteTable();
+		handleResult(result);
+		//handleAirportResult(air_result);
 	}
 	
 	public static void main(String[] args) {
