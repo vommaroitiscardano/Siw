@@ -114,6 +114,72 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
+				<div class="dropdown-grids-cart">
+					<div id="flightCart">
+						<div id="cartButton" role="button">
+							<img id="cart_ico" src="images/flight-cart-ico1.png">
+						</div>
+						<div id="cartBox">
+							<form id="cartForm">
+								<div class="cart-grids">
+									<div class="cart-grid-left">
+										<div class="default_body_cart">
+											<div class="body_cart_info_nf">
+												<div class="no-flight-ico">
+													<img  alt="" src="images/no-flight-ico.png" width="90px">
+												</div>
+												<h4 class="no-flights-title">Please pick your flight out</h4>
+												<span class="no-flights-description">You haven't picked a flight yet.</span>
+											</div>
+										</div>
+										<div class="flight_body_cart">
+											<!-- contenitore più esterno -->
+											<div class="flight_container_edge">
+												<div class="basket-header">
+													<span>Price Details</span>
+													<div role="button" onclick="emptyCart();">
+														<span class="reset_cart_img"><img></span>
+													</div>
+												</div>
+												<div class="flight_list_container">
+													<div class="flight_heading">
+														<span>Flight</span>
+													</div>
+													<ul class="breakdown_list">
+													</ul>
+													<div class="sub_item">
+														<div class="adults_section">
+															<span class="adults_num"> </span>
+															<span>x Adults</span>
+														</div>
+														<div class="children_section">
+															<span class="children_num"> </span>
+															<span>x Children</span>														
+														</div>
+														<span class="item_price_sym">&#163;</span>
+														<strong class="item_price"></strong>
+													</div>
+												</div>
+												<div class="footer_cart">
+													<div class="footer_content">
+														<span class="subtotal_header">
+															Total 
+															<span class="tot_price_syb">  &#163; </span>
+															<span class="tot_price"></span>
+														</span>
+														<div class="submit_cart" role="button" onclick="">
+															Continue
+														</div>
+													</div>												
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 				<div class="dropdown-grids">
 					<div id="loginContainer">
 						<a href="#" id="loginButton"><span>Login</span></a>

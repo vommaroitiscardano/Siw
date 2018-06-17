@@ -113,20 +113,248 @@ nav.navbar.navbar-default {
 
 .dropdown-grids {
 	float: right;
-	border-bottom: solid 2px #6fd508;
 }
+
+.dropdown-grids-cart {
+	display: inline-block;
+}
+
+#cart_ico{
+	width: 45px;
+}
+
+#flightCart a span {
+	padding: 1.7em;
+	color: #BDBDBD;
+}
+
+#cartButton {
+	position: relative;
+	z-index: 30;
+	cursor: pointer;
+}
+
+#cartBox {
+	position: absolute;
+	margin-top: 9.5px;
+	right: 189px;
+	display: none;
+	z-index: 99999;
+}
+
+#cartBox:hover{
+	box-shadow: 2px 2px 17px #ccccccd1;
+}
+
+#cartForm:after {
+	content: '';
+	position: absolute;
+	right: 165px;
+	top: -9px;
+	border-left: 10px solid rgba(0, 0, 0, 0);
+	border-right: 10px solid rgba(0, 0, 0, 0);
+	border-bottom: 10px solid #FFFFFF;
+}
+
+#cartForm {
+	width: 375px;
+	background: #fff;
+	border: 1px solid #d6d6d6;
+}
+
+#cartForm fieldset {
+	margin: 0 0 15px 0;
+	display: block;
+	border: 0;
+	padding: 0;
+}
+
+.flight_list_container{
+	width: 100%;
+	padding: 0 25px 0;
+}
+
+.flight_heading{
+	font-size: 20px;
+	margin-top: 10px;
+	font-size: 22;
+	font-weight: 600;
+}
+
+.basket-header{
+	background-color: #fff;
+	padding: 10px 12px 10px 25px;
+	font-size: 21px;
+	font-weight: 700;
+	color: #2E2E2E;
+	margin: 0;
+	border-bottom: 2px solid #F1C933;
+}
+
+.reset_cart_img{
+	background-image: url('../images/cart_bin.png');
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	float: right;
+	height: 45px;
+	position: relative;
+	bottom: 34px;
+}
+.footer_cart{
+	background: #f1c933;
+	height: 50px;
+}
+
+.subtotal_header{
+	position: relative;
+	font-size: 21px;
+	font-weight: 700;
+	margin-left: 10px;
+	top: 10px;
+}
+
+.tot_price_syb{
+	position: relative;
+	left: 6px;
+}
+
+.tot_price{
+	position: relative;
+	left: 3px;
+}
+
+
+.submit_cart{
+	float:right;
+	position: relative;
+	display: inline-block;
+	background: #6fd508;
+	left: 45px;
+	top: 10px;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	padding-top: 5px;
+	border-radius: 30px;
+
+	font-weight: 400;
+	color: #fff;
+
+}
+
+.breakdown_list{
+	list-style: none;
+	height: auto;
+}
+
+.flight_list_item{
+	padding-top: 8px;
+	border-bottom: 1px solid #D2D6D9;
+}
+
+.trip_item{
+	font-size: 14px;
+    line-height: 24px;
+}
+
+.trip_item_segment{
+	margin-bottom: 15px;
+}
+
+.flight_cities{
+	font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.flight_schedule{
+	/*add style*/
+}
+
+.sub_item{
+	position: relative;
+	color: #828790;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+
+}
+
+.item_price_sym{
+	display: inline-block;
+    float: right;
+    position: relative;
+    bottom: 35px;
+    right: 35px;
+}
+
+.item_price{
+	display: inline-block;
+    float: right;
+    position: relative;
+    bottom: 35px;
+}
+
+.no-flights-title{
+	color: #AEB3BD;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 21px;
+    margin-bottom: 11px;
+    text-align: center;
+}
+
+.no-flights-description{
+	font-weight: 400;
+	line-height: 25px;
+	color: #AEB3BD;
+	font-size: 16px;
+	display: block;
+	text-align: center;
+}
+
+.no-flight-ico{
+	text-align: center;
+	margin-bottom: 10px;
+}
+
 
 .search_grid{
 	display: inline-block;
 	position: relative;
 	top: -50px;
 	border-bottom:none;
+	height: 20px;
 }
-#searchContainer{
+
+.localSearch, .ryrSearch{
+	position: relative;
+	top: -45px;
+	border: solid 1px #6fd508;
+	background: #6fd508;
 	border-radius: 25px;
+
 }
+.localSearch{
+	margin-bottom: 10px;
+}
+
+.localSearchDisabled{
+	cursor: not-allowed;
+	background: #d9bfbf;
+	border: 1px solid #d9bfbf;
+}
+
+.addToCartButton{
+	text-align: center;
+}
+
 /*--Login --*/
-#loginContainer, #searchContainer {
+#loginContainer {
 	position: relative;
 	padding: 0.5em 0em;
 	border: solid 1px #6fd508;
@@ -265,6 +493,17 @@ input:focus {
 	float: none;
 	width: 100%;
 	padding: 2em;
+}
+
+.cart-grid-left{
+	float: none;
+	width: 100%;
+	padding: 25px;
+
+}
+
+.flight_body_cart{
+	display:none; 	
 }
 
 .or-grid {
@@ -3884,9 +4123,10 @@ label {
 }
 
 .flight_price_subtot{
-	position: absolute;
-	left: 490px;
-	bottom: 70px;;
+	position: relative;
+	float: right;
+	left: 100px;
+	bottom: 120px;;
 	color: #524c61;
 	font-weight: 800;
 	letter-spacing: normal; 
@@ -5008,7 +5248,7 @@ label {
 	font-size: 1rem;
 	font-weight: 400;
 	letter-spacing: normal;
-	padding-bottom: 20px;
+/*	padding-bottom: 20px;*/
 }
 
 .ItineraryLeg__helper-1idtY {
@@ -5036,7 +5276,7 @@ label {
 	margin-bottom: .375rem;
 	text-align: center;
 	background: #c0ceb25c;
-	margin: 0 190px 0 190px;
+	margin: 10px 190px 0 190px;
 	border-radius: 5px;
 	
 }

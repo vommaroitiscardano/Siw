@@ -29,7 +29,6 @@
 <script src="js/menu_jquery.js"></script>
 <script src="js/jquery.autocomplete.min.js"></script>
 <script src="js/flightAutocomplete.js"></script>
-<script src="js/searchFlight.js"></script>
 <script src="js/animations.js"></script>
 
 <!-- //js -->
@@ -287,7 +286,7 @@
 																<li class="span1_of_1 left adult">
 																	<h5>Adults (18+)</h5>
 																	<div class="section_room">
-																		<select onchange="getValue(this,'adults')" class="frm-field required">
+																		<select onchange="$('#ad-hidden-val').val($(this).val());" class="frm-field required">
 																			<option selected="selected" value="1">1</option>
 																			<option value="2">2</option>
 																			<option value="3">3</option>
@@ -296,12 +295,12 @@
 																			<option value="6">6</option>
 																		</select>
 																	</div>
-																	<input type="hidden" name="adults" value="1">
+																	<input id="ad-hidden-val" type="hidden" name="adults" value="1">
 																</li>
 																<li class="span1_of_1 left children">
 																	<h5>Children (0-17)</h5>
 																	<div class="section_room">
-																		<select onchange="getValue(this,'children')" class="frm-field required">
+																		<select onchange="$('#ch-hidden-val').val($(this).val());" class="frm-field required">
 																			<option selected="selected" value="0">0</option>
 																			<option value="1">1</option>
 																			<option value="2">2</option>
@@ -311,12 +310,12 @@
 																			<option value="6">6</option>
 																		</select>
 																	</div>
-																	<input type="hidden" name="children" value="0">
+																	<input id="ch-hidden-val" type="hidden" name="children" value="0">
 																</li>
 																<li class="span1_of_1 economy">
 																	<h5>Class</h5>
 																	<div class="section_room">
-																		<select onchange="getValue(this,'class')" class="frm-field required">
+																		<select onchange="" class="frm-field required">
 																			<option selected="selected" value="economy">Economy</option>
 																			<option value="business">Business</option>
 																		</select>

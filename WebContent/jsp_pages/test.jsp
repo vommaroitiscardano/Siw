@@ -30,14 +30,12 @@
 <script type="application/x-javascript">
 	
 	
-	
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0);
 	}, false);
 	function hideURLbar(){
 		window.scrollTo(0,1); 
 	}
-
 
 
 </script>
@@ -91,6 +89,70 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
+				<div class="dropdown-grids-cart">
+					<div id="flightCart">
+						<div id="cartButton" role="button">
+							<img id="cart_ico" src="../images/flight-cart-ico1.png">
+						</div>
+						<div id="cartBox">
+							<form id="cartForm">
+								<div class="cart-grids">
+									<div class="cart-grid-left">
+										<div class="default_body_cart" style="display: none">
+											<div class="body_cart_info_nf">
+												<div class="no-flight-ico">
+													<img alt="" src="../images/no-flight-ico.png">
+												</div>
+												<h4 class="no-flights-title">Please pick your flight
+													out</h4>
+												<span class="no-flights-description">You haven't
+													picked a flight yet.</span>
+											</div>
+
+										</div>
+										<div class="flight_body_cart">
+											<!-- contenitore più esterno -->
+											<div class="flight_container_edge">
+												<div class="basket-header">
+													<span>Price Details</span>
+													<div role="button" onclick="">
+														<span class="reset_cart_img"><img></span>
+													</div>
+												</div>
+												<div class="flight_list_container">
+													<div class="flight_heading">
+														<span>Flight</span>
+													</div>
+													<ul class="breakdown_list">
+													</ul>
+													<div class="sub_item">
+														<div class="adults_section">
+															<span class="adults_num">1 </span>
+															<span>x Adults</span>
+														</div>
+														<div class="children_section">
+															<span class="children_num">0 </span>
+															<span>x Children</span>														
+														</div>
+														<strong class="item_price">£ 125</strong>
+													</div>
+												</div>
+												<div class="footer_cart">
+													<div class="footer_content">
+														<span class="subtotal_header">Total <span class="tot_price"></span></span></span>
+														<div class="submit_cart" role="button" onclick="">
+															Continue
+														</div>
+													</div>												
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 				<div class="dropdown-grids">
 					<div id="loginContainer">
 						<a href="#" id="loginButton"><span>Login</span></a>
@@ -133,49 +195,6 @@
 							</form>
 						</div>
 					</div>
-					<div id="loginContainer">
-						<a href="#" id="loginButton"><span>Login</span></a>
-						<div id="loginBox">
-							<form id="loginForm">
-								<div class="login-grids">
-									<div class="login-grid-left">
-										<fieldset id="body">
-											<fieldset>
-												<label for="email">Email Address</label> <input type="text"
-													name="email" id="email">
-											</fieldset>
-											<fieldset>
-												<label for="password">Password</label> <input
-													type="password" name="password" id="password">
-											</fieldset>
-											<input type="submit" id="login" value="Sign in"> <label
-												for="checkbox"><input type="checkbox" id="checkbox">
-												<i>Remember me</i></label>
-										</fieldset>
-										<span><a href="#">Forgot your password?</a></span>
-										<div class="or-grid">
-											<p>OR</p>
-										</div>
-										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
-											</div>
-											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
-											</div>
-											<div class="button-bottom">
-												<p>
-													New account? <a href="signup.html">Signup</a>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					
-
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -183,8 +202,8 @@
 	</div>
 	<!--//header-->
 	<!-- banner-bottom -->
-	<div class="banner-bottom">    
-    <!--  container -->
+	<div class="banner-bottom">
+		<!--  container -->
 		<div class="container"></div>
 		<!-- //container -->
 	</div>

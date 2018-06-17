@@ -105,7 +105,13 @@
     <url-pattern>/ShowComment</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>CartContent</servlet-name>
+    <servlet-class>controller.CartContent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartContent</servlet-name>
+    <url-pattern>/cart</url-pattern>
+  </servlet-mapping>
   
-  
-
 </web-app>
