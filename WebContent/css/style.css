@@ -540,6 +540,10 @@ input:focus {
 
 .social-sits {
 	margin: 2em 0 0 0;
+	margin: 2em 0 0 0;
+	padding-left:28px;
+	padding-right: 48px;
+	margin-bottom:10px;
 }
 
 .facebook-button {
@@ -569,6 +573,13 @@ input:focus {
 .social-sits p {
 	color: #777;
 	font-size: .9em;
+	padding-left:69px;
+	padding-right: 48px;
+	margin-bottom:10px;
+}
+.fbButton{
+	margin-bottom:25px;
+	
 }
 
 .button-bottom p a {
@@ -1253,7 +1264,7 @@ select option {
 .banner-bottom {
 	padding: 4em 0 0 0;
 	background: #f4f7f9;
-	min-height: 1000px;
+	/* min-height: 1000px; */
 }
 
 .banner-bottom-grid a {
@@ -2643,7 +2654,8 @@ input.valid {
 }
 
 .book-left {
-	border-right: solid 1px #E6E6E6;
+	/* border-right: solid 1px #E6E6E6; */
+	margin-left: 280px;
 }
 
 .book-right {
