@@ -117,10 +117,11 @@ nav.navbar.navbar-default {
 
 .dropdown-grids-cart {
 	display: inline-block;
+	position: absolute;
 }
 
 #cart_ico{
-	width: 45px;
+	width: 40px;
 }
 
 #flightCart a span {
@@ -137,7 +138,7 @@ nav.navbar.navbar-default {
 #cartBox {
 	position: absolute;
 	margin-top: 9.5px;
-	right: 189px;
+	left: -175px;
 	display: none;
 	z-index: 99999;
 }

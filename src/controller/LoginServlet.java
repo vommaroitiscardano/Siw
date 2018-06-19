@@ -45,9 +45,10 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("tipo", "normale");
 			
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
-			dispatcher.forward(request, response);
 		}
+		System.out.println("okkkkkkk " + page);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
+		dispatcher.forward(request, response);
 	}
 
 	//funziona che mi controlla la correttezza della password

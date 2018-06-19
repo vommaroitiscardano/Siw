@@ -121,7 +121,7 @@ public class CheckRoute extends HttpServlet{
 			session.setAttribute("children", children);
 			session.setAttribute("f_class", f_class);
 			
-			req.getRequestDispatcher("jsp_pages/searchFlight.jsp").forward(req, resp);
+			req.getRequestDispatcher("searchFlight.jsp").forward(req, resp);
 			
 			
 		} catch (JSONException e) {
