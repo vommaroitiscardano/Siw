@@ -68,7 +68,7 @@
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
+						<a href="index.jsp"><span>Fly</span>down</a> - small price, big savings
 					</h1>
 				</div>
 				<!--navbar-header-->
@@ -85,7 +85,7 @@
 						<li class="active">
 						<li><a href="index.jsp">Flights</a></li>
 						<li><a href="blog.jsp">Blog</a></li>
-						<li><a href="about.html">About</a></li>
+						<li><a href="about.jsp">About</a></li>
 					</ul>
 					<div class="clearfix"></div>
 					<!-- script-for-menu  ANIMAZIONE Img vicino form voli -->
@@ -157,10 +157,10 @@
 						</div>
 						<div class="afterLoginUtils" id="inner_box">
 							<ul class="list_content_profile">
-								<li class="list_content p_list" role="button" onclick="">
-									<span>Profile</span>
+								<li class="list_content p_list" role="button">
+									<a class="profile_link_style" href="profile.jsp"><span>Profile</span></a>
 								</li>
-								<li class="list_content l_list" role="button" onclick="">
+								<li class="list_content l_list" role="button">
 									<c:if test="${tipo =='normale'}">
 										<a href="LoginServlet"><span>Logout</span></a>
 									</c:if>
@@ -384,7 +384,7 @@
 	<div class="move-text">
 		<div class="marquee">
 			Book with us your next flight! You are going to save more than 50%.
-			Sign up now <a href="signup.html">HERE</a>
+			Sign up now <a href="user_signup">HERE</a>
 		</div>
 		<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
 		<script>
@@ -398,133 +398,7 @@
 	<div class="banner-bottom">
 		<!-- container -->
 		<div class="container">
-			<div class="banner-bottom-info">
-				<h3>Today's Top Deals</h3>
-			</div>
 			<div class="banner-bottom-grids">
-				<div class="col-md-4 banner-bottom-grid">
-					<div class="destinations">
-						<ul>
-							<li class="button"><a href="#">Goa Popular Hotels</a>
-							<li class="dropdown active"><a href="products.html">
-									<div class="destinations-grid">
-										<img src="images/a1.jpg" alt="" />
-									</div>
-									<div class="destinations-grid-info">
-										<div class="destinations-hotel">Lorem ipsum dolor sit
-											amet , Goa</div>
-										<div class="destinations-star">
-											<span class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</div>
-										<div class="destinations-price">$100</div>
-										<div class="clearfix"></div>
-									</div>
-							</a></li>
-							</li>
-							<li class="button"><a href="#">Bangalore Popular Hotels</a>
-							<li class="dropdown"><a href="products.html">
-									<div class="destinations-grid">
-										<img src="images/a4.jpg" alt="" />
-									</div>
-									<div class="destinations-grid-info">
-										<div class="destinations-hotel">Lorem ipsum dolor sit
-											amet , Bangalore</div>
-										<div class="destinations-star">
-											<span class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</div>
-										<div class="destinations-price">$100</div>
-										<div class="clearfix"></div>
-									</div>
-							</a></li>
-							</li>
-							<li class="button"><a href="#">Bangkok Popular Hotels</a>
-							<li class="dropdown"><a href="products">
-									<div class="destinations-grid">
-										<img src="images/a3.jpg" alt="" />
-									</div>
-									<div class="destinations-grid-info">
-										<div class="destinations-hotel">Lorem ipsum dolor sit
-											amet , Bangkok</div>
-										<div class="destinations-star">
-											<span class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</div>
-										<div class="destinations-price">$240</div>
-										<div class="clearfix"></div>
-									</div>
-							</a></li>
-							</li>
-							<li class="button"><a href="#">Malaysia Popular Hotels</a>
-							<li class="dropdown"><a href="products.html">
-									<div class="destinations-grid">
-										<img src="images/a1.jpg" alt="" />
-									</div>
-									<div class="destinations-grid-info">
-										<div class="destinations-hotel">Lorem ipsum dolor sit
-											amet , Malaysia</div>
-										<div class="destinations-star">
-											<span class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span><span
-												class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										</div>
-										<div class="destinations-price">$320</div>
-										<div class="clearfix"></div>
-									</div>
-							</a></li>
-							</li>
-						</ul>
-					</div>
-					<div class="choose">
-						<div class="choose-info">
-							<h4>Why Choose Us</h4>
-						</div>
-						<div class="choose-grids">
-							<div class="choose-grids-info">
-								<div class="choose-left">
-									<h5>09</h5>
-									<span>Million</span>
-								</div>
-								<div class="choose-right">
-									<a href="products.html">Aliquam faucibus vehicula vulputate</a>
-									<p>Maecenas euismod tortor a tristique convallis diam eros
-										aliquam.</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="choose-grids-info">
-								<div class="choose-left">
-									<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-								</div>
-								<div class="choose-right">
-									<a href="products.html">Sed tincidunt consectetur augue</a>
-									<p>Nulla bibendum libero in nunc eleifend tincidunt.
-										Aliquam quis molestie lectus</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="choose-grids-info">
-								<div class="choose-left">
-									<h6>$</h6>
-								</div>
-								<div class="choose-right">
-									<a href="products.html">Nullam et arcu interdum, accumsan
-										justo</a>
-									<p>Maecenas dapibus eu purus vel imperdiet. Maecenas
-										cursus, arcu sed tempus</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="col-md-4 banner-bottom-grid">
 					<div class="banner-bottom-middle">
 						<a href="products.html"> <img src="images/a2.jpg" alt="" />
@@ -536,79 +410,6 @@
 									Travel Period: Now - 31 October 2015</p>
 							</div>
 						</a>
-					</div>
-					<div class="top-destinations-grids">
-						<div class="top-destinations-info">
-							<h4>Top Destinations</h4>
-						</div>
-						<div class="top-destinations-bottom">
-							<div class="td-grids">
-								<div class="col-xs-3 td-left">
-									<img src="images/t1.jpg" alt="" />
-								</div>
-								<div class="col-xs-7 td-middle">
-									<a href="products.html">Donec libero id lacinia</a>
-									<p>Dapibus eu purus vel libero in nunc</p>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</div>
-								<div class="col-xs-2 td-right">
-									<p>$190</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="td-grids">
-								<div class="col-xs-3 td-left">
-									<img src="images/t2.jpg" alt="" />
-								</div>
-								<div class="col-xs-7 td-middle">
-									<a href="products.html">Donec libero id lacinia</a>
-									<p>Dapibus eu purus vel libero in nunc</p>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</div>
-								<div class="col-xs-2 td-right">
-									<p>$213</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="td-grids">
-								<div class="col-xs-3 td-left">
-									<img src="images/t3.jpg" alt="" />
-								</div>
-								<div class="col-xs-7 td-middle">
-									<a href="products.html">Donec libero id lacinia</a>
-									<p>Dapibus eu purus vel libero in nunc</p>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</div>
-								<div class="col-xs-2 td-right">
-									<p>$176</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="td-grids">
-								<div class="col-xs-3 td-left">
-									<img src="images/t4.jpg" alt="" />
-								</div>
-								<div class="col-xs-7 td-middle">
-									<a href="products.html">Donec libero id lacinia</a>
-									<p>Dapibus eu purus vel libero in nunc</p>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</div>
-								<div class="col-xs-2 td-right">
-									<p>$490</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class="col-md-4 banner-bottom-grid">
@@ -623,35 +424,29 @@
 							</div>
 						</a>
 					</div>
+				</div>
+				<div class="col-md-4 banner-bottom-grid">
 					<div class="news-grids">
-						<div class="news-grids-info">
-							<h4>Latest News</h4>
-						</div>
 						<div class="news-grids-bottom">
 							<!-- date -->
 							<div id="design" class="date">
 								<div id="cycler">
-									<div class="date-text">
-										<a href="single.html">August 15,2015</a>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit.</p>
-									</div>
 									<div class="date-text">
 										<a href="single.html">July 08,2015</a>
 										<p>Nullam non turpis sit amet metus tristique egestas et
 											et orci.</p>
 									</div>
 									<div class="date-text">
-										<a href="single.html">February 15,2015</a>
+										<a href="#">February 15,2015</a>
 										<p>Duis venenatis ac ipsum vel ultricies in placerat quam</p>
 									</div>
 									<div class="date-text">
-										<a href="single.html">January 15,2015</a>
+										<a href="#l">January 15,2015</a>
 										<p>Pellentesque ullamcorper fringilla ipsum, ornare
 											dapibus velit volutpat sit amet.</p>
 									</div>
 									<div class="date-text">
-										<a href="single.html">September 24,2014</a>
+										<a href="#">September 24,2014</a>
 										<p>In lobortis ipsum mi, ac imperdiet elit pellentesque
 											at.</p>
 									</div>
@@ -690,13 +485,13 @@
 			<div class="slider">
 				<div class="arrival-grids">
 					<ul id="flexiselDemo1">
-						<li><a href="products.html"><img src="images/a3.jpg"
+						<li><a href=""><img src="images/a3.jpg"
 								alt="" /> </a></li>
-						<li><a href="products.html"><img src="images/a2.jpg"
+						<li><a href=""><img src="images/a2.jpg"
 								alt="" /> </a></li>
-						<li><a href="products.html"><img src="images/a4.jpg"
+						<li><a href=""><img src="images/a4.jpg"
 								alt="" /> </a></li>
-						<li><a href="products.html"><img src="images/a1.jpg"
+						<li><a href=""><img src="images/a1.jpg"
 								alt="" /> </a></li>
 					</ul>
 					<script type="text/javascript">
@@ -732,46 +527,61 @@
 		</div>
 		<!-- //container -->
 	</div>
-	<!-- popular-grids -->
-	<!-- footer -->
-	<div class="footer">
-		<!-- container -->
-		<div class="container"></div>
-		<!-- //container -->
-	</div>
+	<div class="footer"></div>
 	<!-- //footer -->
 	<div class="footer-bottom-grids">
-		<!-- container -->
-		<div class="container">
-			<div class="footer-bottom-top-grids">
-				<div class="col-md-4 footer-bottom-left">
-					<h4>We Accept</h4>
-					<div class="a-cards">
-						<ul>
-							<li><a href="#"><img src="images/c1.png" alt="" /></a></li>
-							<li><a href="#"><img src="images/c2.png" alt="" /></a></li>
-							<li><a href="#"><img src="images/c3.png" alt="" /></a></li>
-						</ul>
+			<!-- container -->
+			<div class="container">
+				<div class="footer-bottom-top-grids">
+					<div class="col-md-4 footer-bottom-left">
+						<h4>Download our mobile Apps</h4>
+						<div class="d-apps">
+							<ul>
+								<li><a href="#"><img src="images/app1.png" alt="" /></a></li>
+								<li><a href="#"><img src="images/app2.png" alt="" /></a></li>
+								
+							</ul>
+							
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4 footer-bottom-left footer_bottom">
-					<h4>Follow Us</h4>
-					<div class="social">
-						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="facebook twitter"> </a></li>
-							<li><a href="#" class="facebook chrome"> </a></li>
-							<li><a href="#" class="facebook dribbble"> </a></li>
-						</ul>
+					<div class="col-md-4 footer-bottom-left">
+						<h4>We Accept</h4>
+						<div class="a-cards">
+							<ul>
+								<li><a href=""><img src="images/c1.png" alt="" /></a></li>
+								<li><a href=""><img src="images/c2.png" alt="" /></a></li>
+								<li><a href=""><img src="images/c3.png" alt="" /></a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="copyright">
-					<p>Copyrights © 2018</p>
+					<div class="col-md-4 footer-bottom-left">
+						<h4>Follow Us</h4>
+						<div class="social">
+							<ul>
+								<li><a href="" class="facebook"> </a></li>
+								<li><a href="" class="facebook twitter"> </a></li>
+								<li><a href="" class="facebook chrome"> </a></li>
+								<li><a href="" class="facebook dribbble"> </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="copyright">
+						<div class="paypalcopiright">								
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+							</form>
+						<p>
+							Copyrights © 2018 Flydown - All rights reserved
+						</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	<script defer src="js/jquery.flexslider.js"></script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/jquery-ui.js"></script>

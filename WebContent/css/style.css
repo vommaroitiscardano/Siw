@@ -1413,10 +1413,6 @@ li.button a span {
 .destinations-grid-info p.b-period {
 	color: #464646;
 }
-/*-- choose --*/
-.choose, .top-destinations-grids, .news-grids {
-	margin: 2em 0;
-}
 
 .choose-info h4, .top-destinations-info h4, .news-grids-info h4,
 	.holidays-info h4 {
@@ -1427,11 +1423,15 @@ li.button a span {
 	margin: 0;
 }
 
-.choose-grids, .top-destinations-bottom, .news-grids-bottom,
-	.customer-grid {
+.choose-grids, .top-destinations-bottom, .customer-grid {
 	padding: 2em;
 	background: #FFF;
 	margin: 1em 0;
+	box-shadow: 0 0px 1px #CECECE;
+}
+.news-grids-bottom{
+	padding: 2em;
+	background: #FFF;
 	box-shadow: 0 0px 1px #CECECE;
 }
 
@@ -5883,6 +5883,10 @@ input.pay-logo{
 	margin-top: 10px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #e7ebee;
+}
+
+.profile_link_style{
+	color: #6fd508;
 }
 
 .l_list{

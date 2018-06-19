@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import model.Utente;
 import persistence.DatabaseManager;
-import persistence.PostgresDAOFactory;
 
 public class LoginServlet extends HttpServlet{
 
@@ -46,7 +45,6 @@ public class LoginServlet extends HttpServlet{
 			
 			}
 		}
-		System.out.println("okkkkkkk " + page);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
 		dispatcher.forward(request, response);
 	}

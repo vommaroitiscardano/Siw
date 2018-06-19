@@ -7,7 +7,7 @@ public class MainJDBC {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.POSTGRESQL);
 		UtilDao util = factory.getUtilDAO();
 
-		util.dropDatabase();
+		//util.dropDatabase();
 
 		util.createDatabase();
 

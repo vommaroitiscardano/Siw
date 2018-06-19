@@ -5,6 +5,7 @@ import persistence.dao.AirportInfoDao;
 import persistence.dao.CommentoDao;
 import persistence.dao.PostDao;
 import persistence.dao.RouteDao;
+import persistence.dao.TicketDao;
 import persistence.dao.UtenteDao;
 
 public class PostgresDAOFactory extends DAOFactory {
@@ -54,6 +55,11 @@ public class PostgresDAOFactory extends DAOFactory {
 	@Override
 	public CommentoDao getCommentoDao() {
 		return new CommentoDaoJDBC(dataSource);
+	}
+
+	@Override
+	public TicketDao getTicketDao() {
+		return new TicketDaoJDBC(dataSource);
 	}
 
 }
