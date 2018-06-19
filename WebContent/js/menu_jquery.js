@@ -64,3 +64,25 @@ $(function() {
     });
 });
 
+//Profile tab
+$(function() {
+
+	var button = $('#outer_box');
+    var box = $('#inner_box');
+    var form = $('#inner_box');
+    button.mouseup(function(login) {
+        box.toggle();
+        button.toggleClass('active');
+    });
+    form.mouseup(function() { 
+        return false;
+    });
+    
+    $(this).mouseup(function(login) {
+        if(!($(login.target).parent('#afterLoginButton').length > 0)) {
+        	button.removeClass('active');
+            box.hide();
+        }
+    });
+});
+

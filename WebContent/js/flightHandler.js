@@ -529,7 +529,7 @@ function displayOnewayReturnFligths(ticket1,ticket2){
 					+'										<div class="ico_plane"></div>'
 					+'										<hr class="horizontal-line">'
 					+'									</div>'
-					+'									<div class="end-time">'+ticket1[i].arr_time+'</div>'
+					+'									<div class="end-time end_f_time">'+ticket1[i].arr_time+'</div>'
 					+'								</div>'
 					+'								<div class="flight-number">FR '+ticket1[i].f_number+'</div>'
 					+'								<div class="cities flight-number-visible">'
@@ -856,7 +856,7 @@ function displayOneWayReturnStop(t1,t2,t3,t4,stop_name){
 								+'									<div class="ico_plane"></div>'
 								+'									<hr class="horizontal-line">'
 								+'								</div>'
-								+'								<div class="end-time">'+t2[j].arr_time+'</div>'
+								+'								<div class="end-time end_f_time">'+t2[j].arr_time+'</div>'
 								+'							</div>'
 								+'							<div class="meta-row duration">'
 								+'								<div class="flexy">'
@@ -1225,5 +1225,10 @@ function hideAnimation(){
 	$('.spin_class_amount').hide();
 	$('.sorting-tabs-view__amount').text("---");
 	$('.sorting-tabs-view__amount').show();
+	
+	//se il carrello è visibile ( c'è già un volo memorizzato nella session), disabilito i bottoni
+	if($('.flight_body_cart').is(':visible')){
+		$('.localSearch').addClass("localSearchDisabled");
+	}
 	
 }

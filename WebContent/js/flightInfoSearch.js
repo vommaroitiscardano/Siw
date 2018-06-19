@@ -1,4 +1,31 @@
+$(function(){
+	//verifico che nessa session ci sia già un elemento nel carrello; in tal caso lo visualizzo
+	$.ajax({
+		url:"cart",
+		success: function(data){
+			if(data !== "emptyCart"){
+				$(".default_body_cart").hide();
+				$('.flight_body_cart').show();
+				
+				var content = JSON.parse(data);
+				$('.breakdown_list').append(content.htmlContent);
+				
+				$('.adults_num').text(content.adults);
+				$('.children_num').text(content.children);
+				$('.item_price').text(content.price);
+				$('.tot_price').text(content.price);
+				
+				var button = $('#flightCart');
+				var box = $('#cartBox');
+				box.toggle();
+				button.toggleClass('active');
+			}
+		}
+	});
+});
+
 function showDetails(element){
+	
 	var siblings = $(element).siblings();
 	
 	var info = $(siblings[0]);
@@ -8,6 +35,8 @@ function showDetails(element){
 	else{
 		info.addClass('flight_info_opened');
 	}
+	
+	
 		
 }
 /*
@@ -93,7 +122,7 @@ function addToChart(element, classIndex){
 	var dep_time_r = "";
 	var arr_time_r = "";
 	var dep_time1 = "";
-	var arr_time_1 = "";
+	var arr_time1 = "";
 	var dep_time_r1 = "";
 	var arr_time_r1 = "";
 	
@@ -128,6 +157,7 @@ function addToChart(element, classIndex){
 			 */
 			//abilito gli elementi nel carrello
 			$('.flight_body_cart').show();
+			var pendingElement = "";
 			//ora partenza/arrivo, prezzo, scalo
 			switch (classIndex) {
 			case 1: //andata diretto
@@ -136,7 +166,7 @@ function addToChart(element, classIndex){
 				arr_time = $(parent).find('.end-time').html(); 
 				price = $(parent).find('.price_oneway').html(); 
 				
-				$('.breakdown_list').append(''
+				pendingElement = ''
 					+'	<li class="flight_list_item">  '
 					+'		<div class="trip_item">  '
 					+'			<div class="trip_item_segment">  '
@@ -148,7 +178,9 @@ function addToChart(element, classIndex){
 					+'				</div>  '
 					+'			</div>  '
 					+'		</div>  '
-					+'	</li> ');
+					+'	</li> ' ;
+				
+				$('.breakdown_list').append(pendingElement);
 				
 				$('.adults_num').text(adults);
 				$('.children_num').text(children);
@@ -167,31 +199,33 @@ function addToChart(element, classIndex){
 				info = $(siblings[6]);
 				price = $(info).find('.price_oneway').html(); 
 				
-				$('.breakdown_list').append(''
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> <strong>'+dep_name+'</strong> to <strong>'+arr_name+'</strong></span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> '
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> <strong>'+arr_name+'</strong> to <strong>'+dep_name+'</strong></span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+end_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> ');
+				pendingElement = ''
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> <strong>'+dep_name+'</strong> to <strong>'+arr_name+'</strong></span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> '
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> <strong>'+arr_name+'</strong> to <strong>'+dep_name+'</strong></span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+end_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> ';
+				
+				$('.breakdown_list').append(pendingElement);
 					
 					$('.adults_num').text(adults);
 					$('.children_num').text(children);
@@ -212,31 +246,33 @@ function addToChart(element, classIndex){
 				var parent = $(siblings[0]).parent().siblings();
 				price = $(parent).find('.price_oneway').html(); 
 				
-				$('.breakdown_list').append(''
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> <strong>'+dep_name+'</strong> to '+stop+'</span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> '
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> '+stop+' to <strong>'+arr_name+'</strong></span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+start_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> ');
+				pendingElement = ''
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> <strong>'+dep_name+'</strong> to '+stop+'</span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> '
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> '+stop+' to <strong>'+arr_name+'</strong></span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+start_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> ';
+				
+				$('.breakdown_list').append(pendingElement);
 					
 					$('.adults_num').text(adults);
 					$('.children_num').text(children);
@@ -268,56 +304,57 @@ function addToChart(element, classIndex){
 				info = $(siblings[8]);
 				price = $(info).find('.price_oneway').html(); 
 
+				pendingElement = ''
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> <strong>'+dep_name+'</strong> to '+stop+'</span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> '
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> '+stop+' to <strong>'+arr_name+'</strong></span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+start_date+'  '+dep_time1+' - '+arr_time1+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> '
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> <strong>'+arr_name+'</strong> to '+stop+'</span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+end_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> '
+					+'	<li class="flight_list_item">  '
+					+'		<div class="trip_item">  '
+					+'			<div class="trip_item_segment">  '
+					+'				<div class="flight_cities">  '
+					+'					<span> '+stop+' to <strong>'+dep_name+'</strong></span>  '
+					+'				</div>  '
+					+'				<div class="flight_schedule">  '
+					+'					<span>'+end_date+'  '+dep_time_r1+' - '+arr_time_r1+'</span>  '
+					+'				</div>  '
+					+'			</div>  '
+					+'		</div>  '
+					+'	</li> ';
 				
-				$('.breakdown_list').append(''
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> <strong>'+dep_name+'</strong> to '+stop+'</span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+start_date+'  '+dep_time+' - '+arr_time+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> '
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> '+stop+' to <strong>'+arr_name+'</strong></span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+start_date+'  '+dep_time1+' - '+arr_time1+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> '
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> <strong>'+arr_name+'</strong> to '+stop+'</span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+end_date+'  '+dep_time_r+' - '+arr_time_r+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> '
-						+'	<li class="flight_list_item">  '
-						+'		<div class="trip_item">  '
-						+'			<div class="trip_item_segment">  '
-						+'				<div class="flight_cities">  '
-						+'					<span> '+stop+' to <strong>'+dep_name+'</strong></span>  '
-						+'				</div>  '
-						+'				<div class="flight_schedule">  '
-						+'					<span>'+end_date+'  '+dep_time_r1+' - '+arr_time_r1+'</span>  '
-						+'				</div>  '
-						+'			</div>  '
-						+'		</div>  '
-						+'	</li> ');
+				$('.breakdown_list').append(pendingElement);
 					
 					$('.adults_num').text(adults);
 					$('.children_num').text(children);
@@ -348,7 +385,8 @@ function addToChart(element, classIndex){
 					"dep_time_r1": dep_time_r1,
 					"arr_time_r1": arr_time_r1,
 					"price": price	,
-					"add": "true"
+					"add": "true",
+					"htmlContent": pendingElement
 				}
 			});
 			

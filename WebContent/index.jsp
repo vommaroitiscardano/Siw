@@ -93,37 +93,29 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
-				<div class="dropdown-grids">
-
-					<c:if test="${loggato!= null}">
-						<p>${mex}-</p>
-						<form action="LoginServlet" method="get">
-							<input type="submit" value="Logout">
-						</form>
-					</c:if>
-
-					<!-- se l'utente non si è ancora loggato allora gli mostro la login form -->
-					<c:if test="${loggato== null}">
+				<c:if test="${loggato == null}">
+					<div class="dropdown-grids">
 						<div id="loginContainer">
 							<a href="#" id="loginButton"><span>Login</span></a>
 							<div id="loginBox">
-
 								<form id="loginForm" action="LoginServlet" method="post">
 									<div class="login-grids">
-
 										<div class="login-grid-left">
 											<fieldset id="body">
 												<fieldset>
-													<label for="userid">Email Address</label> <input
-														type="text" name="userid" id="userid">
+													<label for="email">Email Address</label> <input type="text"
+														name="userid" id="userid">
 												</fieldset>
 												<fieldset>
 													<label for="password">Password</label> <input
 														type="password" name="password" id="password">
 												</fieldset>
-												<input type="submit" id="login" value="Sign in"> <label
-													for="checkbox"><input type="checkbox" id="checkbox">
-													<i>Remember me</i></label>
+												<input type="submit" id="login" value="Sign in">
+												<input type="hidden" value="index.jsp" name="page">
+												 <label for="checkbox">
+												 	<input type="checkbox" id="checkbox">
+													<i>Remember me</i>
+												</label>
 											</fieldset>
 											<span><a href="#">Forgot your password?</a></span>
 											<div class="or-grid">
@@ -143,13 +135,30 @@
 												</div>
 											</div>
 										</div>
-
 									</div>
 								</form>
 							</div>
-						</div> 
-					</c:if>
-				</div>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${loggato != null}">
+					<div class="dropdown-grids_after" id="outer_box">
+						<div id="afterLoginButton" role="button">
+							<span class="after_user_name">${nome}</span>
+							<div class="_user_ico"><img src="" height=30px;></div>
+						</div>
+						<div class="afterLoginUtils" id="inner_box">
+							<ul class="list_content_profile">
+								<li class="list_content p_list" role="button" onclick="">
+									<span>Profile</span>
+								</li>
+								<li class="list_content l_list" role="button" onclick="">
+									<a href="LoginServlet"><span>Logout</span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</c:if>
 				<div class="clearfix"></div>
 			</div>
 		</div>

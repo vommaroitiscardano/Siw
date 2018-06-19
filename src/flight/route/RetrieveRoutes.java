@@ -96,9 +96,10 @@ public class RetrieveRoutes {
 	
 	public void saveRoutes() throws JSONException{
 		String result = call(ROUTE_URL);
+		System.out.println("okkk");
 		//String air_result = call(AIRPORT_URL);
 		//createRouteTable();
-		handleResult(result);
+		//handleResult(result);
 		//handleAirportResult(air_result);
 	}
 	

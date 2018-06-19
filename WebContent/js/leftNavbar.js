@@ -272,9 +272,11 @@ function findActiveElem(elements, value){
 		}
 	});
 	
+	if(currActive.length == 0) return;
+	
 	
 	switch(value){
-	case "Best": 
+	case "Earliest": 
 		sortByBest(currActive);
 		break;
 	case "Cheapest":
@@ -288,49 +290,67 @@ function findActiveElem(elements, value){
 	}
 	
 }
-
+/*
+ * Riordina gli elementi in ordine crescente in base all'ora di arrivo dei voli di andata
+ */
 function sortByBest(elem_array){
-	
-}
-
-function sortByCheapest(elem_array){
 	for(var i = 0; i < elem_array.length; i++){
 		for(var j = i+1; j < elem_array.length; j++){
 			var c1 = elem_array[i];
 			var c2 = elem_array[j];
 			
-			var classTofind1 = '.flight_price';
-			var classTofind2 = '.flight_price';
-			if(c1.hasClass('flight_oneway_return')
-					|| c1.hasClass('flight_stop_oneway_return')){
-				classTofind1 = '.flight_price_subtot';
+			var value1 = c1.find('.end-time').text();
+			var value2 = c2.find('.end-time').text();
+			if(c1.hasClass('flight_stop_oneway_return') ||
+					c1.hasClass('flight_oneway_return')){
+				value1 = c1.find('.end_f_time').text();
+				value2 = c2.find('.end_f_time').text();
 			}
-			if(c2.hasClass('flight_oneway_return')
-					|| c2.hasClass('flight_stop_oneway_return')){
-				classTofind2 = '.flight_price_subtot';
-			}
-			
-			var value1 = c1.find(classTofind1).text();
-			var value2 = c2.find(classTofind2).text();
-			if(value1 > value2){
+			if(compareTime(value1,value2)){
 				elem_array[i] = c2;
 				elem_array[j] = c1;
             }
         }
 	}
-	var price = elem_array[0].find(".flight_price").text();
-	if(elem_array[0].hasClass('flight_stop_oneway_return') ||
-			elem_array[0].hasClass('flight_oneway_return')){
-		price = elem_array[0].find(".flight_price_subtot").text();
-	}
 	
-	$('.cheap_price').text(price);
+	var price = elem_array[0].find(".price_oneway").text();
+	$('.best_price').html("<span>&#163; </span> "+price);
 	
 	for(var i = 0; i < elem_array.length; i++){
 		$('.flight_container').append(elem_array[i]);
 	}
 }
 
+/*
+ * Riordina gli elementi in ordine crescente in base al prezzo
+ */
+function sortByCheapest(elem_array){
+	var _class = '.price_oneway';
+	for(var i = 0; i < elem_array.length; i++){
+		for(var j = i+1; j < elem_array.length; j++){
+			var c1 = elem_array[i];
+			var c2 = elem_array[j];
+
+			var value1 = parseInt(c1.find(_class).text());
+			var value2 = parseInt(c2.find(_class).text());
+
+			if(value1 > value2){
+				elem_array[i] = c2;
+				elem_array[j] = c1;
+            }
+        }
+	}
+	var price = elem_array[0].find(".price_oneway").text();
+	$('.cheap_price').html("<span>&#163; </span> "+price);
+	
+	for(var i = 0; i < elem_array.length; i++){
+		$('.flight_container').append(elem_array[i]);
+	}
+}
+
+/*
+ * Riordina gli elementi in ordine crescente in base al tempo di volo dei voli di andata
+ */
 function sortByFastest(elem_array){
 	
 	for(var i = 0; i < elem_array.length; i++){
@@ -347,12 +367,8 @@ function sortByFastest(elem_array){
         }
 	}
 	
-	var price = elem_array[0].find(".flight_price").text();
-	if(elem_array[0].hasClass('flight_stop_oneway_return') ||
-			elem_array[0].hasClass('flight_oneway_return')){
-		price = elem_array[0].find(".flight_price_subtot").text();
-	}
-	$('.fast_price').text(price);
+	var price = elem_array[0].find(".price_oneway").text();
+	$('.fast_price').html("<span>&#163; </span> "+price);
 	
 	for(var i = 0; i < elem_array.length; i++){
 		$('.flight_container').append(elem_array[i]);
@@ -382,6 +398,24 @@ function convertTime(t1,t2){
 	else if(h1 == h2 && m1>m2) return true;
 	
 	return false;
+}
+
+function compareTime(t1,t2){
+	var t1_split = t1.split(":");
+	var t2_split = t2.split(":");
+	
+	var d1 = new Date();
+	d1.setHours(t1_split[0]);
+	d1.setMinutes(t1_split[1]);
+	d1.setSeconds("00");
+	
+	var d2 = new Date();
+	d2.setHours(t2_split[0]);
+	d2.setMinutes(t2_split[1]);
+	d2.setSeconds("00");
+	
+	
+	return Date.parse(d1) > Date.parse(d2);
 }
 
 

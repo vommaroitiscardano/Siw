@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Utente;
+import persistence.DatabaseManager;
 import persistence.PostgresDAOFactory;
 
 public class LoginServlet extends HttpServlet{
@@ -21,13 +22,13 @@ public class LoginServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("login servlet");
 		String userid = request.getParameter("userid");
-		
-		//System.out.println("user key: "+userid);
 		password = request.getParameter("password");
+		String page = request.getParameter("page");
 		HttpSession session =  request.getSession();
 		
-		utente = new PostgresDAOFactory().getUtenteDAO().findByEmail(userid);
+		utente = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByEmail(userid);
 		if (utente != null) {
 			if (comparisonPassword(utente)) {
 			String messaggio = "Welcome " + utente.getNome()+"  ";
@@ -41,10 +42,9 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("email", utente.getEmail());
 			session.setAttribute("nome", utente.getNome());
 			session.setAttribute("cognome", utente.getCognome());
-			
+			System.out.println("okkkkkkk");
 			session.setAttribute("tipo", "normale");
-			System.out.println("login servet");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); //da cambiare, usato solo per prova
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
 			dispatcher.forward(request, response);
 			}
 		}
