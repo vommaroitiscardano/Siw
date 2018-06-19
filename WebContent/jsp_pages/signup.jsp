@@ -164,19 +164,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="col-md-6 book-left book-right">
-						<div class="book-left-info">
-							<h3>Recommended</h3>
-						</div>
-						<div class="book-left-bottom">
-							<div class="book-left-facebook">
-								<a href="#">Connect with Facebook</a>
-							</div>
-							<div class="book-left-chrome">
-								<a href="#">Connect with Google</a>
-							</div>
-						</div>
-					</div>
+		
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -188,122 +176,62 @@
 	<div class="footer">
 		<!-- container -->
 		<div class="container">
-			<div class="footer-top-grids">
-				<div class="footer-grids">
-					<div class="col-md-3 footer-grid">
-						<h4>Our Products</h4>
-						<ul>
-							<li><a href="index.html">Flight Schedule</a></li>
-							<li><a href="flights-hotels.html">City Airline Routes</a></li>
-							<li><a href="index.html">International Flights</a></li>
-							<li><a href="hotels.html">International Hotels</a></li>
-							<li><a href="bus.html">Bus Booking</a></li>
-							<li><a href="index.html">Domestic Airlines</a></li>
-							<li><a href="holidays.html">Holidays Trip</a></li>
-							<li><a href="hotels.html">Hotel Booking</a></li>
-						</ul>
+		<div class="footer-bottom-grids">
+			<!-- container -->
+			<div class="container">
+				<div class="footer-bottom-top-grids">
+					<div class="col-md-4 footer-bottom-left">
+						<h4>Download our mobile Apps</h4>
+						<div class="d-apps">
+							<ul>
+								<li><a href="#"><img src="images/app1.png" alt="" /></a></li>
+								<li><a href="#"><img src="images/app2.png" alt="" /></a></li>
+								
+							</ul>
+							
+						</div>
 					</div>
-					<div class="col-md-3 footer-grid">
-						<h4>Company</h4>
-						<ul>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="faqs.html">FAQs</a></li>
-							<li><a href="terms.html">Terms &amp; Conditions</a></li>
-							<li><a href="privacy.html">Privacy </a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="booking.html">Feedback</a></li>
-						</ul>
+					<div class="col-md-4 footer-bottom-left">
+						<h4>We Accept</h4>
+						<div class="a-cards">
+							<ul>
+								<li><a href="#"><img src="images/c1.png" alt="" /></a></li>
+								<li><a href="#"><img src="images/c2.png" alt="" /></a></li>
+								<li><a href="#"><img src="images/c3.png" alt="" /></a></li>
+							</ul>
+						</div>
 					</div>
-					<div class="col-md-3 footer-grid">
-						<h4>Travel Resources</h4>
-						<ul>
-							<li><a href="holidays.html">Holidays Packages</a></li>
-							<li><a href="weekend.html">Weekend Getaways</a></li>
-							<li><a href="index.html">International Airports</a></li>
-							<li><a href="index.html">Domestic Flights Booking</a></li>
-							<li><a href="booking.html">Customer Support</a></li>
-							<li><a href="booking.html">Cancel Bookings</a></li>
-							<li><a href="booking.html">Print E-tickets</a></li>
-							<li><a href="booking.html">Customer Forums</a></li>
-							<li><a href="booking.html">Make a Payment</a></li>
-							<li><a href="booking.html">Complete Booking</a></li>
-							<li><a href="booking.html">Assurance Claim</a></li>
-							<li><a href="booking.html">Retail Offices</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3 footer-grid">
-						<h4>More Links</h4>
-						<ul class="chf_footer_list">
-							<li><a href="#">Flights Discount Coupons</a></li>
-							<li><a href="#">Domestic Airlines</a></li>
-							<li><a href="#">Indigo Airlines</a></li>
-							<li><a href="#">Air Asia</a></li>
-							<li><a href="#">Jet Airways</a></li>
-							<li><a href="#">SpiceJet</a></li>
-							<li><a href="#">GoAir</a></li>
-							<li><a href="#">Air India</a></li>
-							<li><a href="#">Domestic Flight Routes</a></li>
-							<li><a href="#">Indian City Flight</a></li>
-							<li><a href="#">Flight Sitemap</a></li>
-						</ul>
+					<div class="col-md-4 footer-bottom-left">
+						<h4>Follow Us</h4>
+						<div class="social">
+							<ul>
+								<li><a href="#" class="facebook"> </a></li>
+								<li><a href="#" class="facebook twitter"> </a></li>
+								<li><a href="#" class="facebook chrome"> </a></li>
+								<li><a href="#" class="facebook dribbble"> </a></li>
+							</ul>
+						</div>
 					</div>
 					<div class="clearfix"></div>
-				</div>
-				<!-- news-letter -->
-				<div class="news-letter">
-					<div class="news-letter-grids">
-						<div class="col-md-4 news-letter-grid">
-							<p class="mail">
-								Email : <a href="mailto:info@example.com">mail@example.com</a>
-							</p>
-						</div>
-						<div class="col-md-4 news-letter-grid">
-							<form>
-								<input type="text" value="Email" onfocus="this.value = '';"
-									onblur="if (this.value == '') {this.value = 'Email';}"
-									required=""> <input type="submit" value="Subscribe">
-							</form>
-						</div>
-						<div class="clearfix"></div>
+					<div class="copyright">
+												
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+</form>
+							
+							
+						<p>
+							Copyrights © 2018 Flydown - All rights reserved
+								
+						</p>
 					</div>
 				</div>
-				<!-- //news-letter -->
 			</div>
 		</div>
-		<!-- //container -->
-	</div>
-	<!-- //footer -->
-	<div class="footer-bottom-grids">
-		<!-- container -->
-		<div class="container">
-			<div class="footer-bottom-top-grids">
-				<div class="col-md-4 footer-bottom-left">
-					<h4>We Accept</h4>
-					<div class="a-cards">
-						<ul>
-							<li><a href="#"><img src="images/c1.png" alt="" /></a></li>
-							<li><a href="#"><img src="images/c2.png" alt="" /></a></a></li>
-							<li><a href="#"><img src="images/c3.png" alt="" /></a></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 footer-bottom-left">
-					<h4>Follow Us</h4>
-					<div class="social">
-						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="facebook twitter"> </a></li>
-							<li><a href="#" class="facebook chrome"> </a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="copyright">
-					<p>Copyrights © 2018</p>
-				</div>
-			</div>
 		</div>
 	</div>
 	<script defer src="js/jquery.flexslider.js"></script>

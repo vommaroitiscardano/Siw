@@ -95,11 +95,11 @@ public class RetrieveRoutes {
 	}
 	
 	public void saveRoutes() throws JSONException{
-		String result = call(ROUTE_URL);
-		//String air_result = call(AIRPORT_URL);
+		//String result = call(ROUTE_URL);
+		String air_result = call(AIRPORT_URL);
 		//createRouteTable();
-		handleResult(result);
-		//handleAirportResult(air_result);
+		//handleResult(result);
+		handleAirportResult(air_result);
 	}
 	
 	public static void main(String[] args) {

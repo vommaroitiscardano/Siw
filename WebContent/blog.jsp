@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- to call servlet "showPost" e diplay the posts -->
-<jsp:include page="/ShowPost" />
+
 
 <title>Flydown - small price, big savings</title>
 <!-- Custom Theme files -->
@@ -38,6 +38,7 @@
 <script src="js/fbLogin.js"></script>
 <script src="js/showPostInOtherPage.js"></script>
 <script src="js/UpComment.js"></script>
+<script src="js/scrollPost.js"></script>
 
 <script src="js/googleLogin.js"></script>
 
@@ -155,36 +156,43 @@
 													<label for="password">Password</label> <input
 														type="password" name="password" id="password">
 												</fieldset>
-												<input type="submit" id="login" value="Sign in"> <label
-													for="checkbox"><input type="checkbox" id="checkbox">
-													<i>Remember me</i></label>
-											</fieldset>
-											<span><a href="#">Forgot your password?</a></span>
+												<input type="submit" id="login" value="Sign in"> 
 											<div class="or-grid">
 												<p>OR</p>
 											</div>
 											<div class="social-sits">
+											
+											
+											<div class ="socialBotton">
+											<div class = "fbButton">
 												<div class="fb-login-button" add target="_blank"
 													data-max-rows="1" data-size="large"
 													data-button-type="continue_with" data-show-faces="false"
 													data-auto-logout-link="false" data-use-continue-as="false"
 													scope="public_profile,email" onlogin="checkLoginState();"
-													add target="_blank"></div>
-												<div id="status">
-
-													<div class="form-group row justify-content-center">
-														<div class="g-signin2" data-onsuccess="onSignIn"
-															data-theme="dark"></div>
-													</div>
-	
-
-												</div>
-												<div class="button-bottom">
-													<p>
-														New account? <a href="user_signup">Signup</a>
-													</p>
+													add target="_blank">
 												</div>
 											</div>
+											<div>
+												<div class="form-group row justify-content-center">
+															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
+															data-theme="dark">
+												</div>
+												</div>	
+											</div>
+											
+											</div>
+												
+												
+											
+												<p>
+														New account? <a href="user_signup">Signup</a>
+												</p>
+													
+											
+												
+											</div>
+											
 										</div>
 									</div>
 								</form>
@@ -201,12 +209,12 @@
 	<!--//header-->
 	<!-- banner -->
 	<!-- banner-bottom -->
-	<div class="banner-bottom">
+	<div class="banner-bottom" >
 		<!-- container -->
 		<!-- container of the complete post -->
-		
+	<div class = "container" id="postContainer">
 		<div class="containerup" id="post">
-			<div class="faqs-top-grids">
+			<div class="faqs-top-grids" id="faqsid">
 				<div class="blog-grids">
 					<div class="col-md-8 blog-left">
 						<div class="blog-left-grid single-left-grid">
@@ -220,6 +228,13 @@
 							<div class="blog-left-right">
 								<p id="msg"></p>
 							</div>
+							<div id="divShares">
+								<p id = "appendShares"> </p>
+							
+							</div>
+							
+							
+							
 							<div class="response">
 							<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 								<h3>Responses</h3>
@@ -271,47 +286,18 @@
 			<div class="faqs-top-grids ">
 				<div class="blog-grids blog_post_view">
 					<div class="col-md-8 blog-left" id = "appendPost">
-
-						<c:forEach items="${allPosts}" var="p">
-							<div class="blog-left-grid" id="post-body${p.idPost}">
-								<p>
-									Posted By <a href="#">${p.utente}</a> &nbsp;&nbsp;on ${p.data}&nbsp;&nbsp; <a href="#">Comments (10)</a>
-								</p>
-								
-								<a onclick="update(${p.idPost})"><img id="img"
-									src="${p.imgname}" alt="" width="300px" height="500px"></a>
-								<div class="blog-left-right">
-									<a onclick="update(${p.idPost})">${p.title} </a>
-									<p>${p.messaggio}</p>
-									<input type="image" onclick="shareOnFacebook(${p.idPost})"src="images/fbshare.png" >
-							<input type="image" onclick="shareOnTwitter(${p.idPost})" src="images/twitter.png">
-								</div>
-							</div>
-						</c:forEach>
-
-
-						<nav>
-						<ul class="pagination">
-							<li><a href="#" aria-label="Previous"> <span
-									aria-hidden="true">«</span>
-							</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#" aria-label="Next"> <span
-									aria-hidden="true">»</span>
-							</a></li>
-						</ul>
-						</nav>
+					<!-- qua appendo i post -->
 					</div>
+						
+					 
+			
 
 					<div class="clearfix"></div>
+					<input type = "button" value="More posts" id="morePosts" onclick="loadPost()">
 				</div>
 			</div>
 		</div>
-
+</div>
 		<!-- //container -->
 	</div>
 	<!-- //banner-bottom -->
@@ -319,38 +305,7 @@
 	<div class="footer">
 		<!-- container -->
 		<div class="container">
-			<div class="footer-top-grids">
-				<div class="footer-grids">
-					<div class="col-md-3 footer-grid">
 
-						<div class="clearfix"></div>
-					</div>
-					<!-- news-letter -->
-					<div class="news-letter">
-						<div class="news-letter-grids">
-							<div class="col-md-4 news-letter-grid">
-								<p>
-									Toll Free No : <span>1234-5678-901</span>
-								</p>
-							</div>
-							<div class="col-md-4 news-letter-grid">
-								<p class="mail">
-									Email : <a href="mailto:info@example.com">mail@example.com</a>
-								</p>
-							</div>
-							<div class="col-md-4 news-letter-grid">
-								<form>
-									<input type="text" value="Email" onfocus="this.value = '';"
-										onblur="if (this.value == '') {this.value = 'Email';}"
-										required=""> <input type="submit" value="Subscribe">
-								</form>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-					<!-- //news-letter -->
-				</div>
-			</div>
 			<!-- //container -->
 		</div>
 		<!-- //footer -->
@@ -363,9 +318,10 @@
 						<div class="d-apps">
 							<ul>
 								<li><a href="#"><img src="images/app1.png" alt="" /></a></li>
-								<li><a href="#"><img src="images/app2.png" alt="" /></a></a></li>
-								<li><a href="#"><img src="images/app3.png" alt="" /></a></a></li>
+								<li><a href="#"><img src="images/app2.png" alt="" /></a></li>
+								
 							</ul>
+							
 						</div>
 					</div>
 					<div class="col-md-4 footer-bottom-left">
@@ -373,8 +329,8 @@
 						<div class="a-cards">
 							<ul>
 								<li><a href="#"><img src="images/c1.png" alt="" /></a></li>
-								<li><a href="#"><img src="images/c2.png" alt="" /></a></a></li>
-								<li><a href="#"><img src="images/c3.png" alt="" /></a></a></li>
+								<li><a href="#"><img src="images/c2.png" alt="" /></a></li>
+								<li><a href="#"><img src="images/c3.png" alt="" /></a></li>
 							</ul>
 						</div>
 					</div>
@@ -391,9 +347,19 @@
 					</div>
 					<div class="clearfix"></div>
 					<div class="copyright">
+												
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHdwYJKoZIhvcNAQcEoIIHaDCCB2QCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYCN7e/cEG/Q28fsnG4VIGmg8vy383uAf5xuvDNsLapBWkOWx3BDtCjp92LXvJiz/6IFvGOhaVSJRAguwz+VxPHyaw/VORGXUS4e3B88gkkEHXzgKW4sPquePgFD3Lfx8+TEfYCUkE3femMyFRItIl2+uyFb0fhwChLSy9N0SQ+KBDELMAkGBSsOAwIaBQAwgfQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIkl3Z/XXq5YCAgdDS1IPtQKxd6ZXhUL2x2CPCWvuoUCUk5ZCvRwHfxBGU5O6/QAyiwBwE5bGa3j7O4P8xchvDsn0EVzsUi9MKTqTKHNVchFCw9Sh9zsuR5JO0BMCN71L+l5MpuZHjFTM704qxdhYVJDIcSKOqBCaVU7sx5UvvWmu/XkmLWZQAApJR5GIe6d9qQ4sg5e68TToTrHrJM8MMcWIbqaScACXNzldp8LQQGJHc1YKRnwqLhEFTJKwD09GYCSV+CRnGS1WOfvRexWW1mpgMoZyL4Y1JPYsAoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTgwNjE3MTQwOTQ4WjAjBgkqhkiG9w0BCQQxFgQUCi4uyTw7iXmEUEh29UANN4/IgaswDQYJKoZIhvcNAQEBBQAEgYC5yQ3Ln02qKj7QxN/wua9Gyslo2tVogex6/28HlFCpOrYiVkX1TNoRZyxww3vmAPuPxU0gbUKSoLKTrqvBSZeSDugYrCuTp654TjXLVH1tb+8gsFHG3S6ijeNLCIWsOvfAvhirfwPBfrXReI/qQ0nTazE1N5uD/cQLTsl5P2pxAQ==-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+</form>
+							
+							
 						<p>
-							Copyrights © 2015 Govihar . Design by <a
-								href="http://w3layouts.com/">W3layouts</a>
+							Copyrights � 2018 Flydown - All rights reserved
+								
 						</p>
 					</div>
 				</div>
