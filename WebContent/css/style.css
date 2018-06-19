@@ -692,7 +692,7 @@ i.resp-tab-item.lost {
 .resp-tab-item {
 	border: none;
 	color: #2B2B2B;
-	font-size: 1em;
+	font-size: 1em;	
 	background: #FFFFFF;
 	cursor: pointer;
 	padding: .5em 1em;
@@ -1791,6 +1791,7 @@ ul#flexiselDemo1 li a h4:hover {
 .footer-bottom-top-grids {
 	background: #FFF;
 	padding: 2em 0;
+	padding-left:180px;
 }
 
 .footer-bottom-left h4 {
@@ -1879,6 +1880,7 @@ ul#flexiselDemo1 li a h4:hover {
 
 .copyright {
 	text-align: center;
+	padding-right: 130px;
 }
 
 .copyright p {
@@ -5885,4 +5887,22 @@ input.pay-logo{
 .l_list{
 	margin-top: 5px;
 	margin-bottom: 10px;
+}
+
+.inputFile{
+	margin-top: 15px;
+	margin-bottom: -50px;
+}
+
+.fdPost{
+	margin-bottom: 20px;
+	margin-top: 5px;	
+}
+
+.blog-left-grid {
+	margin: 0em 0 2em 0;
+	padding-left:180px;
+	margin-right: -160px;
+	
+	position:relative;
 }

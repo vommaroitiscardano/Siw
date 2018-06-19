@@ -48,9 +48,17 @@ function loadPost(){
 
 $( document ).ready(function() {
 	
-	loadPost();
-	
-
+	    	loadPost();
 });
+
+
+$(window).scroll(function() {
+	   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+		   $('.spinner').show();
+	       setTimeout(loadPost,2000);
+	   }
+	});
+
+
 
 
