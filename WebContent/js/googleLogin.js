@@ -5,10 +5,6 @@ function onSignIn(googleUser) {
 	var name = profile.getGivenName();
 	var surname = profile.getFamilyName();
 
-	console.log(email);
-	console.log(name);
-	console.log(surname);
-
 	$.ajax({
 		url : 'SocialLogin',
 		data : "email=" + email + "&nome=" + name + "&cognome=" + surname + "&tipo=google",
@@ -19,12 +15,15 @@ function onSignIn(googleUser) {
 		},
 		async : false,
 		success : function(response) {
-			console.log(response)
-			window.location="index.jsp";
-	
-		
+			window.location = dispatcher;
 		}
 	});
+}
+
+var dispatcher = "";
+
+function getCurrPage(page){
+	dispatcher = page;
 }
 
 
@@ -50,12 +49,8 @@ function logoutGoogle() {
 		url : 'SocialLogin',
 		data : "",
 		type : 'GET',
-		cache : false,
-		error : function() {
-			alert('error');
-		},
-		async : false,
-	}).done(function(risposta){
-		window.location.replace("index.jsp");
+		success: function(){
+			window.location = "index.jsp";
+		}
 	});
 }

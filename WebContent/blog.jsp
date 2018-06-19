@@ -12,29 +12,23 @@
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="google-signin-client_id"
-	content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
 
 <meta name="keywords"
 	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet"
-	media="all">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
-<!-- <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" /> -->
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-	rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/menu_jquery.js"></script>
 <script src="js/jquery.autocomplete.min.js"></script>
-<script src="js/flightAutocomplete.js"></script>
 <script src="js/fbLogin.js"></script>
 <script src="js/showPostInOtherPage.js"></script>
 <script src="js/UpComment.js"></script>
@@ -42,11 +36,8 @@
 
 <script src="js/googleLogin.js"></script>
 
-<script src="https://apis.google.com/js/platform.js?onload=onLoad" async
-	defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script src="https://apis.google.com/js/api.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='http://connect.facebook.net/en_US/all.js'></script>
 
 <script src="js/SharePost.js"></script>
@@ -84,15 +75,20 @@
 <body>
 
 	<!--header-->
-	<div class="header" id="header">
+	<div class="header">
 		<div class="container">
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big
-						savings
+						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
 					</h1>
 				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<div class="emergency-grid"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="nav-top">
 				<div class="top-nav">
@@ -114,32 +110,7 @@
 					</script>
 					<!-- /script-for-menu -->
 				</div>
-
-
-				<!-- se l'utente non si è ancora loggato allora gli mostro la login form -->
-				<c:if test="${loggato != null}">
-					<p>benvenuto ${nome} ${email }
-					<p>
-						<c:if test="${tipo=='normale'}">
-							<li class="nav-item mx-0 mx-lg-1"><a href="LoginServlet">
-									<img id="logout" class="img-fluid" src="images/logout2.png"
-									alt="" style="padding-top: 20%">
-							</a></li>
-						</c:if>
-						<c:if test="${tipo=='facebook'}">
-							<li class="nav-item mx-0 mx-lg-1"><a
-								onclick="logoutFacebook()" href=""><img id="logout"
-									class="img-fluid" src="images/logout2.png" alt=""
-									style="padding-top: 20%"></a></li>
-						</c:if>
-						<c:if test="${tipo=='google'}">
-							<li class="nav-item mx-0 mx-lg-1"><a
-								onclick="logoutGoogle()" href=""><img id="logout"
-									class="img-fluid" src="images/logout2.png" alt=""
-									style="padding-top: 20%"></a></li>
-						</c:if>
-				</c:if>
-				<c:if test="${loggato== null}">
+				<c:if test="${loggato == null}">
 					<div class="dropdown-grids">
 						<div id="loginContainer">
 							<a href="#" id="loginButton"><span>Login</span></a>
@@ -149,50 +120,40 @@
 										<div class="login-grid-left">
 											<fieldset id="body">
 												<fieldset>
-													<label for="userid">Email Address</label> <input
-														type="text" name="userid" id="userid">
+													<label for="userid">Email Address</label>
+													<input type="text" name="userid" id="userid">
 												</fieldset>
 												<fieldset>
-													<label for="password">Password</label> <input
-														type="password" name="password" id="password">
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
 												</fieldset>
 												<input type="submit" id="login" value="Sign in"> 
+												<input type="hidden" value="blog.jsp" name="page">
+											</fieldset>
 											<div class="or-grid">
 												<p>OR</p>
 											</div>
 											<div class="social-sits">
-											
-											
-											<div class ="socialBotton">
-											<div class = "fbButton">
-												<div class="fb-login-button" add target="_blank"
-													data-max-rows="1" data-size="large"
-													data-button-type="continue_with" data-show-faces="false"
-													data-auto-logout-link="false" data-use-continue-as="false"
-													scope="public_profile,email" onlogin="checkLoginState();"
-													add target="_blank">
-												</div>
-											</div>
-											<div>
-												<div class="form-group row justify-content-center">
+												<div class ="socialBotton">
+													<div class = "fbButton">
+														<div class="fb-login-button" add target="_blank"
+															data-max-rows="1" data-size="large"
+															data-button-type="continue_with" data-show-faces="false"
+															data-auto-logout-link="false" data-use-continue-as="false"
+															scope="public_profile,email" onlogin="checkLoginState('blog.jsp');"
+															add target="_blank">
+														</div>
+													</div>
+													<div>
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('blog.jsp')">
 															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
-															data-theme="dark">
+																	data-theme="dark">
+															</div>
+														</div>	
+													</div>
 												</div>
-												</div>	
+													<p>New account? <a href="user_signup">Signup</a></p>
 											</div>
-											
-											</div>
-												
-												
-											
-												<p>
-														New account? <a href="user_signup">Signup</a>
-												</p>
-													
-											
-												
-											</div>
-											
 										</div>
 									</div>
 								</form>
@@ -200,9 +161,35 @@
 						</div>
 					</div>
 				</c:if>
+				<c:if test="${loggato != null}">
+					<div class="dropdown-grids_after" id="outer_box">
+						<div id="afterLoginButton" role="button">
+							<span class="after_user_name">${nome}</span>
+							<div class="_user_ico"><img src="" height=30px;></div>
+						</div>
+						<div class="afterLoginUtils" id="inner_box">
+							<ul class="list_content_profile">
+								<li class="list_content p_list" role="button" onclick="">
+									<span>Profile</span>
+								</li>
+								<li class="list_content l_list" role="button" onclick="">
+									<c:if test="${tipo =='normale'}">
+										<a href="LoginServlet"><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='facebook'}">
+										<a onclick="logoutFacebook()" href=""><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='google'}">
+										<a onclick="logoutGoogle()" href=""><span>Logout</span></a>
+									</c:if>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</c:if>
+				<div class="clearfix"></div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 
 

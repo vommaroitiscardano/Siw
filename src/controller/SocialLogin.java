@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,25 +12,9 @@ import model.Utente;
 import persistence.DatabaseManager;
 import persistence.dao.UtenteDao;
 
-/**
- * Servlet implementation class SocialLogin
- */
-
 public class SocialLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SocialLogin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -43,15 +26,8 @@ public class SocialLogin extends HttpServlet {
 		session.removeAttribute("utente");
 		session.removeAttribute("tipo");
 
-		RequestDispatcher disp;
-		disp = request.getRequestDispatcher("index.jsp");
-		disp.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -60,9 +36,6 @@ public class SocialLogin extends HttpServlet {
 
 		if (loggato == null) {
 
-			// PrintWriter out = resp.getWriter();
-
-			System.out.println("sono nella post di social login");
 			String email = request.getParameter("email");
 			String nome = request.getParameter("nome");
 			String cognome = request.getParameter("cognome");

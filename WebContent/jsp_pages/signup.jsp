@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,9 @@
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="google-signin-client_id" content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
+
 <script type="application/x-javascript">
 	addEventListener("load", function() { 
 		setTimeout(hideURLbar, 0); 
@@ -24,6 +28,14 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/signup.js"></script>
+
+<script src="js/googleLogin.js"></script>
+<script src="js/fbLogin.js"></script>
+
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src='http://connect.facebook.net/en_US/all.js'></script>
+
 <!-- //js -->
 <script type="text/javascript">
 		$(document).ready(function () {
@@ -45,74 +57,113 @@
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big
-						savings
+						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
 					</h1>
 				</div>
+				<!--navbar-header-->
+				<div class="header-dropdown">
+					<div class="emergency-grid"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="nav-top">
 				<div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<ul class="nav1">
-						<li><a href="index.html">Flights</a></li>
+						<li class="active">
+						<li><a href="index.jsp">Flights</a></li>
 						<li><a href="blog.html">Blog</a></li>
 						<li><a href="about.html">About</a></li>
 					</ul>
 					<div class="clearfix"></div>
-					<!-- script-for-menu -->
-					<script> 
-							   $( "span.menu" ).click(function() {
-								 $( "ul.nav1" ).slideToggle( 300, function() {
-								 // Animation complete.
-								  });
-								 });
-							
-							</script>
+					<!-- script-for-menu  ANIMAZIONE Img vicino form voli -->
+					<script>
+						$("span.menu").click(function() {
+							$("ul.nav1").slideToggle(300, function() {
+								// Animation complete.
+							});
+						});
+					</script>
 					<!-- /script-for-menu -->
 				</div>
-				<div class="dropdown-grids">
-					<div id="loginContainer">
-						<a href="#" id="loginButton"><span>Login</span></a>
-						<div id="loginBox">
-							<form id="loginForm">
-								<div class="login-grids">
-									<div class="login-grid-left">
-										<fieldset id="body">
-											<fieldset>
-												<label for="email">Email Address</label> <input type="text"
-													name="email" id="email">
+				<c:if test="${loggato == null}">
+					<div class="dropdown-grids">
+						<div id="loginContainer">
+							<a href="#" id="loginButton"><span>Login</span></a>
+							<div id="loginBox">
+								<form id="loginForm" action="LoginServlet" method="post">
+									<div class="login-grids">
+										<div class="login-grid-left">
+											<fieldset id="body">
+												<fieldset>
+													<label for="userid">Email Address</label>
+													<input type="text" name="userid" id="userid">
+												</fieldset>
+												<fieldset>
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
+												</fieldset>
+												<input type="submit" id="login" value="Sign in"> 
+												<input type="hidden" value="user_signup" name="page">
 											</fieldset>
-											<fieldset>
-												<label for="password">Password</label> <input
-													type="password" name="password" id="password">
-											</fieldset>
-											<input type="submit" id="login" value="Sign in"> <label
-												for="checkbox"><input type="checkbox" id="checkbox">
-												<i>Remember me</i></label>
-										</fieldset>
-										<span><a href="#">Forgot your password?</a></span>
-										<div class="or-grid">
-											<p>OR</p>
-										</div>
-										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+											<div class="or-grid">
+												<p>OR</p>
 											</div>
-											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
-											</div>
-											<div class="button-bottom">
-												<p>
-													New account? <a href="signup.html">Signup</a>
-												</p>
+											<div class="social-sits">
+												<div class ="socialBotton">
+													<div class = "fbButton">
+														<div class="fb-login-button" add target="_blank"
+															data-max-rows="1" data-size="large"
+															data-button-type="continue_with" data-show-faces="false"
+															data-auto-logout-link="false" data-use-continue-as="false"
+															scope="public_profile,email" onlogin="checkLoginState('index.jsp');"
+															add target="_blank">
+														</div>
+													</div>
+													<div>
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('user_signup')">
+															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
+																	data-theme="dark">
+															</div>
+														</div>	
+													</div>
+												</div>
+													<p>New account? <a href="user_signup">Signup</a></p>
 											</div>
 										</div>
 									</div>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${loggato != null}">
+					<div class="dropdown-grids_after" id="outer_box">
+						<div id="afterLoginButton" role="button">
+							<span class="after_user_name">${nome}</span>
+							<div class="_user_ico"><img src="" height=30px;></div>
+						</div>
+						<div class="afterLoginUtils" id="inner_box">
+							<ul class="list_content_profile">
+								<li class="list_content p_list" role="button" onclick="">
+									<span>Profile</span>
+								</li>
+								<li class="list_content l_list" role="button" onclick="">
+									<c:if test="${tipo =='normale'}">
+										<a href="LoginServlet"><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='facebook'}">
+										<a onclick="logoutFacebook();" href=""><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='google'}">
+										<a onclick="logoutGoogle();" href=""><span>Logout</span></a>
+									</c:if>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</c:if>
 				<div class="clearfix"></div>
 			</div>
 		</div>

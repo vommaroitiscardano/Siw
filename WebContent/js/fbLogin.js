@@ -34,9 +34,11 @@ function statusChangeCallback(response) {
 }
 
 var login = false;
+var dispatcher = "";
 
-function checkLoginState() {
+function checkLoginState(name) {
 	login = true;
+	dispatcher = name;
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
 	});
@@ -68,7 +70,7 @@ function buildProfile(user) {
 		async : false,
 		success : function(response) {
 			console.log(response)
-			window.location="blog.jsp";
+			window.location = dispatcher;
 			
 		}
 	});
@@ -77,20 +79,15 @@ function buildProfile(user) {
 function logoutFacebook() {
 
 	FB.logout(function(response) {
-		appId : '199531254023805',
-		console.log(response)
+		appId : '199531254023805'
 	});
 	$.ajax({
 		url : 'SocialLogin',
 		data : "",
 		type : 'GET',
 		cache : false,
-		error : function() {
-			alert('error');
-		},
-		async : false,
 		success : function(response) {
-			window.location.replace('index.jsp');
+			window.location = 'index.jsp';
 		}
 	});
 }
