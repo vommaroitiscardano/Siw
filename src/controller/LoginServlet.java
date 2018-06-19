@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("login servlet");
+
 		String userid = request.getParameter("userid");
 		password = request.getParameter("password");
 		String page = request.getParameter("page");
@@ -42,11 +42,11 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("email", utente.getEmail());
 			session.setAttribute("nome", utente.getNome());
 			session.setAttribute("cognome", utente.getCognome());
-			System.out.println("okkkkkkk");
 			session.setAttribute("tipo", "normale");
+			
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
 			dispatcher.forward(request, response);
-			}
 		}
 	}
 
@@ -70,8 +70,7 @@ public class LoginServlet extends HttpServlet{
 		session.removeAttribute("loggato");
 		session.removeAttribute("utente");
 			
-		RequestDispatcher disp;
-		disp= req.getRequestDispatcher("index.jsp");
+		RequestDispatcher disp = req.getRequestDispatcher("index.jsp");
 		disp.forward(req, resp);
 	}
 	

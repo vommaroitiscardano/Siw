@@ -11,16 +11,15 @@
 <meta name="keywords"
 	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
+<meta name="google-signin-client_id" content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
+
 <!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet"
-	media="all">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
-<!-- <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" /> -->
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-	rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 <link rel="icon" href="images/favicon.ico">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
@@ -30,6 +29,13 @@
 <script src="js/jquery.autocomplete.min.js"></script>
 <script src="js/flightAutocomplete.js"></script>
 <script src="js/animations.js"></script>
+
+<script src="js/googleLogin.js"></script>
+<script src="js/fbLogin.js"></script>
+
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src='http://connect.facebook.net/en_US/all.js'></script>
 
 <!-- //js -->
 <script type="application/x-javascript">
@@ -62,8 +68,7 @@
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Fly</span>down</a> - small price, big
-						savings
+						<a href="index.html"><span>Fly</span>down</a> - small price, big savings
 					</h1>
 				</div>
 				<!--navbar-header-->
@@ -103,36 +108,39 @@
 										<div class="login-grid-left">
 											<fieldset id="body">
 												<fieldset>
-													<label for="email">Email Address</label> <input type="text"
-														name="userid" id="userid">
+													<label for="userid">Email Address</label>
+													<input type="text" name="userid" id="userid">
 												</fieldset>
 												<fieldset>
-													<label for="password">Password</label> <input
-														type="password" name="password" id="password">
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
 												</fieldset>
-												<input type="submit" id="login" value="Sign in">
+												<input type="submit" id="login" value="Sign in"> 
 												<input type="hidden" value="index.jsp" name="page">
-												 <label for="checkbox">
-												 	<input type="checkbox" id="checkbox">
-													<i>Remember me</i>
-												</label>
 											</fieldset>
-											<span><a href="#">Forgot your password?</a></span>
 											<div class="or-grid">
 												<p>OR</p>
 											</div>
 											<div class="social-sits">
-												<div class="facebook-button">
-													<a href="#">Connect with Facebook</a>
+												<div class ="socialBotton">
+													<div class = "fbButton">
+														<div class="fb-login-button" add target="_blank"
+															data-max-rows="1" data-size="large"
+															data-button-type="continue_with" data-show-faces="false"
+															data-auto-logout-link="false" data-use-continue-as="false"
+															scope="public_profile,email" onlogin="checkLoginState('index.jsp');"
+															add target="_blank">
+														</div>
+													</div>
+													<div>
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('index.jsp')">
+															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
+																	data-theme="dark">
+															</div>
+														</div>	
+													</div>
 												</div>
-												<div class="chrome-button">
-													<a href="#">Connect with Google</a>
-												</div>
-												<div class="button-bottom">
-													<p>
-														New account? <a href="user_signup">Signup</a>
-													</p>
-												</div>
+													<p>New account? <a href="user_signup">Signup</a></p>
 											</div>
 										</div>
 									</div>
@@ -153,7 +161,15 @@
 									<span>Profile</span>
 								</li>
 								<li class="list_content l_list" role="button" onclick="">
-									<a href="LoginServlet"><span>Logout</span></a>
+									<c:if test="${tipo =='normale'}">
+										<a href="LoginServlet"><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='facebook'}">
+										<a onclick="logoutFacebook()" href=""><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='google'}">
+										<a onclick="logoutGoogle()" href=""><span>Logout</span></a>
+									</c:if>
 								</li>
 							</ul>
 						</div>

@@ -12,6 +12,8 @@
 	content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
+<meta name="google-signin-client_id" content="36990781665-k6rlilkggjrmckp38t0545pmdfjt6i17.apps.googleusercontent.com">
+
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/flexslider.css" type="text/css" rel="stylesheet" media="screen" />
@@ -24,6 +26,13 @@
 <script src="js/flightHandler.js"></script>
 <script src="js/flightInfoSearch.js"></script>
 <script src="js/leftNavbar.js"></script>
+
+<script src="js/googleLogin.js"></script>
+<script src="js/fbLogin.js"></script>
+
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src='http://connect.facebook.net/en_US/all.js'></script>
 
 <script type="application/x-javascript">
 	
@@ -59,16 +68,7 @@
 	         else {
 	        	 element.css({position: 'relative', top: '0px'});
 	         }
-	        
-	         /*
-	         element =  $('.content-layout-view__column-left');
-	         var stickyScroll = element.offset().top + element.height() + 40;
-	         var stickyFooter = $('.footer').offset().top;
-	         if(stickyScroll >= stickyFooter){
-	        	var _top = element.offset().top - (stickyScroll - stickyFooter);
-	       		element.css({position: 'absolute', top: _top+'px'});
-	         }
-	         */
+
 	  	});
 	});
 </script>
@@ -167,8 +167,8 @@
 															<span class="tot_price_syb">  &#163; </span>
 															<span class="tot_price"></span>
 														</span>
-														<div class="submit_cart" role="button" onclick="">
-															Continue
+														<div class="submit_cart" role="button">
+															<a href="pay">Continue</a>
 														</div>
 													</div>												
 												</div>
@@ -180,49 +180,83 @@
 						</div>
 					</div>
 				</div>
-				<div class="dropdown-grids">
-					<div id="loginContainer">
-						<a href="#" id="loginButton"><span>Login</span></a>
-						<div id="loginBox">
-							<form id="loginForm">
-								<div class="login-grids">
-									<div class="login-grid-left">
-										<fieldset id="body">
-											<fieldset>
-												<label for="email">Email Address</label> <input type="text"
-													name="email" id="email">
+				<c:if test="${loggato == null}">
+					<div class="dropdown-grids">
+						<div id="loginContainer">
+							<a href="#" id="loginButton"><span>Login</span></a>
+							<div id="loginBox">
+								<form id="loginForm" action="LoginServlet" method="post">
+									<div class="login-grids">
+										<div class="login-grid-left">
+											<fieldset id="body">
+												<fieldset>
+													<label for="userid">Email Address</label>
+													<input type="text" name="userid" id="userid">
+												</fieldset>
+												<fieldset>
+													<label for="password">Password</label>
+													<input type="password" name="password" id="password">
+												</fieldset>
+												<input type="submit" id="login" value="Sign in"> 
+												<input type="hidden" value="checkRoute" name="page">
 											</fieldset>
-											<fieldset>
-												<label for="password">Password</label> <input
-													type="password" name="password" id="password">
-											</fieldset>
-											<input type="submit" id="login" value="Sign in"> <label
-												for="checkbox"><input type="checkbox" id="checkbox">
-												<i>Remember me</i></label>
-										</fieldset>
-										<span><a href="#">Forgot your password?</a></span>
-										<div class="or-grid">
-											<p>OR</p>
-										</div>
-										<div class="social-sits">
-											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+											<div class="or-grid">
+												<p>OR</p>
 											</div>
-											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
-											</div>
-											<div class="button-bottom">
-												<p>
-													New account? <a href="signup.html">Signup</a>
-												</p>
+											<div class="social-sits">
+												<div class ="socialBotton">
+													<div class = "fbButton">
+														<div class="fb-login-button" add target="_blank"
+															data-max-rows="1" data-size="large"
+															data-button-type="continue_with" data-show-faces="false"
+															data-auto-logout-link="false" data-use-continue-as="false"
+															scope="public_profile,email" onlogin="checkLoginState('checkRoute');"
+															add target="_blank">
+														</div>
+													</div>
+													<div>
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('checkRoute')">
+															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
+																	data-theme="dark">
+															</div>
+														</div>	
+													</div>
+												</div>
+													<p>New account? <a href="user_signup">Signup</a></p>
 											</div>
 										</div>
 									</div>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${loggato != null}">
+					<div class="dropdown-grids_after" id="outer_box">
+						<div id="afterLoginButton" role="button">
+							<span class="after_user_name">${nome}</span>
+							<div class="_user_ico"><img src="" height=30px;></div>
+						</div>
+						<div class="afterLoginUtils" id="inner_box">
+							<ul class="list_content_profile">
+								<li class="list_content p_list" role="button" onclick="">
+									<span>Profile</span>
+								</li>
+								<li class="list_content l_list" role="button" onclick="">
+									<c:if test="${tipo =='normale'}">
+										<a href="LoginServlet"><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='facebook'}">
+										<a onclick="logoutFacebook()" href=""><span>Logout</span></a>
+									</c:if>
+									<c:if test="${tipo =='google'}">
+										<a onclick="logoutGoogle()" href=""><span>Logout</span></a>
+									</c:if>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</c:if>
 				<div class="clearfix"></div>
 			</div>
 		</div>

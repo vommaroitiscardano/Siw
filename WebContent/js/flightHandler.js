@@ -1064,11 +1064,11 @@ function displayOneWayReturnStop(t1,t2,t3,t4,stop_name){
 }
 
 function showErrorMessage(){
-	alert("Non sono stati trovati voli per la tratta selezionata!");
+	//alert("Non sono stati trovati voli per la tratta selezionata!");
 }
 
 function showFlightNotFoundWindow(){
-	alert("Non sono stati trovati voli per la tratta selezionata!");
+	//alert("Non sono stati trovati voli per la tratta selezionata!");
 }
 
 

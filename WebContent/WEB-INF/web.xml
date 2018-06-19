@@ -114,4 +114,13 @@
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>Payment</servlet-name>
+    <servlet-class>controller.Payment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Payment</servlet-name>
+    <url-pattern>/pay</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
