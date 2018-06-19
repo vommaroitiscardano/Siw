@@ -100,7 +100,7 @@
 					<span class="menu"><img src="images/menu.png" alt="" /></span>
 					<ul class="nav1">
 						<li><a href="index.jsp">Flights</a></li>
-						<li><a href="blog.html">Blog</a></li>
+						<li><a href="blog.jsp">Blog</a></li>
 						<li><a href="about.html">About</a></li>
 					</ul>
 					<div class="clearfix"></div>

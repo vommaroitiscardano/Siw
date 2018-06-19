@@ -84,7 +84,7 @@
 					<ul class="nav1">
 						<li class="active">
 						<li><a href="index.jsp">Flights</a></li>
-						<li><a href="blog.html">Blog</a></li>
+						<li><a href="blog.jsp">Blog</a></li>
 						<li><a href="about.html">About</a></li>
 					</ul>
 					<div class="clearfix"></div>
@@ -202,26 +202,33 @@
 											</fieldset>
 											<div class="login_form_submit">
 												<input  type="submit" id="login" value="Sign in">
-												<input type="hidden" value="test.jsp" name="page">
+												<input type="hidden" value="payment.jsp" name="page">
 											</div>
 										</fieldset>
 										<div class="or-grid">
 											<p>OR</p>
 										</div>
 										<div class="social-sits">
-											<div class="fb-login-button" data-max-rows="1" data-size="large" onlogin="checkLoginState();">
-											</div>
-											<div id="status">
-												<div class="google-login-button">
-													<div class="g-signin2" data-size="large" data-onsuccess="onSignIn" data-theme="dark"></div>
+												<div class ="socialBotton">
+													<div class = "fbButton">
+														<div class="fb-login-button" add target="_blank"
+															data-max-rows="1" data-size="large"
+															data-button-type="continue_with" data-show-faces="false"
+															data-auto-logout-link="false" data-use-continue-as="false"
+															scope="public_profile,email" onlogin="checkLoginState('pay');"
+															add target="_blank">
+														</div>
+													</div>
+													<div>
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('pay')">
+															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
+																	data-theme="dark">
+															</div>
+														</div>	
+													</div>
 												</div>
+													<p>New account? <a href="user_signup">Signup</a></p>
 											</div>
-											<div class="button-bottom">
-												<p>
-													New account? <a href="user_signup">Signup</a>
-												</p>
-											</div>
-										</div>
 									</div>
 								</div>
 							</form>
