@@ -68,8 +68,6 @@ public class PostDaoJDBC implements PostDao {
 		}
 	}
 
-	
-
 	@Override
 	public List<Post> findAll() {
 		// TODO Auto-generated method stub
@@ -89,17 +87,40 @@ public class PostDaoJDBC implements PostDao {
 	}
 
 	@Override
-	public ArrayList<Post> retrieve() {
-		ArrayList<Post> result = new ArrayList<Post>();
+	public ArrayList<Post> retrieve(Integer nPost, Integer maxPost) {
+		ArrayList<Post> result = null;
 		try {
 
 			Connection connection = this.dataSource.getConnection();
 
-			PreparedStatement create = connection.prepareStatement("SELECT * FROM post");
+			PreparedStatement maxpost = connection.prepareStatement("SELECT max(id_post) from post");
 
+			ResultSet rsMax = maxpost.executeQuery();
+
+			rsMax.next();
+
+			Integer idMax = (int) rsMax.getLong("max");
+			
+			if ((maxPost + nPost) == idMax)
+				return null;
+
+			Integer from = idMax - maxPost;
+			Integer to = from - nPost;
+
+			PreparedStatement create = connection.prepareStatement("SELECT * FROM post WHERE id_post <= ? and id_post > ?");
+			create.setInt(1, from);
+			create.setInt(2, to);
 			ResultSet rs;
 			rs = create.executeQuery();
+			boolean found = true;
+			
 			while (rs.next()) {
+				if (found) {
+					result = new ArrayList<>();
+					found = false;
+					
+				}
+				
 				Long id = rs.getLong("id_post");
 				String title = rs.getString("title");
 				String message = rs.getString("messaggio");
@@ -107,8 +128,7 @@ public class PostDaoJDBC implements PostDao {
 				String imgsrc = rs.getString("imgsrc");
 				Date data = rs.getDate("date");
 
-				Post post = new Post(); // Creating a user object to fill with user data (I imagine that you have a user
-										// class in your model)
+				Post post = new Post(); // Creating a user object to fill with user data
 				post.setIdPost(id);
 				post.setTitle(title);
 				post.setMessaggio(message);
@@ -119,8 +139,18 @@ public class PostDaoJDBC implements PostDao {
 				result.add(post);
 
 			}
+			
+			if(result != null) {
+				
+				ArrayList<Post> orderedPost = new ArrayList<>();
+				for (int i = result.size()-1; i>=0; i--) {
+					orderedPost.add(result.get(i));
+					
+				}
+				return orderedPost;
+			}
 			// Returning the list of users.
-			return result;
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

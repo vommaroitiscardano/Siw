@@ -11,6 +11,8 @@ public interface PostDao {
 	public List<Post> findAll();
 	public void delete(Post post);
 	public void update(Post post);
-	public ArrayList<Post> retrieve();
+	
+
+	ArrayList<Post> retrieve(Integer nPost, Integer maxPost);
 
 }

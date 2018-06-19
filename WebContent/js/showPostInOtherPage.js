@@ -48,9 +48,26 @@ function update(x) {
 									" <li>"+ item.data +"<li>"+
 								"</ul>" +	
 						"</div>" +
-					"</div>");	
+					"</div>"
+					
+				);
+				
+	
 
 			});
+			
+			$('#appendShares').remove();
+			$('#divShares').append(
+					"<p>"+
+					"<input type=\"image\" onclick=\"shareOnFacebook(" + x + ")\"src=\"images/fbshare.png\" >" +
+					"<input type=\"image\" onclick=\"shareOnTwitter(" + x + ")\" src=\"images/twitter.png\">" +
+					"</p>"
+					
+			
+			
+			
+			
+			);
 
 		}
 	});
