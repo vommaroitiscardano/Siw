@@ -19,17 +19,8 @@ import model.Post;
 import persistence.DatabaseManager;
 import persistence.dao.PostDao;
 
-/**
- * Servlet implementation class ShowPost
- */
-
 public class ShowPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public ShowPost() {
-		super();
-
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,28 +33,23 @@ public class ShowPost extends HttpServlet {
 
 		PostDao postDao = DatabaseManager.getInstance().getDaoFactory().getPostDao();
 		ArrayList<Post> postTotali = (ArrayList<Post>) postDao.retrieve(nPost, maxPost);
-		// non ce ne sono post
+		// non ci sono post
 		if (postTotali == null) {
 			maxPost = 0;
 			JSONObject obj = new JSONObject();
 			try {
 				obj.put("nopost", true);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			response.getWriter().write(obj.toString());
 			return;
 
 		}
-			
 
-		System.out.println("altri post");
 		maxPost += nPost + 1;
-
 		JsonObject risultato = new JsonObject();
 
-		// per ogni commento creo un json e gli addo le proprietà
 		for (int i = 0; i < postTotali.size(); i++) {
 			JsonObject post = new JsonObject();
 			post.addProperty("msg", postTotali.get(i).getMessaggio());
@@ -76,15 +62,13 @@ public class ShowPost extends HttpServlet {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String reportDate = df.format(postTotali.get(i).getData());
 			
-			System.out.println(postTotali.get(i).getImgname());
+			//System.out.println(postTotali.get(i).getImgname());
 
 			post.addProperty("data", reportDate);
 
 			risultato.add("post" + String.valueOf(i), post);
 		}
 		
-		userid = "";
-
 		response.getWriter().write(risultato.toString());
 		
 
@@ -92,7 +76,6 @@ public class ShowPost extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -13,16 +13,15 @@ import persistence.dao.RouteDao;
 public class RouteDaoJDBC implements RouteDao{
 	
 	private DataSource dataSource;
-	Connection connection = null;
 	
 	public RouteDaoJDBC(DataSource dataSource) {
 		this.dataSource = dataSource;
-		connection = this.dataSource.getConnection();
+		
 	}
 
 	@Override
 	public void save(Route route) {
-		
+		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into route(id,from_a, to_b,connecting_ab) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -34,11 +33,11 @@ public class RouteDaoJDBC implements RouteDao{
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
-//			try {
-//				//connection.close();
-//			} catch (SQLException e) {
-//				throw new PersistenceException(e.getMessage());
-//			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
 		
 	}

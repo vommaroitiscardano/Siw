@@ -24,6 +24,7 @@ public class CardDaoJDBC implements CardDao {
 		try {
 			
 			int id = getNextId(connection);
+			connection = this.dataSource.getConnection();
 			String insert = "insert into card(id,user_key, card_name, card_number, expiration_date, cvv) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1,id);
@@ -49,9 +50,8 @@ public class CardDaoJDBC implements CardDao {
 	public List<Card> retrieveCards(String user) {
 
 		ArrayList<Card> cards = null;
+		Connection connection = this.dataSource.getConnection();
 		try {
-
-			Connection connection = this.dataSource.getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * from card where user_key=?");
 			statement.setString(1, user);
 			ResultSet result = statement.executeQuery();
@@ -73,10 +73,15 @@ public class CardDaoJDBC implements CardDao {
 			}
 			return cards;
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
-		return null;
 	}
 	
 	
@@ -95,6 +100,12 @@ public class CardDaoJDBC implements CardDao {
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
 	}
 

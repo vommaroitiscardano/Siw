@@ -30,11 +30,7 @@ public class LoginServlet extends HttpServlet{
 		utente = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByEmail(userid);
 		if (utente != null) {
 			if (comparisonPassword(utente)) {
-			String messaggio = "Welcome " + utente.getNome()+"  ";
-			//session.setAttribute("userid", arg1);
 			session.setAttribute("username", userid);
-			//System.out.println(session.getAttribute("username"));
-			session.setAttribute("mex", messaggio);
 			session.setAttribute("loggato", utente.getEmail());
 			
 			
@@ -63,7 +59,6 @@ public class LoginServlet extends HttpServlet{
 		HttpSession session=req.getSession();
 		
 		//log-out
-		session.removeAttribute("mex");
 		session.removeAttribute("tipo");
 		session.removeAttribute("username");
 		session.removeAttribute("loggato");

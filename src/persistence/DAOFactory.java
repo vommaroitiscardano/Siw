@@ -20,17 +20,11 @@ public abstract class DAOFactory {
 	 */
 	public static final int POSTGRESQL = 2;
 	
-	
-	/**
-	 * Depending on the input parameter
-	 * this method returns one out of several possible 
-	 * implementations of this factory spec 
-	 */
 	public static DAOFactory getDAOFactory(int whichFactory) {
 		switch ( whichFactory ) {
 		
 		case HSQLDB:
-			return null;//new HsqldbDAOFactory();
+			return null;
 		case POSTGRESQL:
 			return new PostgresDAOFactory();
 		default:

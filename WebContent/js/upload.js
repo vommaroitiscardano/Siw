@@ -1,4 +1,4 @@
-$("document").ready(function() {
+$(function() {
 
   $('input[type=file]').on("change", function() {
 
@@ -12,10 +12,6 @@ $("document").ready(function() {
         return false;
       }
 
-      // Begin file upload
-      console.log("Uploading file to Imgur..");
-
-      // Replace ctrlq with your own API key
       var apiUrl = 'https://api.imgur.com/3/image';
       var apiKey = 'a5598f090323896';
 

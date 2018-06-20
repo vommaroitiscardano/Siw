@@ -19,31 +19,22 @@ import persistence.dao.CommentoDao;
 public class ShowComment extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public ShowComment() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    		throws ServletException, IOException {
     	
-    	//mi prendo il num del post
+    	//num del post
         Long idP = Long.parseLong(request.getParameter("npost"));
 
         CommentoDao commentoDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDao();
         
-        //prendo tutti i commenti del post 
+        //tutti i commenti del post 
         ArrayList < Commento > commenti = commentoDao.retrieve(idP);
 
-        if (commenti.isEmpty())
-            System.out.println("commenti vuoti");
-
-        for (int i = 0; i < commenti.size(); i++)
-            System.out.println(commenti.get(i).getIdCommento() + " " + commenti.get(i).getMessaggio());
+//        if (commenti.isEmpty())
+//            System.out.println("commenti vuoti");
+//
+//        for (int i = 0; i < commenti.size(); i++)
+//            System.out.println(commenti.get(i).getIdCommento() + " " + commenti.get(i).getMessaggio());
 
 
         JsonObject risultato = new JsonObject();

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-
 <title>Flydown - small price, big savings</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,12 +25,8 @@
 <script src="js/modernizr.custom.js"></script>
 <script src="js/menu_jquery.js"></script>
 <script src="js/jquery.autocomplete.min.js"></script>
-<script src="js/fbLogin.js"></script>
-<script src="js/showPostInOtherPage.js"></script>
-<script src="js/UpComment.js"></script>
-<script src="js/scrollPost.js"></script>
-<script src="js/delPost.js"></script>
 
+<script src="js/fbLogin.js"></script>
 <script src="js/googleLogin.js"></script>
 
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
@@ -42,13 +36,13 @@
 <script src="js/SharePost.js"></script>
 <script src="js/upload.js"></script>
 <script src="js/showP.js"></script>
-
-
+<script src="js/showPostInOtherPage.js"></script>
+<script src="js/UpComment.js"></script>
+<script src="js/scrollPost.js"></script>
+<script src="js/delPost.js"></script>
 
 <!-- //js -->
 <script type="application/x-javascript">
-	
-
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0); 
 	}, false);
@@ -57,7 +51,6 @@
 	} 
 
 </script>
-
 
 <script>
 	$(document).ready(function() {
@@ -70,14 +63,6 @@
 	});
 </script>
 
-<script type="text/javascript">
-
-$(function () {
-	
-	loadPost();
-});
-
-</script>
 </head>
 <body>
 	<!--header-->
@@ -197,129 +182,92 @@ $(function () {
 			</div>
 		</div>
 	</div>
-
-
-	<!--//header-->
-	<!-- banner -->
-	<!-- banner-bottom -->
-	
 	<div class="banner-bottom" >
-	
-		<!-- container -->
-		<!-- container of the complete post -->
-	<div class = "container" id="postContainer">
-		<div class="containerup" id="post">
-		<div class="buttonBack"><a href="blog.jsp"><img src="images/goBack.png" height="90" width="90"></div></a>
-
-		
-			<div class="faqs-top-grids" id="faqsid">
-				<div class="blog-grids">
-					<div class="col-md-8 blog-left">
-						<div class="blog-left-grid single-left-grid">
-						
-							<p>
-								Posted By <a id = "user" href="#"></a> &nbsp;&nbsp; on June 2, 2015
-								&nbsp;&nbsp; <a href="#"> Comments (10)</a>
-							</p>
-							<h2 id="myh1"></h2>
-							<img id="img" src="" alt="" width="500px" height="600px">
-							<div class="blog-left-right">
-								<p id="msg"></p>
-							</div>
-							<div id="divShares">
-								<p id = "appendShares"> </p>
-							
-							</div>
-							
-							
-							
-							<div class="response">
-							<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-								<h3>Responses</h3>
-
-
-								<div id="mydiv" class="media response-info">
-									<!-- qua appendo i commenti -->
-
-								<div class="clearfix"></div>
+				<!-- container of the complete post -->
+			<div class = "container" id="postContainer">
+				<div class="containerup" id="post">
+					<div class="buttonBack">
+						<a href="blog.jsp"><img src="images/goBack.png" height="90" width="90"></a>
+					</div>
+						<div class="faqs-top-grids" id="faqsid">
+							<div class="blog-grids">
+								<div class="col-md-8 blog-left">
+									<div class="blog-left-grid single-left-grid">
+										<p> Posted By <a id = "user" href="#"></a> &nbsp;&nbsp; on June 2, 2015 &nbsp;&nbsp; </p>
+										<h2 id="myh1"></h2>
+										<img id="img" src="" alt="" width="500px" height="600px">
+										<div class="blog-left-right">
+											<p id="msg"></p>
+										</div>
+										<div id="divShares">
+											<p id = "appendShares"> </p>
+										</div>
+										<div class="response">
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+											<h3>Responses</h3>
+											<div id="mydiv" class="media response-info">
+												<!-- qua appendo i commenti -->
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									<c:if test="${loggato != null}">
+										<div class="opinion">
+											<h3>Leave your comment</h3>
+											<form  id="commentSend">
+												<textarea class = "textComment" placeholder="Message" name="mess" required=""></textarea>
+											
+												<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
+												
+												<div class="divSendComment"><input type="submit" value="SEND"></div>
+												
+											</form>
+										
+										</div>
+									</c:if>
+									</div>
 								</div>
 							</div>
-							
-						
-						
-						<c:if test="${loggato != null}">
-							<div class="opinion">
-								<h3>Leave your comment</h3>
-								<form  id="commentSend">
-									<textarea class = "textComment" placeholder="Message" name="mess" required=""></textarea>
-								
-									<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
-									
-									<div class="divSendComment"><input type="submit" value="SEND"></div>
-									
-								</form>
-							
-							</div>
-						</c:if>
-					
-						</div>
+							<div class="col-md-4 blog-right"></div>
+							<div class="clearfix"></div>
 						</div>
 					</div>
-					<div class="col-md-4 blog-right"></div>
-					<div class="clearfix"></div>
 				</div>
-			</div>
-			
-			<div class="buttonTop"><a href="#"><img src="images/goTop.png" height="90" width="90"></a></div>
-		</div>
-
-
-
-
-		<div class="container" id="blog">
-			<div class="about-info">
-				<h2>Flydown Blog</h2>
-			</div>
-			
+			<div class="container" id="blog">
+				<div class="about-info"><h2>Flydown Blog</h2></div>
 				<c:if test="${loggato != null}">
-			<div class="opinion" >
-				<h3>Take a post</h3>
-				<form id = "post-send">
-					<input class ="miop" type="text" id = "titolo" name="title1" placeholder="Title" required="">
-					<textarea  class ="mioc" placeholder="Message" id="mess1" name="mess" required=""></textarea>
-					<input type="file" name="file" accept="image/*" required="" class= "inputFile">
-					<input class ="mioo" style="visibility: hidden;" class="img_link_post" id="img_link" name="link_image" type="text" value="">
-					<input id="form_post_u"  type="submit" value="SEND" >
-				</form>
-			</div>
-			</c:if>
-		
-			
-			<div class="fdPost">
-			<h2>Flydown post</h2>
-			</div>
-
-
-		<div class="faqs-top-grids ">
-				<div class="blog-grids blog_post_view">
-					<div class="col-md-8 blog-left" id = "appendPost">
-					<!-- qua appendo i post -->
+					<div class="opinion" >
+						<h3>Take a post</h3>
+						<form id = "post-send">
+							<input class ="miop" type="text" id = "titolo" name="title1" placeholder="Title" required="">
+							<textarea  class ="mioc" placeholder="Message" id="mess1" name="mess" required=""></textarea>
+							<input type="file" name="file" accept="image/*" required="" class= "inputFile">
+							<input class ="mioo" style="visibility: hidden;" class="img_link_post" id="img_link" name="link_image" type="text" value="">
+							<input id="form_post_u"  type="submit" value="SEND" >
+						</form>
 					</div>
-					<div class="clearfix"></div>
-					
-					<div class="spinner">
-						<div class="spin_class_i">
-							<span class="spinner_info">Loading more post.. </span>
-					</div>
-					<div class="spin_class_l">
-					<div class="spin_loader"> </div>
-				</div>
-					</div>
-					
-			<div class="noMorePost">
-				
-			</div>
-					
+				</c:if>
+				<div class="fdPost"><h2>Flydown post</h2></div>
+				<div class="faqs-top-grids ">
+					<div class="blog-grids blog_post_view">
+						<script type="text/javascript">
+							$(document).ready(function() {
+								loadPost();
+							});
+						
+						</script>
+						<div class="col-md-8 blog-left" id = "appendPost">
+								<!-- qua appendo i post -->
+						</div>
+						<div class="clearfix"></div>
+						<div class="spinner">
+							<div class="spin_class_i">
+								<span class="spinner_info">Loading more post.. </span>
+							</div>
+							<div class="spin_class_l">
+								<div class="spin_loader"> </div>
+							</div>
+						</div>
+					<div class="noMorePost"></div>
 				</div>
 			</div>
 		</div>
@@ -327,10 +275,13 @@ $(function () {
 		<!-- //container -->
 	
 	<!-- //banner-bottom -->
-<div class="footer"></div>
+		<div class="footer">
+			<div class="buttonTop">
+				<a href="#"><img src="images/goTop.png" height="90" width="90"></a>
+			</div>
+		</div>
 		<!-- //footer -->
 		<div class="footer-bottom-grids">
-			<!-- container -->
 			<div class="container">
 				<div class="footer-bottom-top-grids">
 					<div class="col-md-4 footer-bottom-left">

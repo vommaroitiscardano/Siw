@@ -7,7 +7,7 @@ $(function(){
 //		var title = document.getElementById("titolo").value();
 //		var img = document.getElementById("img_link1").value();
 		
-    	
+    	alert("SUBMIT");
 	
 		  var title = $('.miop').val();
 		  var content = $('.mioc').val();
@@ -22,15 +22,11 @@ $(function(){
     		url : 'UploadPost',
     		dataType : 'json',
     		data : {
-    			content : content,
-    			title : title,
-    			img : img
+    			"content" : content,
+    			"title" : title,
+    			"img" : img
     		},
     		type : 'POST',
-    		cache : false,
-    		error : function() {
-    			alert('error');
-    		},
     		success : function(element){
     			$("#appendPost").append(
     					"<div class=\"blog-left-grid\" id=\"post-body\"" + element.id_post + ">"+
@@ -43,19 +39,11 @@ $(function(){
 							"<p>${" + element.msg + "}</p>" + 						
 						"</div>" +
 					"</div>"	
-    			
     			);
-    			window.location.replace('blog.jsp')
-    			
-    		}
-    		
-    	
+    			window.location ='blog.jsp';
+    		}    	
 
     	});
-    	
-    	
-    
 	};
 	
-
 });

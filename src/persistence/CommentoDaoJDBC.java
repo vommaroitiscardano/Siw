@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Commento;
 import persistence.dao.CommentoDao;
@@ -24,7 +23,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			int id = getNextId(connection);
-
+			connection = this.dataSource.getConnection();
 			String insert = "insert into commento(id_commento, messaggio, id_utente, id_post, date) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
@@ -46,9 +45,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 		
 	}
 	
-	/**
-	 * This method is used to generate next user ID
-	 */
+
 	private final int getNextId(final Connection connection) {
 		try {
 			PreparedStatement statement;
@@ -64,13 +61,13 @@ public class CommentoDaoJDBC implements CommentoDao {
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
-	}
-
-	@Override
-	public List<Commento> findAll() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -80,23 +77,14 @@ public class CommentoDaoJDBC implements CommentoDao {
 	}
 
 	@Override
-	public void update(Commento commento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public ArrayList<Commento> retrieve(Long idP) {
 		ArrayList<Commento> result = new ArrayList<Commento>();
+		Connection connection = this.dataSource.getConnection();
 		try {	
-
-			Connection connection = this.dataSource.getConnection();
-
 			PreparedStatement create = connection.prepareStatement("SELECT * FROM commento WHERE id_post=?");
 			create.setLong(1, idP);
 			ResultSet rs;
 			rs = create.executeQuery();
-			System.out.println("sono nella retrieve del commento");
 			while (rs.next()) {
 				Long id = rs.getLong("id_commento");
 				String message = rs.getString("messaggio");
@@ -117,9 +105,14 @@ public class CommentoDaoJDBC implements CommentoDao {
 			}
 			// Returning the list of users.
 			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
 
 	}

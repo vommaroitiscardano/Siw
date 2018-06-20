@@ -20,7 +20,6 @@ public class SocialLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		// log-out
-		session.removeAttribute("mex");
 		session.removeAttribute("username");
 		session.removeAttribute("loggato");
 		session.removeAttribute("utente");
@@ -33,7 +32,6 @@ public class SocialLogin extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String loggato = (String) session.getAttribute("loggato");
-		System.out.println(loggato);
 
 		if (loggato == null) {
 
@@ -63,7 +61,6 @@ public class SocialLogin extends HttpServlet {
 			session.setAttribute("nome", nome);
 			session.setAttribute("cognome", cognome);
 			session.setAttribute("loggato", email);
-			// session.setAttribute("mex", messaggio);
 			session.setAttribute("tipo", tipo);
 
 		}

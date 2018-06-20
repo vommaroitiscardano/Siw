@@ -17,16 +17,12 @@ import persistence.dao.PostDao;
 
 public class UploadPost extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Directory where uploaded files will be saved, its relative to the web
 	 * application directory.
 	 */
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -38,19 +34,14 @@ public class UploadPost extends HttpServlet {
 		String userid = (String) request.getSession(false).getAttribute("email");
 		String pathimg = request.getParameter("img");
 
-		System.out.println("this is the author of the post" + userid);
+		System.out.println("this is the author of the post " + userid);
 
 		// creo la data del giorno corrente
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
 		Post postToSave = new Post(1, title, message, userid, pathimg, date);
-
 		postDao.save(postToSave);
-
-		
-
-		// per ogni commento creo un json e gli addo le proprietà
 
 		JsonObject post = new JsonObject();
 		post.addProperty("msg",postToSave.getMessaggio());
@@ -63,17 +54,8 @@ public class UploadPost extends HttpServlet {
 		String reportDate = df.format(postToSave.getData());
 
 		post.addProperty("data", reportDate);
-
-		
-	
-
 		response.getWriter().write(post.toString());
 
-	}
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 	}
 
 }

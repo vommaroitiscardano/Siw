@@ -60,7 +60,7 @@ function onewayFlights(_object) {
 		var destination = _object.destination_iata;
 		var origin_name = _object.dep_name;
 		var destination_name = _object.arr_name;
-		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 		
 		$.ajax({
 			type:'GET',
@@ -107,7 +107,7 @@ function oneway_returnFlights(_object){
 		var oneway = "";
 		var _return = "";
 		
-		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 
 		$.ajax({
 			type:'GET',
@@ -121,7 +121,7 @@ function oneway_returnFlights(_object){
 				month = values[1];
 				year = values[2];
 				
-				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+destination+"/"+origin+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+destination+"/"+origin+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 				$.ajax({
 					type:'GET',
 					url: urlString,
@@ -177,7 +177,7 @@ function onewayStops(_object){
 		console.log("pivot: " + stop);
 		var stop_name = array_stops_name[elem].name;
 		
-		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 		var data_f1 = "";
 		var data_f2 = "";
 		
@@ -191,7 +191,7 @@ function onewayStops(_object){
 				data_f1 = data;
 			},
 			complete: function(){
-				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 				
 				urlString ="";
 				
@@ -277,7 +277,7 @@ function oneway_returnStops(_object){
 		var data_f2 = "";
 		var data_f3 = "";
 		var data_f4 = "";
-		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+		var urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+origin+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 		$.ajax({
 			type:'GET',
 			url: urlString,
@@ -286,7 +286,7 @@ function oneway_returnStops(_object){
 				data_f1 = data;
 			},
 			complete: function(){
-				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+				urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+destination+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 				$.ajax({
 					type: 'GET',
 					url: urlString,
@@ -299,7 +299,7 @@ function oneway_returnStops(_object){
 						var r_day = values[0]; 
 						month = values[1];
 						year = values[2];
-						urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+destination+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+						urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+destination+"/"+stop+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 						$.ajax({
 							type: 'GET',
 							url : urlString,
@@ -307,7 +307,7 @@ function oneway_returnStops(_object){
 								data_f3 = data3;
 							},
 							complete: function(){
-								urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+origin+"/years/"+year+"/months/"+month+"?apikey=oItfM9w7Un1FbiEwgNUdfP8di0RRFFLX";
+								urlString = "http://apigateway.ryanair.com/pub/v1/timetable/3/schedules/"+stop+"/"+origin+"/years/"+year+"/months/"+month+"?apikey=bAfENy7uP4UIIKYDHRKzMpkYtKQhbAUo";
 								$.ajax({
 									type: 'GET',
 									url : urlString,

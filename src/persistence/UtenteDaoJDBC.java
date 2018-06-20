@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import model.Utente;
 
@@ -23,6 +22,7 @@ public class UtenteDaoJDBC implements UtenteDao{
 		try {
 			
 			int id = getNextId(connection);
+			connection = this.dataSource.getConnection();
 			
 			String insert = "insert into utente(id_utente, nome, cognome, email, password) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -66,32 +66,15 @@ public class UtenteDaoJDBC implements UtenteDao{
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		} 
 	}
 
-	@Override
-	public Utente findByPrimaryKey(long idUtente) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Utente> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Utente utente) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Utente utente) {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public Utente findByEmail(String email) {
 		Connection connection = dataSource.getConnection();

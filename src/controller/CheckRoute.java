@@ -23,41 +23,6 @@ public class CheckRoute extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 
-//	@Override
-//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String departure = req.getParameter("departure");
-//		String destination = req.getParameter("destination");
-//		
-//		 RouteDao routeDao = DatabaseManager.getInstance().getDaoFactory().getRouteDao();
-//		 
-//		 //lista delle rotte possibili con uno scalo
-//		 List<Route> stops = routeDao.findAllRoutes(departure, destination);
-//		 
-//		 //rotta diretta;
-//		 Route route = routeDao.findRoute(departure, destination); 
-//		 
-//		 PrintWriter out = resp.getWriter();
-//		 
-//		 //non ci sono voli per la tratta specificata
-//		 if(stops == null && route == null){
-//			 out.write("noflights");
-//			 return;
-//		 }
-//		 
-//		 JSONObject obj = new JSONObject();
-//		 try {
-//			obj.put	("nonstop", route != null ? new JSONObject(route.toString()) : "");
-//			JSONArray json_stops = new JSONArray();
-//			for (Route r : stops){
-//				json_stops.put(r.getConnectingAirport());
-//			}
-//			obj.append("stops", json_stops);
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
-//		 out.write(obj.toString());
-//
-//	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String origin_iata = req.getParameter("origin_iata");
@@ -82,7 +47,7 @@ public class CheckRoute extends HttpServlet{
 		//non ci sono voli per la tratta specificata
 		if(stops == null && route == null){
 			session.setAttribute("noflights",true);
-			req.getRequestDispatcher("jsp_pages/searchFlight1.jsp").forward(req, resp);
+			req.getRequestDispatcher("searchFlight.jsp").forward(req, resp);
 			return;
 		}
 		try {

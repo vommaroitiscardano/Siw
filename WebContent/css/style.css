@@ -543,6 +543,11 @@ input:focus {
 	margin-bottom: 10px;
 }
 
+.newAccount{
+	position: relative;
+	top: 20px;
+}
+
 .facebook-button {
 	margin-bottom: 2em;
 }
@@ -3810,12 +3815,14 @@ label {
 	width: 20px;
 	border-radius: 2px;
 	border: 2px solid #cfcfcf;
-	display: none \9
+	display: none \9
+
 }
 
 .checkbox input[type=checkbox] {
 	display: none;
-	display: block \9
+	display: block \9
+
 }
 
 .checkbox input[type=checkbox]:checked ~ .check {
@@ -4260,16 +4267,15 @@ label {
 	background: none;
 }
 
-@
-keyframes mymove {from { left:0;
-	
-}
+@keyframes mymove {
+	from{
+		left:0;
+	}
+    to {
+    	left: 150px;
+    }
+} 
 
-to {
-	left: 150px;
-}
-
-}
 .flight-header__flight-basic .plane .inbound {
 	-webkit-transform: rotateY(180deg);
 	transform: rotateY(180deg)
@@ -5418,21 +5424,11 @@ opacity
 	animation: spin 1s linear infinite;
 }
 
-@
-keyframes spin { 0% {
-	transform: rotate(0deg);
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-100%
-{
-transform
-:
- 
-rotate
-(360deg);
- 
-}
-}
 .containerup {
 	display: none;
 }
@@ -5452,6 +5448,7 @@ rotate
 	width: 280px;
 	background: #fff;
 	box-shadow: 0 0 2px #CECECE;
+	height: 400px;
 }
 
 .login_content {
@@ -6015,7 +6012,9 @@ input.pay-logo {
 
 .buttonTop {
 	float: right;
-	margin-right: -150px;
+	position: relative;
+	bottom: 170px;
+	right: 220px;
 }
 
 .divSendComment {
@@ -6032,5 +6031,4 @@ input.pay-logo {
 	float: right;
 	right: 0;
 	top: -12px;
-}
 }

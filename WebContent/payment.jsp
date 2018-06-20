@@ -223,7 +223,7 @@
 														</div>	
 													</div>
 												</div>
-													<p>New account? <a href="user_signup">Signup</a></p>
+													<span class="newAccount">New account? <a href="user_signup">Signup</a></span>
 											</div>
 									</div>
 								</div>

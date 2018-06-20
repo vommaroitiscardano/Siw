@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Post;
 import persistence.dao.PostDao;
@@ -24,7 +23,7 @@ public class PostDaoJDBC implements PostDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			int id = getNextId(connection);
-
+			connection = this.dataSource.getConnection();
 			String insert = "insert into post(id_post, title, messaggio, id_utente, imgsrc, date) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
@@ -47,9 +46,6 @@ public class PostDaoJDBC implements PostDao {
 
 	}
 
-	/**
-	 * This method is used to generate next user ID
-	 */
 	private final int getNextId(final Connection connection) {
 		try {
 			PreparedStatement statement;
@@ -65,13 +61,13 @@ public class PostDaoJDBC implements PostDao {
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
-	}
-
-	@Override
-	public List<Post> findAll() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -79,13 +75,11 @@ public class PostDaoJDBC implements PostDao {
 		System.out.println("sono nella delete");
 		Connection connection = this.dataSource.getConnection();
 		try {
-			
 
 			String delete = "delete from post where id_post = " + idPost;
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();
-			
-			
+
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
@@ -96,31 +90,17 @@ public class PostDaoJDBC implements PostDao {
 			}
 		}
 
-		
-
-	}
-
-	@Override
-	public void update(Post post) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public ArrayList<Post> retrieve(Integer nPost, Integer maxPost) {
 		ArrayList<Post> result = null;
+		Connection connection = this.dataSource.getConnection();
 		try {
-
-			Connection connection = this.dataSource.getConnection();
-
 			PreparedStatement maxpost = connection.prepareStatement("SELECT max(id_post) from post");
-
 			ResultSet rsMax = maxpost.executeQuery();
-
 			rsMax.next();
-
 			Integer idMax = (int) rsMax.getLong("max");
-			
 			if ((maxPost + nPost) == idMax)
 				return null;
 
@@ -133,14 +113,14 @@ public class PostDaoJDBC implements PostDao {
 			ResultSet rs;
 			rs = create.executeQuery();
 			boolean found = true;
-			
+
 			while (rs.next()) {
 				if (found) {
 					result = new ArrayList<>();
 					found = false;
-					
+
 				}
-				
+
 				Long id = rs.getLong("id_post");
 				String title = rs.getString("title");
 				String message = rs.getString("messaggio");
@@ -148,7 +128,8 @@ public class PostDaoJDBC implements PostDao {
 				String imgsrc = rs.getString("imgsrc");
 				Date data = rs.getDate("date");
 
-				Post post = new Post(); // Creating a user object to fill with user data
+				Post post = new Post(); // Creating a user object to fill with
+										// user data
 				post.setIdPost(id);
 				post.setTitle(title);
 				post.setMessaggio(message);
@@ -159,23 +140,25 @@ public class PostDaoJDBC implements PostDao {
 				result.add(post);
 
 			}
-			
-		
-			
-			if(result != null) {
-				
+
+			if (result != null) {
+
 				ArrayList<Post> orderedPost = new ArrayList<>();
-				for (int i = result.size()-1; i>=0; i--) {
+				for (int i = result.size() - 1; i >= 0; i--) {
 					orderedPost.add(result.get(i));
-					
+
 				}
 				return orderedPost;
 			}
-			// Returning the list of users.
 			return null;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
 
 	}

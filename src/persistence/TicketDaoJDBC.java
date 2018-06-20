@@ -22,6 +22,7 @@ public class TicketDaoJDBC implements TicketDao{
 		Connection connection = this.dataSource.getConnection();
 		try {
 			int id = getNextId(connection);
+			connection = this.dataSource.getConnection();
 
 			String insert = "insert into ticket(id, user_key, dep_date, ret_date, dep_airport, arr_airport, stop, dep_time, arr_time, dep_time_r, arr_time_r, price, type) "
 							+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -71,6 +72,12 @@ public class TicketDaoJDBC implements TicketDao{
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
 		}
 	}
 

@@ -18,24 +18,9 @@ import persistence.dao.CommentoDao;
 
 
 public class UploadComment extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
-    public UploadComment() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		CommentoDao commentoDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDao();
@@ -46,13 +31,10 @@ public class UploadComment extends HttpServlet {
 		String message = request.getParameter("content");
 		Long postId = Long.parseLong(request.getParameter("id")) ;
 		
-		
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
 		Commento commentToSave = new Commento(1, message, userid, postId, date);
-		
-		
 		commentoDao.save(commentToSave);
 		
 
@@ -67,7 +49,6 @@ public class UploadComment extends HttpServlet {
 		comment.addProperty("data", reportDate);
 
 		response.getWriter().write(comment.toString());
-		
 	}
 
 }

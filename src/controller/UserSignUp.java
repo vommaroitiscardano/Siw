@@ -14,15 +14,11 @@ import persistence.dao.UtenteDao;
 
 public class UserSignUp extends HttpServlet{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("signup.jsp");
-		
 		dispatcher.forward(req, resp);
 	}
 	
