@@ -75,8 +75,28 @@ public class PostDaoJDBC implements PostDao {
 	}
 
 	@Override
-	public void delete(Post post) {
-		// TODO Auto-generated method stub
+	public void delete(Long idPost) {
+		System.out.println("sono nella delete");
+		Connection connection = this.dataSource.getConnection();
+		try {
+			
+
+			String delete = "delete from post where id_post = " + idPost;
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+
+		
 
 	}
 
@@ -139,6 +159,8 @@ public class PostDaoJDBC implements PostDao {
 				result.add(post);
 
 			}
+			
+		
 			
 			if(result != null) {
 				

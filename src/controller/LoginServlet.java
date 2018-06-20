@@ -68,6 +68,7 @@ public class LoginServlet extends HttpServlet{
 		session.removeAttribute("username");
 		session.removeAttribute("loggato");
 		session.removeAttribute("utente");
+		session.removeAttribute("email");
 			
 		RequestDispatcher disp = req.getRequestDispatcher("index.jsp");
 		disp.forward(req, resp);

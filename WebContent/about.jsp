@@ -206,28 +206,7 @@
 	<div class="footer">
 		<!-- container -->
 		<div class="container">
-			<div class="footer-top-grids">
-				<!-- news-letter -->
-				<div class="news-letter">
-					<div class="news-letter-grids">
-						<div class="col-md-4 news-letter-grid"></div>
-						<div class="col-md-4 news-letter-grid">
-							<p class="mail">
-								Email : <a href="mailto:info@example.com">mail@example.com</a>
-							</p>
-						</div>
-						<div class="col-md-4 news-letter-grid">
-							<form>
-								<input type="text" value="Email" onfocus="this.value = '';"
-									onblur="if (this.value == '') {this.value = 'Email';}"
-									required=""> <input type="submit" value="Subscribe">
-							</form>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<!-- //news-letter -->
-			</div>
+
 		</div>
 		<!-- //container -->
 	</div>
@@ -235,6 +214,7 @@
 	<div class="footer-bottom-grids">
 			<!-- container -->
 			<div class="container">
+			<div class="containerfooter">
 				<div class="footer-bottom-top-grids">
 					<div class="col-md-4 footer-bottom-left">
 						<h4>Download our mobile Apps</h4>
@@ -284,6 +264,7 @@
 					</div>
 				</div>
 			</div>
+	</div>
 		</div>
 	<script defer src="js/jquery.flexslider.js"></script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>

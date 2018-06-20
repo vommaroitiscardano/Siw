@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-
-
   <display-name>Flydown</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -19,7 +17,6 @@
     <servlet-name>UserSignupServlet</servlet-name>
     <url-pattern>/user_signup</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>HandleSearch</servlet-name>
     <servlet-class>controller.HandleSearch</servlet-class>
@@ -28,7 +25,6 @@
     <servlet-name>HandleSearch</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CheckRoute</servlet-name>
     <servlet-class>controller.CheckRoute</servlet-class>
@@ -37,7 +33,6 @@
     <servlet-name>CheckRoute</servlet-name>
     <url-pattern>/checkRoute</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>HandleSearchStopover</servlet-name>
     <servlet-class>controller.HandleSearchStopover</servlet-class>
@@ -46,17 +41,14 @@
     <servlet-name>HandleSearchStopover</servlet-name>
     <url-pattern>/stopover_search</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-   <servlet-name>LoginServlet</servlet-name>
+    <servlet-name>LoginServlet</servlet-name>
     <servlet-class>controller.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>UploadPost</servlet-name>
     <servlet-class>controller.UploadPost</servlet-class>
@@ -65,8 +57,6 @@
     <servlet-name>UploadPost</servlet-name>
     <url-pattern>/UploadPost</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>ShowPost</servlet-name>
     <servlet-class>controller.ShowPost</servlet-class>
@@ -75,8 +65,6 @@
     <servlet-name>ShowPost</servlet-name>
     <url-pattern>/ShowPost</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>SocialLogin</servlet-name>
     <servlet-class>controller.SocialLogin</servlet-class>
@@ -85,8 +73,6 @@
     <servlet-name>SocialLogin</servlet-name>
     <url-pattern>/SocialLogin</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>UploadComment</servlet-name>
     <servlet-class>controller.UploadComment</servlet-class>
@@ -95,7 +81,6 @@
     <servlet-name>UploadComment</servlet-name>
     <url-pattern>/UploadComment</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ShowComment</servlet-name>
     <servlet-class>controller.ShowComment</servlet-class>
@@ -104,7 +89,6 @@
     <servlet-name>ShowComment</servlet-name>
     <url-pattern>/ShowComment</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CartContent</servlet-name>
     <servlet-class>controller.CartContent</servlet-class>
@@ -113,7 +97,6 @@
     <servlet-name>CartContent</servlet-name>
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Payment</servlet-name>
     <servlet-class>controller.Payment</servlet-class>
@@ -123,4 +106,12 @@
     <url-pattern>/pay</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>DeletePost</servlet-name>
+    <servlet-class>controller.DeletePost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePost</servlet-name>
+    <url-pattern>/DeletePost</url-pattern>
+  </servlet-mapping>
 </web-app>

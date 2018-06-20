@@ -31,6 +31,7 @@
 <script src="js/showPostInOtherPage.js"></script>
 <script src="js/UpComment.js"></script>
 <script src="js/scrollPost.js"></script>
+<script src="js/delPost.js"></script>
 
 <script src="js/googleLogin.js"></script>
 
@@ -191,11 +192,16 @@
 	<!--//header-->
 	<!-- banner -->
 	<!-- banner-bottom -->
+	
 	<div class="banner-bottom" >
+	
 		<!-- container -->
 		<!-- container of the complete post -->
 	<div class = "container" id="postContainer">
 		<div class="containerup" id="post">
+		<div class="buttonBack"><a href="blog.jsp"><img src="images/goBack.png" height="90" width="90"></div></a>
+
+		
 			<div class="faqs-top-grids" id="faqsid">
 				<div class="blog-grids">
 					<div class="col-md-8 blog-left">
@@ -228,6 +234,10 @@
 								<div class="clearfix"></div>
 								</div>
 							</div>
+							
+						
+						
+						<c:if test="${loggato != null}">
 							<div class="opinion">
 								<h3>Leave your comment</h3>
 								<form  id="commentSend">
@@ -235,15 +245,22 @@
 								
 									<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
 									
-									<input type="submit" value="SEND">
+									<div class="divSendComment"><input type="submit" value="SEND"></div>
+									
 								</form>
+							
 							</div>
+						</c:if>
+					
+						</div>
 						</div>
 					</div>
 					<div class="col-md-4 blog-right"></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
+			
+			<div class="buttonTop"><a href="#"><img src="images/goTop.png" height="90" width="90"></a></div>
 		</div>
 
 
@@ -253,6 +270,8 @@
 			<div class="about-info">
 				<h2>Flydown Blog</h2>
 			</div>
+			
+				<c:if test="${loggato != null}">
 			<div class="opinion" >
 				<h3>Take a post</h3>
 				<form id = "post-send">
@@ -263,6 +282,8 @@
 					<input id="form_post_u"  type="submit" value="SEND" >
 				</form>
 			</div>
+			</c:if>
+		
 			
 			<div class="fdPost">
 			<h2>Flydown post</h2>
@@ -285,14 +306,18 @@
 				</div>
 					</div>
 					
+			<div class="noMorePost">
+				
+			</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>
 		<!-- //container -->
-	</div>
+	
 	<!-- //banner-bottom -->
-	<div class="footer"></div>
+<div class="footer"></div>
 		<!-- //footer -->
 		<div class="footer-bottom-grids">
 			<!-- container -->

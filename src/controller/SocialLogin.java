@@ -25,6 +25,7 @@ public class SocialLogin extends HttpServlet {
 		session.removeAttribute("loggato");
 		session.removeAttribute("utente");
 		session.removeAttribute("tipo");
+		session.removeAttribute("email");
 
 	}
 

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.gson.JsonObject;
 
 import model.Post;
@@ -33,14 +36,29 @@ public class ShowPost extends HttpServlet {
 
 		Integer nPost = Integer.parseInt(request.getParameter("npost"));
 		Integer maxPost = Integer.parseInt(request.getParameter("maxpost"));
+		
+		
+		String userid = (String) request.getSession(false).getAttribute("email");
 
 		PostDao postDao = DatabaseManager.getInstance().getDaoFactory().getPostDao();
 		ArrayList<Post> postTotali = (ArrayList<Post>) postDao.retrieve(nPost, maxPost);
 		// non ce ne sono post
-		if (postTotali == null)
+		if (postTotali == null) {
 			maxPost = 0;
+			JSONObject obj = new JSONObject();
+			try {
+				obj.put("nopost", true);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			response.getWriter().write(obj.toString());
+			return;
 
+		}
+			
 
+		System.out.println("altri post");
 		maxPost += nPost + 1;
 
 		JsonObject risultato = new JsonObject();
@@ -53,6 +71,7 @@ public class ShowPost extends HttpServlet {
 			post.addProperty("title", postTotali.get(i).getTitle());
 			post.addProperty("id_post", postTotali.get(i).getIdPost());
 			post.addProperty("img", postTotali.get(i).getImgname());
+			post.addProperty("utente_sessione", userid);
 
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String reportDate = df.format(postTotali.get(i).getData());
@@ -63,8 +82,11 @@ public class ShowPost extends HttpServlet {
 
 			risultato.add("post" + String.valueOf(i), post);
 		}
+		
+		userid = "";
 
 		response.getWriter().write(risultato.toString());
+		
 
 	}
 
