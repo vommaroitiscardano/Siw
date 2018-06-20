@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +41,6 @@ public class Payment extends HttpServlet{
 					resp.getWriter().write(c.toString());
 					return;
 				}
-				
 			
 				for(Card i : cards){
 					JSONObject tmp = new JSONObject();
@@ -77,7 +75,6 @@ public class Payment extends HttpServlet{
 		
 		//memorizzo la carta nel db
 		if(checkbox != null && selected_card == null){
-			System.out.println("salvo la carta nel db");
 			String fullDate = year_expiration+"-"+(month_expiration.length() == 1 ?("0"+month_expiration)  : month_expiration);
 			Card c = new Card();
 			c.setUser(user);
@@ -97,7 +94,6 @@ public class Payment extends HttpServlet{
 		}
 		
 		JSONObject cart = (JSONObject) session.getAttribute("cartContent");
-		System.out.println("okkkkkk");
 		
 		try{
 			//rendo il volo persistente
@@ -108,13 +104,12 @@ public class Payment extends HttpServlet{
 			String index = cart.getString("index");
 			String current_stop = cart.getString("current_stop");
 			String dep_time = cart.getString("dep_time");
-			String arr_time = cart.getString("dep_time");
+			String arr_time = cart.getString("arr_time");
 			String dep_time_r = cart.getString("dep_time_r");
 			String arr_time_r = cart.getString("arr_time_r");
 			String price = cart.getString("price");
 			
 			TicketDao ticketDao = DatabaseManager.getInstance().getDaoFactory().getTicketDao();
-			System.out.println("memorizzo il volo nel db");
 			Ticket t = new Ticket(start_date, dep_time, arr_time, dep_name, arr_name, end_date, dep_time_r, arr_time_r, current_stop, price, user, index);
 			ticketDao.save(t);
 			

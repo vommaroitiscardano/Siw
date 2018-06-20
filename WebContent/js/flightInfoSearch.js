@@ -360,15 +360,13 @@ function addToChart(element, classIndex){
 					$('.children_num').text(children);
 					$('.item_price').text(price);
 					$('.tot_price').text(price);
-				
-				//console.log(dep_time + " " + arr_time +" "+dep_time1+" " +arr_time1+" " + stop + " /// " +dep_time_r + " " + arr_time_r +" "+dep_time_r1+" " +arr_time_r1+" "+ price);
-	
 				break;
 
 			default:
 				break;
 			}
 		
+			console.log(dep_time + " " + arr_time +" "+dep_time1+" " +arr_time1+" " + stop + " /// " +dep_time_r + " " + arr_time_r +" "+dep_time_r1+" " +arr_time_r1+" "+ price);
 			//invio i dati alla servlet
 			$.ajax({
 				type: 'POST',
@@ -384,7 +382,7 @@ function addToChart(element, classIndex){
 					"arr_time_1": arr_time1,
 					"dep_time_r1": dep_time_r1,
 					"arr_time_r1": arr_time_r1,
-					"price": price	,
+					"price": price,
 					"add": "true",
 					"htmlContent": pendingElement
 				}

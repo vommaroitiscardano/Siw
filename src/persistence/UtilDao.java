@@ -55,7 +55,7 @@ public class UtilDao {
 //					+ "create table commento(\"id_commento\" bigint primary key, messaggio varchar(255), id_utente varchar(255), id_post bigint, date date)";
 
 //			String create = "create table card(\"id\" bigint primary key,user_key varchar(30), card_name varchar(20), card_number varchar(16), expiration_date varchar(7), cvv varchar(3) );";
-			String create = "create table ticket(\"id\" bigint primary key,user_key varchar(15), dep_date varchar(10), ret_date varchar(10), dep_airport varchar(25), arr_airport varchar(25), stop varchar(25), dep_time varchar(5), arr_time varchar(5), dep_time_r varchar(5), arr_time_r varchar(5), price varchar(4), type varchar(1) );";
+			String create = "create table ticket(\"id\" bigint primary key,user_key varchar(25), dep_date varchar(10), ret_date varchar(10), dep_airport varchar(25), arr_airport varchar(25), stop varchar(25), dep_time varchar(5), arr_time varchar(5), dep_time_r varchar(5), arr_time_r varchar(5), price varchar(4), type varchar(1) );";
 			
 			PreparedStatement statement = connection.prepareStatement(create);
 
