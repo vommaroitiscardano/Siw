@@ -44,6 +44,7 @@
 <script src="js/showP.js"></script>
 
 
+
 <!-- //js -->
 <script type="application/x-javascript">
 	
@@ -67,6 +68,15 @@
 		// 100% fit in a container
 		});
 	});
+</script>
+
+<script type="text/javascript">
+
+$(function () {
+	
+	loadPost();
+});
+
 </script>
 </head>
 <body>
