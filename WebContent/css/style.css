@@ -5960,3 +5960,28 @@ input.pay-logo{
 	
 	position:relative;
 }
+
+
+.buttonBack{
+	float: left;
+	margin-left: -150px;
+}
+
+.buttonTop{
+	float: right;
+	margin-right: -150px;
+}
+
+
+.divSendComment{
+	margin-top: -60px;
+}
+
+.containerfooter{
+	padding-top: 211px;
+}
+
+.trashome{
+	padding-right: 10px;
+}
+
