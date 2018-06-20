@@ -109,7 +109,6 @@ public class UtenteDaoJDBC implements UtenteDao{
 				u.setId_Utente(result.getLong("id_utente"));
 				u.setNome(result.getString("nome"));
 				u.setCognome(result.getString("cognome"));
-				System.out.println("granata");
 				u.setEmail(result.getString("email"));
 				u.setPassword(result.getString("password"));
 				

@@ -168,7 +168,7 @@
 															<span class="tot_price"></span>
 														</span>
 														<div class="submit_cart" role="button">
-															<a href="pay">Continue</a>
+															<a href="payment.jsp">Continue</a>
 														</div>
 													</div>												
 												</div>

@@ -5468,12 +5468,13 @@ label {
 }
 
 .c_sap_tabs{
-	clear:both;
-	padding: 0em 0 0em;
+	/* clear:both; */
+	/* padding: 0em 0 0em; */
 	margin: 0 auto;
 	width: 680px;
 	background: #fff;
 	box-shadow: 0 0 2px #CECECE;
+	height: auto;
 }
 
 .pay-tabs{
@@ -5530,11 +5531,11 @@ li.c_resp-tab-item.resp-tab-active span label {
 
 .c_resp-tabs-container {
 	padding: 0px;
-	clear: left;
+	/* clear: left; */
 	padding: 2em 2.5em;
 	background: #fff;
 	border: 1px solid #e7ebee;
-	height: 380px;
+	height: auto;
 }
 
 .payment-info h3{
@@ -5562,7 +5563,6 @@ li.c_resp-tab-item.resp-tab-active span label {
 
 
 .payment-info form input[type="submit"]:hover{
-    background: #3AD5A0;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -5603,6 +5603,56 @@ li.c_resp-tab-item.resp-tab-active span label {
   outline: none;
   color: #D7D7D7;
 }
+
+.remember_card{
+	position: relative;
+	float: right;
+	left: 180px;
+	top: 40px; 
+}
+
+.remember_card_paypal{
+	float: right;
+	position: relative;
+	right: 110px;
+	top: 67px
+}
+
+.autocomplete_card{
+	display: none;
+	background: #fff;
+	position: relative;
+	top: -21px;
+	padding: 5px;
+	border: 1px solid #eff2f4;
+	margin-right: 25px;
+}
+
+.card_hidden{
+	display: none;
+}
+
+.card_list{
+	list-style: none;
+	text-align: left;
+}
+
+
+.card_element{
+	padding-left: 5px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+#cardName, #cardNumber, #cardCvv{
+	font-size: 19px;
+	color: black;
+}
+
+.card_element:hover{
+	color: #7eab0c;
+}
+
 .user-login form{
     margin-top: 22px;
 }
@@ -5647,8 +5697,7 @@ li.c_resp-tab-item.resp-tab-active span label {
 	-ms-transition:0.5s all;
 }
 .user-right input[type="submit"]:hover {
-background:#28b08a;
-transition:0.5s all;
+	transition:0.5s all;	
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
@@ -5692,7 +5741,7 @@ transition:0.5s all;
   height:16px;
 }
 
-.bank_tab{
+.paypal_tab{
 	display: none;
 }
 

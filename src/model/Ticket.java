@@ -20,9 +20,28 @@ public class Ticket {
 	
 	private String user;
 	
+	private String flightType;
+	
 
 	public Ticket() {
 
+	}
+	
+	public Ticket(String departureDate, String departureTime, String arrivalTime, String departureAirport,
+			String arrivalAirport, String returnDate, String departureTime_r, String arrivalTime_r, String stop,
+			String price, String user, String flightType) {
+		this.departureDate = departureDate;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.departureAirport = departureAirport;
+		this.arrivalAirport = arrivalAirport;
+		this.returnDate = returnDate;
+		this.departureTime_r = departureTime_r;
+		this.arrivalTime_r = arrivalTime_r;
+		this.stop = stop;
+		this.price = price;
+		this.user = user;
+		this.flightType = flightType;
 	}
 	
 		
@@ -112,6 +131,14 @@ public class Ticket {
 
 	public void setUser(String user) {
 		this.user = user;
+	}
+	
+	public String getFlightType() {
+		return flightType;
+	}
+
+	public void setFlightType(String flightType) {
+		this.flightType = flightType;
 	}
 
 }

@@ -49,10 +49,13 @@ public class UtilDao {
 		
 //			String create = "create table utente(\"id_utente\" bigint primary key,nome varchar(255), cognome varchar(255), data_di_nascita DATE, email varchar(255), password varchar(255));"
 //					+ "create table post(\"id_post\" bigint primary key, title varchar(255), messaggio varchar(255), id_utente varchar(255), imgsrc varchar(255), date date);"
-////					+ "create table route (\"id\" bigint primary key, from_a varchar(3), to_b varchar(3), connecting_ab varchar(3));"
+////				+ "create table route (\"id\" bigint primary key, from_a varchar(3), to_b varchar(3), connecting_ab varchar(3));"
+//					+ "create table ticket(\"id\" bigint primary key,user_key varchar(15), dep_date varchar(10), ret_date varchar(10), dep_airport varchar(25), arr_airport varchar(25), stop varchar(25), dep_time varchar(5), arr_time varchar(5), dep_time_r varchar(5), arr_time_r varchar(5), price varchar(4) );"
+			//		+ "create table airport_info (\"id\" varchar(3) primary key, name varchar(100));"
 //					+ "create table commento(\"id_commento\" bigint primary key, messaggio varchar(255), id_utente varchar(255), id_post bigint, date date)";
 
-			String create = "create table ticket(\"id\" bigint primary key,user_key varchar(15), dep_date varchar(10), ret_date varchar(10), dep_airport varchar(25), arr_airport varchar(25), stop varchar(25), dep_time varchar(5), arr_time varchar(5), dep_time_r varchar(5), arr_time_r varchar(5), price varchar(4) );";
+//			String create = "create table card(\"id\" bigint primary key,user_key varchar(30), card_name varchar(20), card_number varchar(16), expiration_date varchar(7), cvv varchar(3) );";
+			String create = "create table ticket(\"id\" bigint primary key,user_key varchar(15), dep_date varchar(10), ret_date varchar(10), dep_airport varchar(25), arr_airport varchar(25), stop varchar(25), dep_time varchar(5), arr_time varchar(5), dep_time_r varchar(5), arr_time_r varchar(5), price varchar(4), type varchar(1) );";
 			
 			PreparedStatement statement = connection.prepareStatement(create);
 

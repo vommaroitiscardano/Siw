@@ -1,6 +1,7 @@
 package persistence;
 
 import persistence.dao.AirportInfoDao;
+import persistence.dao.CardDao;
 import persistence.dao.CommentoDao;
 import persistence.dao.PostDao;
 import persistence.dao.RouteDao;
@@ -54,5 +55,7 @@ public abstract class DAOFactory {
 	public abstract CommentoDao getCommentoDao();
 
 	public abstract TicketDao getTicketDao();
+	
+	public abstract CardDao getCardDao();
 
 }

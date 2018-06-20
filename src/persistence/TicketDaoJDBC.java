@@ -23,8 +23,8 @@ public class TicketDaoJDBC implements TicketDao{
 		try {
 			int id = getNextId(connection);
 
-			String insert = "insert into ticket(id, user_key, dep_date, ret_date, dep_airport, arr_airport, stop, dep_time, arr_time, dep_time_r, arr_time_r, price) "
-							+ "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into ticket(id, user_key, dep_date, ret_date, dep_airport, arr_airport, stop, dep_time, arr_time, dep_time_r, arr_time_r, price, type) "
+							+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setString(2, ticket.getUser());
@@ -38,6 +38,7 @@ public class TicketDaoJDBC implements TicketDao{
 			statement.setString(10, ticket.getDepartureTime_r());
 			statement.setString(11, ticket.getArrivalTime_r());
 			statement.setString(12, ticket.getPrice());
+			statement.setString(13, ticket.getFlightType());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {

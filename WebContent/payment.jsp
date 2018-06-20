@@ -22,6 +22,7 @@
 <script src="js/modernizr.custom.js"></script>
 <script src="js/menu_jquery.js"></script>
 <script src="js/cartHandler.js"></script>
+<script src="js/payment.js"></script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 
 <script src="js/googleLogin.js"></script>
@@ -112,7 +113,7 @@
 													<input type="password" name="password" id="password">
 												</fieldset>
 												<input type="submit" id="login" value="Sign in"> 
-												<input type="hidden" value="pay" name="page">
+												<input type="hidden" value="payment.jsp" name="page">
 											</fieldset>
 											<div class="or-grid">
 												<p>OR</p>
@@ -124,12 +125,12 @@
 															data-max-rows="1" data-size="large"
 															data-button-type="continue_with" data-show-faces="false"
 															data-auto-logout-link="false" data-use-continue-as="false"
-															scope="public_profile,email" onlogin="checkLoginState('pay');"
+															scope="public_profile,email" onlogin="checkLoginState('payment.jsp');"
 															add target="_blank">
 														</div>
 													</div>
 													<div>
-														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('pay')">
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('payment.jsp')">
 															<div class="g-signin2" data-width="257" data-height="40" data-onsuccess="onSignIn"
 																	data-theme="dark">
 															</div>
@@ -211,12 +212,12 @@
 															data-max-rows="1" data-size="medium"
 															data-button-type="continue_with" data-show-faces="false"
 															data-auto-logout-link="false" data-use-continue-as="false"
-															scope="public_profile,email" onlogin="checkLoginState('pay');"
+															scope="public_profile,email" onlogin="checkLoginState('payment.jsp');"
 															add target="_blank">
 														</div>
 													</div>
 													<div>
-														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('pay')">
+														<div class="form-group row justify-content-center" role="button" onclick="getCurrPage('payment.jsp')">
 															<div class="g-signin2" data-width="200" data-height="27" data-onsuccess="onSignIn" data-theme="dark">
 															</div>
 														</div>	
@@ -229,79 +230,90 @@
 							</form>
 						</div>
 					</div>
-			
 			</c:if>
 			<c:if test="${loggato != null}">
 				<div class="c_sap_tabs">
-							<div>
-								<div class="pay-tabs">
-									  <ul class="c_resp-tabs-list">
-										  <li class="c_resp-tab-item b_tab" aria-controls="tab_item-3" role="tab" onclick="paymentTab(this);">
-										  <span class="pic_span"><label class="pic2"></label>Debit Card</span></li>
-										  <li class="c_resp-tab-item p_tab" aria-controls="tab_item-2" role="tab" onclick="paymentTab(this);">
-										  <span class="pic_span"><label class="pic4"></label>PayPal</span></li> 
-									  </ul>	
-								</div>
-								<div class="c_resp-tabs-container">
-									<div class="c_tab-1 c_resp-tab-content paypal_tab" aria-labelledby="tab_item-2">
-										<div class="payment-info">
-											<h3>PayPal</h3>
-											<div class="login-tab">
-												<div class="user-login">
-													<h2>Login</h2>
-													<form>
-														<input type="text" value="name@email.com" required="">
-														<input type="password" value="PASSWORD" required="">
-															<div class="user-grids">
-																<div class="user-right">
-																	<input type="submit" value="LOGIN">
-																</div>
-																<div class="clear"></div>
-															</div>
-													</form>
-												</div>
-											</div>
+					<div>
+						<div class="pay-tabs">
+							  <ul class="c_resp-tabs-list">
+								  <li class="c_resp-tab-item b_tab" aria-controls="tab_item-3" role="tab" onclick="paymentTab(this);">
+								  <span class="pic_span"><label class="pic2"></label>Debit Card</span></li>
+								  <li class="c_resp-tab-item p_tab" aria-controls="tab_item-2" role="tab" onclick="paymentTab(this);">
+								  <span class="pic_span"><label class="pic4"></label>PayPal</span></li> 
+							  </ul>	
+						</div>
+						<div class="c_resp-tabs-container">
+							<div class="c_tab-1 c_resp-tab-content paypal_tab" aria-labelledby="tab_item-2">
+								<div class="payment-info">
+									<h3>PayPal</h3>
+									<div class="login-tab">
+										<div class="user-login">
+											<h2>Login</h2>
+											<form>
+												<input type="text" value="name@email.com" required="">
+												<input type="password" value="PASSWORD" required="">
+													<div class="user-grids">
+														<div class="user-right">
+															<input type="submit" value="LOGIN">
+														</div>
+														<div class="clear"></div>
+													</div>
+													<div class="remember_card_paypal">
+														<label for="checkbox"><input type="checkbox" name="rememberMe" > <i>Remember me</i></label>
+													</div>
+											</form>
 										</div>
 									</div>
-									<div class="c_tab-1 c_resp-tab-content bank_tab" aria-labelledby="tab_item-3">	
-										<div class="payment-info">
-											<h3 class="pay-title">Dedit Card Info</h3>
-											<form>
-												<div class="tab-for">				
-													<h5>NAME ON CARD</h5>
-														<input type="text" value="">
-													<h5>CARD NUMBER</h5>													
-														<input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="">
-												</div>	
-												<div class="transaction">
-													<div class="tab-form-left user-form">
-														<h5>EXPIRATION</h5>
-															<ul>
-																<li>
-																	<input type="number" class="text_box" type="text" value="6" min="1" />	
-																</li>
-																<li>
-																	<input type="number" class="text_box" type="text" value="1988" min="1" />	
-																</li>
-																
-															</ul>
-													</div>
-													<div class="tab-form-right user-form-rt">
-														<h5>CVV NUMBER</h5>													
-														<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
-													</div>
-													<div class="clear"></div>
+								</div>
+							</div>
+							<div class="c_tab-1 c_resp-tab-content bank_tab" aria-labelledby="tab_item-3">	
+								<div class="payment-info">
+									<h3 class="pay-title">Dedit Card Info</h3>
+									<form method="post" action="pay">
+										<div class="tab-for">				
+											<h5>NAME ON CARD</h5>
+												<input id="cardName" type="text" value="" name="card_name" required="">
+											<h5>CARD NUMBER</h5>
+												<div>													
+													<input id="cardNumber" class="pay-logo" type="text" value="" name="card_number" placeholder="0000-0000-0000-0000"  required="" onfocus="$('.autocomplete_card').show();">
 												</div>
-												<input type="submit" value="SUBMIT">
-											</form>
+										</div>
+										<div class="autocomplete_card">
+											<div class="card_container">
+												<ul class="card_list">
+												</ul>
+											</div>
 										</div>	
-									</div>
+										<div class="transaction">
+											<div class="tab-form-left user-form">
+												<h5>EXPIRATION</h5>
+													<ul>
+														<li>
+															<input id="cardMonth" type="number" class="text_box" type="text" name="month_expiration" value="6" min="1" />	
+														</li>
+														<li>
+															<input id="cardYear" type="number" class="text_box" type="text" name="year_expiration" value="2020" min="1" />	
+														</li>
+														
+													</ul>
+											</div>
+											<div class="tab-form-right user-form-rt">
+												<h5>CVV NUMBER</h5>													
+												<input id="cardCvv" type="text" value="" name="card_cvv" placeholder="xxx" required="">
+											</div>
+											<div class="clear"></div>
+										</div>
+										<input type="submit" value="SUBMIT">
+										<div class="remember_card">
+											<label for="checkbox"><input type="checkbox" name="checkbox" value="checked" checked> <i>Remember me</i></label>
+										</div>
+									</form>
 								</div>	
 							</div>
-						</div>
+						</div>	
+					</div>
+				</div>
 			</c:if>
-		
-		
 		</div>
 		<!-- //container -->
 	</div>
