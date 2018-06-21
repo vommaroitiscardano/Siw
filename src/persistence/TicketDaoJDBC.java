@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Ticket;
@@ -83,8 +84,46 @@ public class TicketDaoJDBC implements TicketDao{
 
 	@Override
 	public List<Ticket> retrieveTicket(String user) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Ticket> result = null;
+		Connection connection = this.dataSource.getConnection();
+		try {	
+			PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE user_key=?");
+			statement.setString(1, user);
+			ResultSet rs = statement.executeQuery();
+			boolean trovato = true;
+			while (rs.next()) {
+				if(trovato){
+					result = new ArrayList<Ticket>();
+					trovato = false;
+				}
+				String departureDate = rs.getString("dep_date");
+				String departureTime = rs.getString("dep_time");
+				String arrivalTime = rs.getString("arr_time");
+				String departureAirport = rs.getString("dep_airport");
+				String arrivalAirport = rs.getString("arr_airport");
+				String returnDate = rs.getString("ret_date");
+				String departureTime_r = rs.getString("dep_time_r");
+				String arrivalTime_r = rs.getString("arr_time_r");
+				String stop = rs.getString("stop");
+				String price = rs.getString("price");
+				String flightType = rs.getString("type");
+				
+				Ticket t = new Ticket(departureDate, departureTime, arrivalTime, departureAirport, arrivalAirport, returnDate, departureTime_r, arrivalTime_r, stop, price, user, flightType);
+				result.add(t);
+
+			}
+			
+			return result;
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 
 }

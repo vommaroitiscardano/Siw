@@ -6032,3 +6032,150 @@ input.pay-logo {
 	right: 0;
 	top: -12px;
 }
+
+.flight_booked_content, .profile_info_content{
+	/* display: none; */
+	position: absolute;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 2px 2px 17px #2e2828d1;
+	z-index: 100;
+	width: 600px;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 150px;
+	left: 0;
+	right: 0;
+	overflow-y:auto;
+}
+
+.flight_booked_container, .profile_info_container{
+	display: none;
+	position: absolute;
+	background: #d3d2d67d;
+    top: 0;
+    right: 0;
+	min-height: 900px;
+    left: 0;
+    z-index: 1000;
+    border-radius: 10px;
+
+}
+
+.profile_info_content{
+	width: 700px;
+}
+
+.flight_booked_icon{
+	height: 200px;
+	background: #47c9a2;
+}
+
+.success_image_book{
+	position: relative;
+	top: 40px;
+}
+
+.flight_booked_header{
+	position: relative;
+	top: 40px;
+}
+
+.great_class{
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.info_class{
+	font-weight: 500;
+
+}
+
+.booked_button{
+	position: relative;
+	top: 100px;
+	float: right;
+	padding-right: 20px;
+}
+
+.booked_button_content{
+	background: #6fd508;
+	border-radius: 20px;
+	padding: 7px;
+	color: #fff;
+}
+
+.link_to_profile{
+	color: #fff;
+}
+
+.list-group-activity, .list-group-profile{
+	font-size: 19px;
+	font-weight: 700;
+	color: #6fd508;
+}
+
+.profile_content{
+	float: left;
+	padding-left: 20px;
+}
+
+
+.dialog{
+	bottom: 2px;
+	position: relative;
+	float:right;
+}
+
+.close-thik{
+	width: 15px;
+
+}
+
+.profile_user_ico{
+	
+}
+
+.list_ticket_user{
+	list-style: none;
+}
+
+.list_ticket_item{
+	padding: 20px;
+	border-bottom: 3px solid #d9e4cf;
+}
+
+.ticket_route{
+	float: left;
+}
+
+.ticket_price{
+	float: right;
+}
+
+.ticket_time{
+	position: relative;
+	left: 30px;
+}
+
+.ticket_date{
+	position: relative;
+	right: 25px;
+}
+
+.ticket_stop{
+	display: block;
+	padding-top:10px;
+}
+.ticket_stop_info{
+	color: #ff5c5c
+}
+
+.ticket_return_container{
+	padding-top: 25px;
+}
+
+.t_o_u{
+	background: #daffdab3;
+}

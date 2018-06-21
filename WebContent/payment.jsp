@@ -34,8 +34,6 @@
 
 
 <script type="application/x-javascript">
-	
-	
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0);
 	}, false);
@@ -178,7 +176,25 @@
 	</div>
 	<!--//header-->
 	<!-- banner-bottom -->
-	<div class="banner-bottom">
+	<div class="banner-bottom booked_style">
+		<div class="flight_booked_container">
+			<div class="flight_booked_content">
+				<div class="flight_booked_icon">
+					<div class="_modal-header">
+						<span class="success_image_book"><img src="images/success.png"></span>
+					</div>
+				</div>
+				<div class="flight_booked_header">
+					<h4 class="great_class"> Congratulations!</h4>
+					<span class="info_class">Your flight has been booked sucessfully.</span>
+				</div>
+				<div class="booked_button">
+					<div class="booked_button_content" role="button">
+						<span><a href="profile.jsp" class="link_to_profile">Check it out</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--  container -->
 		<div class="container">
 			
@@ -269,7 +285,7 @@
 							<div class="c_tab-1 c_resp-tab-content bank_tab" aria-labelledby="tab_item-3">	
 								<div class="payment-info">
 									<h3 class="pay-title">Dedit Card Info</h3>
-									<form method="post" action="pay">
+									<form id="booking_form">
 										<div class="tab-for">				
 											<h5>NAME ON CARD</h5>
 												<input id="cardName" type="text" value="" name="card_name" required="">
@@ -303,9 +319,9 @@
 											</div>
 											<div class="clear"></div>
 										</div>
-										<input type="submit" value="SUBMIT">
+										<input id="booking_ticket" type="submit" value="SUBMIT">
 										<div class="remember_card">
-											<label for="checkbox"><input type="checkbox" name="checkbox" value="checked" checked> <i>Remember me</i></label>
+											<label for="checkbox"><input id="checkBox_id" type="checkbox" name="checkbox" value="checked" checked> <i>Remember me</i></label>
 										</div>
 									</form>
 								</div>	

@@ -113,6 +113,8 @@ public class Payment extends HttpServlet{
 			Ticket t = new Ticket(start_date, dep_time, arr_time, dep_name, arr_name, end_date, dep_time_r, arr_time_r, current_stop, price, user, index);
 			ticketDao.save(t);
 			
+			session.removeAttribute("cartContent");
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

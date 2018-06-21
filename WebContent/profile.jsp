@@ -20,7 +20,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script src="js/menu_jquery.js"></script>
-<script src="js/flightInfoSearch.js"></script>
+<script src="js/profileFilter.js"></script>
 
 <script type="application/x-javascript">
 	
@@ -51,6 +51,19 @@
 	<!--header-->
 	<div class="header">
 		<div class="container">
+		<div class="profile_info_container">
+			<div class="profile_info_content">
+				<div class="dialog" role="button" onclick="$('.profile_info_container').hide(); $('.profile_info_content_list>li').remove();">
+				  <img src="images/close.png" class="close-thik">
+				</div>
+				<div class="profile_info_content_list">
+					<ul class="list_ticket_user">
+					</ul>
+				
+				</div>
+				
+			</div>
+		</div>
 			<div class="header-grids">
 				<div class="logo">
 					<h1>
@@ -117,65 +130,39 @@
 	<div class="banner-bottom">
 		<!--  container -->
 		<div class="container">
-			<div class="container target">
+			<div class="target">
 				<div class="row">
-					<div class="col-sm-10 userName_info">
-						<h1 class="">Welcome ${nome}</h1>
-
-						<button type="button" class="btn btn-success">Book me!</button>
-						<button type="button" class="btn btn-info">Send me a message</button>
-						<br>
-					</div>
-					<div class="col-sm-2">
-						<a href="/users" class="pull-right"><img title="profile image"
+					<div class="profile_user_ico">
+						<span class="welcome_profile">Welcome ${nome}</span>
+						<a href="" class="pull-right"><img title="profile image"
 							class="img-circle img-responsive"
-							src="http://www.rlsandbox.com/img/profile.jpg"></a>
+							src="images/user_profile_ico.png" width=45px;></a>
 
 					</div>
 				</div>
-				<div class="row">
+				<div class="profile_content">
 					<div class="col-sm-3">
 						<!--left col-->
 						<ul class="list-group">
-							<li class="list-group-item text-muted" contenteditable="false">Profile</li>
-							<li class="list-group-item text-right"><span
-								class="pull-left"><strong class="">Joined</strong></span>
-								2.13.2014</li>
-							<li class="list-group-item text-right"><span
-								class="pull-left"><strong class="">Last seen</strong></span>
-								Yesterday</li>
-							<li class="list-group-item text-right"><span
-								class="pull-left"><strong class="">Real name</strong></span>
-								Joseph Doe</li>
-							<li class="list-group-item text-right"><span
-								class="pull-left"><strong class="">Role: </strong></span> Pet
-								Sitter</li>
+							<li class="list-group-item text-muted f_profile"><span class="list-group-profile">Profile</span></li>
+								<li class="list-group-item text-right" role="button" onclick="">
+								<span class="pull-left"><strong class="">Edit</strong></span><img src="images/arrow-s.png"></li>
 						</ul>
 						
 						<ul class="list-group">
-							<li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+							<li class="list-group-item text-muted"><span class="list-group-activity">Activity</span><i class="fa fa-dashboard fa-1x"></i></li>							
+							<li class="list-group-item text-right" role="button" role="button" onclick="retrieveFlights();">
+								<span class="pull-left"><strong class="">Tickets</strong></span><img src="images/arrow-s.png"></li>
 							<li class="list-group-item text-right" role="button" onclick="">
-								<span class="pull-left"><strong class="">Flights</strong></span> 125</li>
-							<li class="list-group-item text-right">
-								<span class="pull-left"><strong class="">Posts</strong></span> 13</li>
-							<li class="list-group-item text-right">
-								<span class="pull-left"><strong class="">Comments</strong></span> 37</li>
+								<span class="pull-left"><strong class="">Posts</strong></span><img src="images/arrow-s.png"></li>
+							<li class="list-group-item text-right" role="button" onclick="">
+								<span class="pull-left"><strong class="">Comments</strong></span><img src="images/arrow-s.png"></li>
 						</ul>
-						<div class="panel panel-default">
-							<div class="panel-heading">Social Media</div>
-							<div class="panel-body">
-								<i class="fa fa-facebook fa-2x"></i> <i
-									class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i>
-								<i class="fa fa-pinterest fa-2x"></i> <i
-									class="fa fa-google-plus fa-2x"></i>
-
-							</div>
-						</div>
 					</div>
 					<!--/col-3-->
 					<div class="col-sm-9" style="" contenteditable="false">
 						<div class="panel panel-default">
-							<div class="panel-heading">Starfox221's Bio</div>
+							<div class="panel-heading">${nome}'s Bio</div>
 							<div class="panel-body">A long description about me.</div>
 						</div>
 						<div class="panel panel-default target">
@@ -209,17 +196,9 @@
 												<p></p>
 											</div>
 										</div>
-
 									</div>
-
 								</div>
-
 							</div>
-
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">Starfox221's Bio</div>
-							<div class="panel-body">A long description about me.</div>
 						</div>
 					</div>
 				</div>
