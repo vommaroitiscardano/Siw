@@ -32,7 +32,7 @@
 
 <script src="js/googleLogin.js"></script>
 <script src="js/fbLogin.js"></script>
-
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src='http://connect.facebook.net/en_US/all.js'></script>

@@ -105,7 +105,6 @@
     <servlet-name>Payment</servlet-name>
     <url-pattern>/pay</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>DeletePost</servlet-name>
     <servlet-class>controller.DeletePost</servlet-class>
@@ -114,4 +113,14 @@
     <servlet-name>DeletePost</servlet-name>
     <url-pattern>/DeletePost</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteComment</servlet-name>
+    <servlet-class>controller.DeleteComment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteComment</servlet-name>
+    <url-pattern>/DeleteComment</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

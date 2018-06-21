@@ -8,6 +8,17 @@ public class Commento {
 	private String messaggio;
 	private String utente;
 	private Long idPost;
+	
+	public String getNomeUtente() {
+		return nomeUtente;
+	}
+
+	public void setNomeUtente(String nomeUtente) {
+		this.nomeUtente = nomeUtente;
+	}
+
+
+	private String nomeUtente;
 
 
 	private Date date;
@@ -16,11 +27,12 @@ public class Commento {
 	public Commento() {
 	}
 	
-	public Commento(long i, String mex, String ute, Long idP, Date data) {
+	public Commento(long i, String mex, String ute, String nomeU, Long idP, Date data) {
 		
 		this.idCommento = i;
 		this.messaggio = mex;
 		this.utente = ute;
+		this.nomeUtente = nomeU;
 		this.idPost = idP;
 		this.date = data;
 		

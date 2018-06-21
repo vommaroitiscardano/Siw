@@ -24,13 +24,14 @@ public class CommentoDaoJDBC implements CommentoDao {
 		try {
 			int id = getNextId(connection);
 			connection = this.dataSource.getConnection();
-			String insert = "insert into commento(id_commento, messaggio, id_utente, id_post, date) values (?,?,?,?,?)";
+			String insert = "insert into commento(id_commento, messaggio, id_utente, nome_utente, id_post, date) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setString(2, commento.getMessaggio());
 			statement.setString(3, commento.getUtente());
-			statement.setLong(4, commento.getIdPost());
-			statement.setDate(5, commento.getDate());
+			statement.setString(4, commento.getNomeUtente());
+			statement.setLong(5, commento.getIdPost());
+			statement.setDate(6, commento.getDate());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -71,8 +72,25 @@ public class CommentoDaoJDBC implements CommentoDao {
 	}
 
 	@Override
-	public void delete(Commento commento) {
-		// TODO Auto-generated method stub
+	public void delete(Long idCommento) {
+		Connection connection = this.dataSource.getConnection();
+		try {
+
+			
+			String delete = "delete from commento where id_commento = " + idCommento;
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
 		
 	}
 
@@ -89,6 +107,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 				Long id = rs.getLong("id_commento");
 				String message = rs.getString("messaggio");
 				String idUtente = rs.getString("id_utente");
+				String nomeUtente = rs.getString("nome_utente");
 				Long t = rs.getLong("id_post");
 				Date data = rs.getDate("date");
 				Commento commento = new Commento(); // Creating a user object to fill with user data (I imagine that you have a user
@@ -97,6 +116,7 @@ public class CommentoDaoJDBC implements CommentoDao {
 				commento.setIdCommento(id);
 				commento.setMessaggio(message);
 				commento.setUtente(idUtente);
+				commento.setNomeUtente(nomeUtente);
 				commento.setIdPost(t);
 				commento.setDate(data);
 				// Add the retrived user to the list

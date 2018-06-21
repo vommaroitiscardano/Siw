@@ -72,13 +72,16 @@ public class PostDaoJDBC implements PostDao {
 
 	@Override
 	public void delete(Long idPost) {
-		System.out.println("sono nella delete");
+		System.out.println("sono nella delete del post");
 		Connection connection = this.dataSource.getConnection();
 		try {
 
 			String delete = "delete from post where id_post = " + idPost;
+			String delete2 = "delete from commento where id_post = " +idPost;
 			PreparedStatement statement = connection.prepareStatement(delete);
+			PreparedStatement statement2 = connection.prepareStatement(delete2);
 			statement.executeUpdate();
+			statement2.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

@@ -28,7 +28,7 @@
 
 <script src="js/fbLogin.js"></script>
 <script src="js/googleLogin.js"></script>
-
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src='http://connect.facebook.net/en_US/all.js'></script>
@@ -40,7 +40,8 @@
 <script src="js/UpComment.js"></script>
 <script src="js/scrollPost.js"></script>
 <script src="js/delPost.js"></script>
-
+<script src="js/delComment.js"></script>
+<!-- <script type="text/javascript" src="scrollPost.js"></script> -->
 <!-- //js -->
 <script type="application/x-javascript">
 	addEventListener("load", function() {
@@ -63,8 +64,10 @@
 	});
 </script>
 
+
 </head>
 <body>
+  <body onload="loadPost();">
 	<!--header-->
 	<div class="header">
 		<div class="container">
@@ -95,7 +98,7 @@
 					<script>
 						$("span.menu").click(function() {
 							$("ul.nav1").slideToggle(300, function() {
-								// Animation complete.
+								// Animation complete
 							});
 						});
 					</script>
@@ -193,7 +196,7 @@
 							<div class="blog-grids">
 								<div class="col-md-8 blog-left">
 									<div class="blog-left-grid single-left-grid">
-										<p> Posted By <a id = "user" href="#"></a> &nbsp;&nbsp; on June 2, 2015 &nbsp;&nbsp; </p>
+										<p> Posted By <a id = "user" href="#"></a> &nbsp;&nbsp;  </p>
 										<h2 id="myh1"></h2>
 										<img id="img" src="" alt="" width="500px" height="600px">
 										<div class="blog-left-right">
@@ -214,7 +217,7 @@
 										<div class="opinion">
 											<h3>Leave your comment</h3>
 											<form  id="commentSend">
-												<textarea class = "textComment" placeholder="Message" name="mess" required=""></textarea>
+												<textarea  maxlength="418" class = "textComment" placeholder="Message" name="mess" required=""></textarea>
 											
 												<input type ="text" id="id_post" name="idPost" style="visibility:hidden;" class="id_post_value">
 												
@@ -249,12 +252,7 @@
 				<div class="fdPost"><h2>Flydown post</h2></div>
 				<div class="faqs-top-grids ">
 					<div class="blog-grids blog_post_view">
-						<script type="text/javascript">
-							$(document).ready(function() {
-								loadPost();
-							});
-						
-						</script>
+
 						<div class="col-md-8 blog-left" id = "appendPost">
 								<!-- qua appendo i post -->
 						</div>
@@ -271,14 +269,14 @@
 				</div>
 			</div>
 		</div>
+		<div class="buttonTop">
+			<a href="#"><img src="images/goTop.png" height="90" width="90"></a>
+		</div>
 	</div>
 		<!-- //container -->
 	
 	<!-- //banner-bottom -->
 		<div class="footer">
-			<div class="buttonTop">
-				<a href="#"><img src="images/goTop.png" height="90" width="90"></a>
-			</div>
 		</div>
 		<!-- //footer -->
 		<div class="footer-bottom-grids">

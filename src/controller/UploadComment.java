@@ -27,21 +27,24 @@ public class UploadComment extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		 
-		String userid = (String) session.getAttribute("email"); // per l'utente
+		String nomeUtente = (String) session.getAttribute("nome"); // per l'utente
+		String email = (String) session.getAttribute("email");
 		String message = request.getParameter("content");
 		Long postId = Long.parseLong(request.getParameter("id")) ;
 		
 		long time = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(time);
 		
-		Commento commentToSave = new Commento(1, message, userid, postId, date);
+		Commento commentToSave = new Commento(1, message, email, nomeUtente, postId, date);
 		commentoDao.save(commentToSave);
 		
 
 		JsonObject comment = new JsonObject();
-		comment.addProperty("msg",commentToSave.getMessaggio());
-		comment.addProperty("id_post", commentToSave.getIdPost());
-		comment.addProperty("utente", commentToSave.getUtente());
+		comment.addProperty("msg", message);
+		comment.addProperty("id_post", postId);
+		comment.addProperty("utente", email);
+		comment.addProperty("nome_utente",nomeUtente);
+		comment.addProperty("id_commento",commentToSave.getIdCommento());
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String reportDate = df.format(commentToSave.getDate());

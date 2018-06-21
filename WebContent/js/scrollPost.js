@@ -23,7 +23,7 @@ function loadPost(){
 						}
 						
 						$.each(list, function(i, item) {
-							console.log(item.utente_sessione);
+							console.log(item.utente + " " + item.utente_sessione);
 							if(item.utente != item.utente_sessione){							
 								//console.log(item.img);
 								$("#appendPost").append(
@@ -41,7 +41,7 @@ function loadPost(){
 									'</div>' 
 								);
 							}else{						
-								//console.log(item.img);
+								console.log(item.utente_sessione);
 								$("#appendPost").append(
 										"<div class=\"blog-left-grid\" id=\"post-body" + item.id_post + "\">" +
 										"<p>" +
@@ -73,7 +73,7 @@ $(window).scroll(function() {
 			   console.log("scrolling....");
 			   scrolled = false;
 			   $('.spinner').show();
-		       setTimeout(loadPost,2000);
+		       setTimeout(loadPost,1000);
 		   }
 		   
 	   }

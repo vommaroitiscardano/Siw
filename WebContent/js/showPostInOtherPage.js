@@ -31,26 +31,55 @@ function update(x) {
 		success : function(list) {
 			$.each(list, function(i, item) {
 				
+				if(item.utente == item.utente_sessione){
+
 				$("#mydiv").append(
 					"<div class'comment'>" +
-					
 						"<div class=\"media-left response-text-left\">" +
-							"<img class=\"media-object\"src=\"images/FlydownIco.png\" >" +
+							"<img class=\"media-object\"src=\"images/FlydownIco.png\" >" + 
 								"<h5>" +
 								
-									"<p>"+ item.utente +"</p>" +
+									"<p>"+ item.nome_utente +"</p>" +
 			
 								"</h5>" +
 						"</div>" +
 						"<div class=\"media-body response-text-right\">" + 
-							"<p id=\"mymsg\">" + item.msg +"</p>" +
-								"<ul>" + 
-									" <li>"+ item.data +"<li>"+
-								"</ul>" +	
+						'<div class="divCommento" > <span id="mymsg" class="spanCommento">' + item.msg + '</span> </div>' +'<div class="trashcomment"> <input type="image" onclick="deleteComment(' + item.id_commento + ')"src="images/cart_bin.png" > </div>'+
+								'<div class="datacommento">' + 
+									" <p>"+ item.data +"</p>"+
+								"</div>" +	
 						"</div>" +
 					"</div>"
 					
 				);
+				}
+				else{
+					$("#mydiv").append(
+							"<div class'comment'>" +
+							
+								"<div class=\"media-left response-text-left\">" +
+									"<img class=\"media-object\"src=\"images/FlydownIco.png\" >" + 
+										"<h5>" +
+										
+											"<p>"+ item.nome_utente +"</p>" +
+					
+										"</h5>" +
+								"</div>" +
+								"<div class=\"media-body response-text-right\">" + 
+								'<div class="divCommento" > <span id="mymsg" class="spanCommento">' + item.msg + '</span>' +
+										'<div class="datacommento">' + 
+											" <p>"+ item.data +"</p>"+
+										"</div>" +	
+								"</div>" +
+							"</div>"
+							
+						);
+					
+					
+					
+					
+					
+				}
 				
 	
 

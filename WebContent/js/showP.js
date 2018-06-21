@@ -28,18 +28,8 @@ $(function(){
     		},
     		type : 'POST',
     		success : function(element){
-    			$("#appendPost").append(
-    					"<div class=\"blog-left-grid\" id=\"post-body\"" + element.id_post + ">"+
-						"<p>" +
-							"Posted By <a" + element.utente +"</a> &nbsp;&nbsp;on" + element.data + "&nbsp;&nbsp; <a>Comments (10)</a>"+
-						"</p>" +					
-						"<a onclick=\"update(" + element.id_post + ")\"> <img id=\"img\"src=\"${" + element.img + "}\" width=\"300px\" height=\"500px\"></a>" +
-						"<div class=\"blog-left-right\">" +
-							"<a onclick=\"update(${" + element.id_post + "})\">" + element.title + " </a>" + 
-							"<p>${" + element.msg + "}</p>" + 						
-						"</div>" +
-					"</div>"	
-    			);
+    			
+    			
     			window.location ='blog.jsp';
     		}    	
 

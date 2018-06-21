@@ -24,6 +24,7 @@ public class ShowComment extends HttpServlet {
     	
     	//num del post
         Long idP = Long.parseLong(request.getParameter("npost"));
+    	String userid = (String) request.getSession(false).getAttribute("email");
 
         CommentoDao commentoDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDao();
         
@@ -44,6 +45,10 @@ public class ShowComment extends HttpServlet {
             JsonObject commento = new JsonObject();
             commento.addProperty("msg", commenti.get(i).getMessaggio());
             commento.addProperty("utente", commenti.get(i).getUtente());
+            commento.addProperty("id_commento", commenti.get(i).getIdCommento());
+            commento.addProperty("utente_sessione", userid);
+            commento.addProperty("nome_utente", commenti.get(i).getNomeUtente());
+            
 
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String reportDate = df.format(commenti.get(i).getDate());
@@ -53,6 +58,7 @@ public class ShowComment extends HttpServlet {
 
             risultato.add("commento" + String.valueOf(i), commento);
         }
+        userid= "";
 
         response.getWriter().write(risultato.toString());
 

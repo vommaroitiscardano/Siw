@@ -9,10 +9,6 @@ $(function(){
 		  
 		  //per pulire i campi della form
 		  $('.textComment').val('');
-		  
-		  
-		  
-		  
 
     	$.ajax({
     		url : 'UploadComment',
@@ -27,22 +23,23 @@ $(function(){
     			alert('error');
     		},
     		success : function(element){
+    			console.log(element);
     			$("#mydiv").append(
-    					"<div class'comment'>" +
+    					'<div class="comment' + element.id_commento +'" >' +
     					
     						"<div class=\"media-left response-text-left\">" +
-    							"<img class=\"media-object\"src=\"images/FlydownIco.png\" >" +
+    							"<img class=\"media-object\"src=\"images/FlydownIco.png\" >" + 	
     								"<h5>" +
     								
-    									"<p>"+ element.utente +"</p>" +
+    									"<p>"+ element.nome_utente +"</p>" +
     			
     								"</h5>" +
     						"</div>" +
     						"<div class=\"media-body response-text-right\">" + 
-    							"<p id=\"mymsg\">" + element.msg +"</p>" +
-    								"<ul>" + 
-    									" <li>"+ element.data +"<li>"+
-    								"</ul>" +	
+    						'<div class="divCommento"> <span id= "mymsg" class="spanCommento"> ' + element.msg + '</span> </div>' + '<div class="trashcomment"> <input type="image" onclick="deleteComment(' + element.id_commento + ')"src="images/cart_bin.png" > </div>'+
+						'<div class="datacommento">' + 
+							" <p>"+ element.data +"</p>"+
+						"</div>" +	
     						"</div>" +
     					"</div>");
 
