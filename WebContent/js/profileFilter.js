@@ -30,7 +30,7 @@ function retrieveFlights(){
 						+'		<span class="ticket_dep"><strong>Route: </strong>'+dep_name+'</span> - <span class="ticket_arr">'+arr_name+'</span>'
 						+'		</span>'
 						+'		<span class="ticket_date"><strong>Departure: </strong>'+ dep_date +'</span>'
-						+'		<span class="ticket_time"><strong>Time: </strong>'+dep_time +' - '+ arr_time_r+'</span>'
+						+'		<span class="ticket_time"><strong>Time: </strong>'+dep_time +' - '+ arr_time+'</span>'
 						+'		<span class="ticket_price"><strong>Price: </strong><span>&#163; </span>'+price+'</span>  '
 						+'	</div>  '
 						+'</li>  '

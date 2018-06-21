@@ -123,4 +123,13 @@
     <url-pattern>/DeleteComment</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>TicketResult</servlet-name>
+    <servlet-class>controller.TicketResult</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TicketResult</servlet-name>
+    <url-pattern>/TicketResult</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

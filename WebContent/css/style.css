@@ -6179,3 +6179,43 @@ input.pay-logo {
 .t_o_u{
 	background: #daffdab3;
 }
+
+.response-text-right ul {
+	padding: 0;
+	text-align: right;
+	position:relative;
+	left:57px;
+
+}
+
+.buttonTop {
+	float: right;
+	position: relative;
+	bottom: 170px;
+	right: 220px;
+	bottom: 120px;
+	right: 180px;
+}
+
+.trashcomment {
+	float: right;
+	position:relative;
+	top: -160px;
+}
+
+.divCommento{
+	 height: 160px;
+    width: 500px;
+    background-color: powderblue;
+}
+
+.spanCommento {
+	height: 160px;
+	width: 500px;
+	display: inline-block;
+	word-wrap: break-word;
+	}
+	
+.datacommento{
+	float:left;
+}
